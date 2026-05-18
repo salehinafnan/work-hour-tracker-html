@@ -1686,13 +1686,7 @@
 
         <!-- Filter Drawer Container -->
         <div id="advanced-filters" class="advanced-filters">
-          <!-- Text Search Row -->
-          <div class="filter-row">
-            <div style="position: relative; flex: 1; display: flex;">
-              <input type="text" id="filter-search" class="filter-input" placeholder="Search notes or tags..." style="flex: 1; text-align: left; padding: 8px 12px 8px 32px; font-size: 0.75rem; border-radius: 12px;" />
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </div>
-          </div>
+
 
           <!-- Time & Status Select Dropdowns -->
           <div class="filter-row">
@@ -2038,7 +2032,7 @@
       filterNotes: document.getElementById("filter-notes"),
       filterHoursOp: document.getElementById("filter-hours-op"),
       filterHoursVal: document.getElementById("filter-hours-val"),
-      filterSearch: document.getElementById("filter-search"),
+
       filterChipsContainer: document.getElementById("filter-chips-container"),
       filterViewPresets: document.getElementById("filter-view-presets"),
       weekMonthLabel: document.getElementById("week-month-label"),
@@ -3010,7 +3004,6 @@
       const dateStart = document.getElementById("filter-date-start").value !== "";
       const dateEnd = document.getElementById("filter-date-end").value !== "";
       const hoursFilter = DOM.filterHoursOp.value !== "ALL";
-      const searchFilter = DOM.filterSearch.value.trim() !== "";
 
       // Calculate active count
       let activeCount = 0;
@@ -3020,7 +3013,6 @@
       if (dateStart) activeCount++;
       if (dateEnd) activeCount++;
       if (hoursFilter) activeCount++;
-      if (searchFilter) activeCount++;
 
       const btn = document.getElementById("filter-toggle-btn");
       
@@ -3086,11 +3078,7 @@
         chips.push({ id: "status", label: `Status: ${statusLabel}` });
       }
 
-      // 3. Search query text
-      const searchText = DOM.filterSearch.value.trim();
-      if (searchText) {
-        chips.push({ id: "search", label: `Search: "${searchText}"` });
-      }
+
 
       // 4. Date start
       const dateStart = document.getElementById("filter-date-start").value;
@@ -3142,8 +3130,7 @@
         DOM.filterTime.value = "ALL";
       } else if (filterId === "status") {
         DOM.filterStatus.value = "ALL";
-      } else if (filterId === "search") {
-        DOM.filterSearch.value = "";
+
       } else if (filterId === "date-start") {
         document.getElementById("filter-date-start").value = "";
       } else if (filterId === "date-end") {
@@ -3166,7 +3153,7 @@
     window.clearFilters = function() {
       DOM.filterTime.value = "ALL";
       DOM.filterStatus.value = "ALL";
-      DOM.filterSearch.value = "";
+
       document.getElementById("filter-date-start").value = "";
       document.getElementById("filter-date-end").value = "";
       DOM.filterHoursOp.value = "ALL";
@@ -3196,7 +3183,7 @@
         name: cleanName,
         time: DOM.filterTime.value,
         status: DOM.filterStatus.value,
-        search: DOM.filterSearch.value,
+
         dateStart: document.getElementById("filter-date-start").value,
         dateEnd: document.getElementById("filter-date-end").value,
         hoursOp: DOM.filterHoursOp.value,
@@ -3289,7 +3276,7 @@
       if (view) {
         DOM.filterTime.value = view.time || "ALL";
         DOM.filterStatus.value = view.status || "ALL";
-        DOM.filterSearch.value = view.search || "";
+
         document.getElementById("filter-date-start").value = view.dateStart || "";
         document.getElementById("filter-date-end").value = view.dateEnd || "";
         DOM.filterHoursOp.value = view.hoursOp || "ALL";
@@ -3308,7 +3295,7 @@
       const activeFilters = {
         time: DOM.filterTime.value,
         status: DOM.filterStatus.value,
-        search: DOM.filterSearch.value,
+
         dateStart: document.getElementById("filter-date-start").value,
         dateEnd: document.getElementById("filter-date-end").value,
         hoursOp: DOM.filterHoursOp.value,
@@ -3326,7 +3313,7 @@
           const pref = JSON.parse(saved);
           DOM.filterTime.value = pref.time || "ALL";
           DOM.filterStatus.value = pref.status || "ALL";
-          DOM.filterSearch.value = pref.search || "";
+
           document.getElementById("filter-date-start").value = pref.dateStart || "";
           document.getElementById("filter-date-end").value = pref.dateEnd || "";
           DOM.filterHoursOp.value = pref.hoursOp || "ALL";
@@ -3357,16 +3344,13 @@
       const dateEndVal = document.getElementById("filter-date-end").value;
       const hoursOp = DOM.filterHoursOp.value;
       const hoursVal = parseFloat(DOM.filterHoursVal.value) || 0;
-      const searchText = DOM.filterSearch.value.trim().toLowerCase();
-
       if (
         timeFilter === "ALL" &&
         status === "ALL" &&
         !hasNotes &&
         !dateStartVal &&
         !dateEndVal &&
-        hoursOp === "ALL" &&
-        !searchText
+        hoursOp === "ALL"
       ) {
         return logs;
       }
@@ -3407,13 +3391,7 @@
           if (hoursOp === "LESS") matchHours = workHours <= hoursVal;
         }
 
-        let matchSearch = true;
-        if (searchText) {
-          const searchTarget = (l.searchStr || `${l.displayDate} ${l.date} ${l.login} ${l.logout} ${l.notes || ""}`).toLowerCase();
-          matchSearch = searchTarget.includes(searchText);
-        }
-
-        return matchTime && matchStatus && matchNotes && matchDate && matchHours && matchSearch;
+        return matchTime && matchStatus && matchNotes && matchDate && matchHours;
       });
     }
 
@@ -3481,8 +3459,7 @@
         const dateStart = document.getElementById("filter-date-start").value !== "";
         const dateEnd = document.getElementById("filter-date-end").value !== "";
         const hoursFilter = DOM.filterHoursOp.value !== "ALL";
-        const searchFilter = DOM.filterSearch.value.trim() !== "";
-        const isFiltering = timeFilter || statusFilter || notesFilter || dateStart || dateEnd || hoursFilter || searchFilter;
+        const isFiltering = timeFilter || statusFilter || notesFilter || dateStart || dateEnd || hoursFilter;
 
         if (isFiltering) {
           countDisplay.textContent = `Showing ${filteredCount.toLocaleString()} of ${totalLogsCount.toLocaleString()} shift${totalLogsCount !== 1 ? "s" : ""}`;
@@ -3730,11 +3707,7 @@
     DOM.filterHoursVal.addEventListener("input", () => { saveActiveFilters(); debouncedRenderLogbook(); });
     DOM.filterHoursOp.addEventListener("change", () => { saveActiveFilters(); renderLogbook(); });
     
-    // Search bar listener (debounced 200ms)
-    DOM.filterSearch.addEventListener("input", debounce(() => {
-      saveActiveFilters();
-      renderLogbook();
-    }, 200));
+
 
     /**
      * populates log editor values.
