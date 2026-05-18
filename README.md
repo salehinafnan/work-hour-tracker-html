@@ -90,11 +90,18 @@ The logbook handles extensive history smoothly by incorporating custom visual an
   * **Status**: Filter by goal status (`OVER` daily goal or `UNDER` daily goal).
   * **Timezone**: Switch timezone rendering on the fly to review logs in alternate zones.
 * **Shift Operations**:
-  * **Edit Shift**: Click the Edit icon on any row to modify dates, work hours (`HH:MM:SS`), break times, or notes.
+  * **Edit Shift**: Click the Edit icon on any row to modify dates, work hours (`HH:MM`), break times, or notes.
   * **Delete Shift**: Safely delete shifts with a double-confirmed pop-up warning.
   * **Copy Shift Text**: Copies a single shift summary formatted as plain text to your clipboard.
   * **Copy Log Table**: Copies the entire filtered logbook into a tabular text report.
   * **Manual Shift Entry**: Retroactively log a forgotten shift by clicking the **Manual Entry** button.
+  * **Smart Auto-Formatting Normalizers (Blur Event)**:
+    * **Frictionless Time Inputs**: The Add Manual Shift and Edit Shift forms support speed-typing time inputs with auto-select on focus (`onfocus="this.select()"`). Typing shorthands automatically normalizes on focus exit: `8` or `08` $\rightarrow$ `08:00`; `930` $\rightarrow$ `09:30`; `1245` $\rightarrow$ `12:45` (with a `23:59` maximum ceiling limit).
+    * **Intelligent Date Parser**: The date input automatically resolves partial, shorthand, and relative entries on focus exit:
+      * *Relative Keywords*: `t` or `today` $\rightarrow$ today's date (`MM/DD/YY`); `y` or `yesterday` $\rightarrow$ yesterday's date; `-N` (e.g. `-3`) $\rightarrow$ date from $N$ days ago.
+      * *Partial Delimiters*: `5/18` $\rightarrow$ pads to `05/18/currentYear`.
+      * *Digit Shorthand*: `051826` $\rightarrow$ `05/18/26`; `18` $\rightarrow$ `currentMonth/18/currentYear`.
+      * *Calendar Boundaries*: Dynamic day validation correctly clamps values based on month limits and leap-year calculations (e.g., `02/30/24` $\rightarrow$ `02/29/24`).
 
 ---
 
