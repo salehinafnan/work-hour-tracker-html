@@ -36,8 +36,8 @@
 
         /* Typographic Tokens */
         --font-sans:
-          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-          sans-serif;
+          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
         --font-mono: "JetBrains Mono", monospace;
 
         --text-xs: 0.75rem;
@@ -71,7 +71,8 @@
         /* Simplified page background and panel shadow to save CPU rasterization resources */
         --page-bg: #050505;
         --panel-bg: #0c0c0e;
-        --panel-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 4px 12px rgba(0, 0, 0, 0.6);
+        --panel-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.06), 0 4px 12px rgba(0, 0, 0, 0.6);
         --panel-blur: none;
 
         --element-bg: rgba(255, 255, 255, 0.03);
@@ -101,11 +102,13 @@
       }
 
       :root[data-theme="midnight"][data-session-mode="work"] {
-        --panel-shadow: 0 0 0 1px rgba(74, 222, 128, 0.45), 0 4px 12px rgba(0, 0, 0, 0.6);
+        --panel-shadow:
+          0 0 0 1px rgba(74, 222, 128, 0.45), 0 4px 12px rgba(0, 0, 0, 0.6);
       }
 
       :root[data-theme="midnight"][data-session-mode="break"] {
-        --panel-shadow: 0 0 0 1px rgba(248, 113, 113, 0.45), 0 4px 12px rgba(0, 0, 0, 0.6);
+        --panel-shadow:
+          0 0 0 1px rgba(248, 113, 113, 0.45), 0 4px 12px rgba(0, 0, 0, 0.6);
       }
 
       /* =========================================================================
@@ -115,7 +118,8 @@
         /* Solidified page-bg and panel-bg, significantly reducing shadow blur sizes */
         --page-bg: #090f1d;
         --panel-bg: #111a2e;
-        --panel-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08);
+        --panel-shadow:
+          0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08);
         --panel-blur: none;
 
         --element-bg: rgba(0, 0, 0, 0.25);
@@ -917,7 +921,12 @@
         left: -150%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.12),
+          transparent
+        );
         transform: skewX(-20deg);
         transition: none;
         pointer-events: none;
@@ -1649,14 +1658,19 @@
         width: 100%;
         transform: scaleX(0);
         transform-origin: left;
-        background: linear-gradient(135deg, var(--accent-blue) 0%, #4f46e5 100%);
+        background: linear-gradient(
+          135deg,
+          var(--accent-blue) 0%,
+          #4f46e5 100%
+        );
         box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
         transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
       .progress-segment.is-today {
         border-color: var(--accent-blue);
-        box-shadow: 0 0 8px color-mix(in srgb, var(--accent-blue) 20%, transparent);
+        box-shadow: 0 0 8px
+          color-mix(in srgb, var(--accent-blue) 20%, transparent);
       }
 
       #weekly-progress-card.goal-reached .progress-segment-fill {
@@ -1666,7 +1680,8 @@
 
       #weekly-progress-card.goal-reached .progress-segment.is-today {
         border-color: var(--accent-work);
-        box-shadow: 0 0 8px color-mix(in srgb, var(--accent-work) 20%, transparent);
+        box-shadow: 0 0 8px
+          color-mix(in srgb, var(--accent-work) 20%, transparent);
       }
 
       .progress-segment.is-leave {
@@ -1970,8 +1985,12 @@
           >. Where should this time go?
         </p>
         <div class="action-row">
-          <button class="btn-success-outline" onclick="resolveIdle('work')">Log as Work</button>
-          <button class="btn-danger-outline" onclick="resolveIdle('break')">Log as Break</button>
+          <button class="btn-success-outline" onclick="resolveIdle('work')">
+            Log as Work
+          </button>
+          <button class="btn-danger-outline" onclick="resolveIdle('break')">
+            Log as Break
+          </button>
         </div>
       </div>
     </div>
@@ -1984,8 +2003,12 @@
           This shift is under 60 seconds. Are you sure you want to log it?
         </p>
         <div class="action-row">
-          <button class="btn-secondary" onclick="closeGhostModal()">Cancel</button>
-          <button class="btn-warning-outline" onclick="confirmGhost()">Log Anyway</button>
+          <button class="btn-secondary" onclick="closeGhostModal()">
+            Cancel
+          </button>
+          <button class="btn-warning-outline" onclick="confirmGhost()">
+            Log Anyway
+          </button>
         </div>
       </div>
     </div>
@@ -2008,8 +2031,12 @@
           <datalist id="note-suggestions"></datalist>
         </div>
         <div class="action-row">
-          <button class="btn-secondary" onclick="closeSubmitModal()">Cancel</button>
-          <button class="btn-info-outline" onclick="confirmSubmit()">Confirm EOD</button>
+          <button class="btn-secondary" onclick="closeSubmitModal()">
+            Cancel
+          </button>
+          <button class="btn-info-outline" onclick="confirmSubmit()">
+            Confirm EOD
+          </button>
         </div>
       </div>
     </div>
@@ -2019,15 +2046,27 @@
       class="modal-overlay"
       style="z-index: 9999; background: var(--page-bg)"
     >
-      <div class="modal-container" style="text-align: center; border-color: var(--accent-break)">
-        <h1 style="font-size: 3rem; margin-bottom: var(--space-3); margin-top: 0">⚠️</h1>
-        <h3 class="modal-header danger" style="justify-content: center">Multiple Tabs Detected</h3>
+      <div
+        class="modal-container"
+        style="text-align: center; border-color: var(--accent-break)"
+      >
+        <h1
+          style="font-size: 3rem; margin-bottom: var(--space-3); margin-top: 0"
+        >
+          ⚠️
+        </h1>
+        <h3 class="modal-header danger" style="justify-content: center">
+          Multiple Tabs Detected
+        </h3>
         <p class="modal-body-text">
-          Work Hour Tracker is currently active in another tab. Running multiple instances
-          simultaneously can cause data corruption and double-counting.
+          Work Hour Tracker is currently active in another tab. Running multiple
+          instances simultaneously can cause data corruption and
+          double-counting.
         </p>
         <div class="action-row">
-          <button class="btn-danger-outline" onclick="forceTakeover()">Take Over Here</button>
+          <button class="btn-danger-outline" onclick="forceTakeover()">
+            Take Over Here
+          </button>
         </div>
       </div>
     </div>
@@ -2059,8 +2098,12 @@
         <h3 id="confirm-title" class="modal-header warning">Confirm Action</h3>
         <p id="confirm-desc" class="modal-body-text">Are you sure?</p>
         <div class="action-row">
-          <button class="btn-secondary" onclick="closeConfirmModal()">Cancel</button>
-          <button id="confirm-action-btn" class="btn-warning-outline">Confirm</button>
+          <button class="btn-secondary" onclick="closeConfirmModal()">
+            Cancel
+          </button>
+          <button id="confirm-action-btn" class="btn-warning-outline">
+            Confirm
+          </button>
         </div>
       </div>
     </div>
@@ -2071,7 +2114,12 @@
         <h3 class="modal-header">Edit Shift</h3>
         <div class="form-group">
           <label class="form-label" for="edit-date">Date (MM/DD/YY)</label>
-          <input type="text" id="edit-date" class="input-standard" onfocus="this.select()" />
+          <input
+            type="text"
+            id="edit-date"
+            class="input-standard"
+            onfocus="this.select()"
+          />
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -2085,7 +2133,9 @@
             />
           </div>
           <div class="form-group">
-            <label class="form-label" for="edit-break">Break Time (HH:MM)</label>
+            <label class="form-label" for="edit-break"
+              >Break Time (HH:MM)</label
+            >
             <input
               type="text"
               id="edit-break"
@@ -2100,8 +2150,12 @@
           <textarea id="edit-notes" class="input-standard"></textarea>
         </div>
         <div class="action-row">
-          <button class="btn-secondary" onclick="closeEditModal()">Cancel</button>
-          <button class="btn-info-outline" onclick="saveEditModal()">Save</button>
+          <button class="btn-secondary" onclick="closeEditModal()">
+            Cancel
+          </button>
+          <button class="btn-info-outline" onclick="saveEditModal()">
+            Save
+          </button>
         </div>
       </div>
     </div>
@@ -2155,7 +2209,9 @@
               max="23"
               style="width: 70px; text-align: center; padding: var(--space-2)"
             />
-            <span style="font-size: var(--text-sm); color: var(--text-muted)">h</span>
+            <span style="font-size: var(--text-sm); color: var(--text-muted)"
+              >h</span
+            >
             <input
               type="number"
               id="manual-goal-m"
@@ -2164,7 +2220,9 @@
               max="59"
               style="width: 70px; text-align: center; padding: var(--space-2)"
             />
-            <span style="font-size: var(--text-sm); color: var(--text-muted)">m</span>
+            <span style="font-size: var(--text-sm); color: var(--text-muted)"
+              >m</span
+            >
           </div>
         </div>
         <div class="form-group">
@@ -2172,8 +2230,12 @@
           <textarea id="manual-notes" class="input-standard"></textarea>
         </div>
         <div class="action-row">
-          <button class="btn-secondary" onclick="closeManualModal()">Cancel</button>
-          <button class="btn-success-outline" onclick="saveManualModal()">Add Log</button>
+          <button class="btn-secondary" onclick="closeManualModal()">
+            Cancel
+          </button>
+          <button class="btn-success-outline" onclick="saveManualModal()">
+            Add Log
+          </button>
         </div>
       </div>
     </div>
@@ -2192,7 +2254,9 @@
           "
         ></div>
         <div class="action-row">
-          <button class="btn-info-outline" onclick="closeNoteModal()">Close</button>
+          <button class="btn-info-outline" onclick="closeNoteModal()">
+            Close
+          </button>
         </div>
       </div>
     </div>
@@ -2204,7 +2268,9 @@
       <div class="modal-container" style="max-width: 320px">
         <h3 class="modal-header">Edit Preset</h3>
         <div class="form-group">
-          <label class="form-label" for="preset-input">Target Hours (e.g. 7.5)</label>
+          <label class="form-label" for="preset-input"
+            >Target Hours (e.g. 7.5)</label
+          >
           <input
             type="number"
             id="preset-input"
@@ -2216,8 +2282,12 @@
           />
         </div>
         <div class="action-row">
-          <button class="btn-secondary" onclick="closePresetModal()">Cancel</button>
-          <button class="btn-info-outline" onclick="savePresetModal()">Save</button>
+          <button class="btn-secondary" onclick="closePresetModal()">
+            Cancel
+          </button>
+          <button class="btn-info-outline" onclick="savePresetModal()">
+            Save
+          </button>
         </div>
       </div>
     </div>
@@ -2225,7 +2295,12 @@
     <div id="leave-modal" class="modal-overlay" style="z-index: 3500">
       <div class="modal-container" style="max-width: 360px">
         <h3 class="modal-header info">
-          <svg viewBox="0 0 24 24" class="ui-icon" stroke="currentColor" fill="none">
+          <svg
+            viewBox="0 0 24 24"
+            class="ui-icon"
+            stroke="currentColor"
+            fill="none"
+          >
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="16" y1="2" x2="16" y2="6"></line>
             <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -2234,9 +2309,16 @@
           Manage Leaves & Holidays
         </h3>
         <div class="form-group">
-          <label class="form-label" for="leave-date-input">Add Leave Date</label>
+          <label class="form-label" for="leave-date-input"
+            >Add Leave Date</label
+          >
           <div style="display: flex; gap: var(--space-2)">
-            <input type="date" id="leave-date-input" class="input-standard" style="flex: 1" />
+            <input
+              type="date"
+              id="leave-date-input"
+              class="input-standard"
+              style="flex: 1"
+            />
             <button
               class="btn-info-outline"
               style="flex: 0 0 auto; padding: var(--space-2) var(--space-4)"
@@ -2263,7 +2345,9 @@
           "
         ></div>
         <div class="action-row">
-          <button class="btn-secondary" onclick="closeLeaveModal()">Close</button>
+          <button class="btn-secondary" onclick="closeLeaveModal()">
+            Close
+          </button>
         </div>
       </div>
     </div>
@@ -2311,12 +2395,28 @@
                 <span id="tz-current-label">PST</span>
               </div>
               <div class="tz-presets">
-                <button class="preset-pill" onclick="selectPresetTZ('America/Los_Angeles')">
+                <button
+                  class="preset-pill"
+                  onclick="selectPresetTZ('America/Los_Angeles')"
+                >
                   PST
                 </button>
-                <button class="preset-pill" onclick="selectPresetTZ('America/Denver')">MST</button>
-                <button class="preset-pill" onclick="selectPresetTZ('America/Chicago')">CST</button>
-                <button class="preset-pill" onclick="selectPresetTZ('America/New_York')">
+                <button
+                  class="preset-pill"
+                  onclick="selectPresetTZ('America/Denver')"
+                >
+                  MST
+                </button>
+                <button
+                  class="preset-pill"
+                  onclick="selectPresetTZ('America/Chicago')"
+                >
+                  CST
+                </button>
+                <button
+                  class="preset-pill"
+                  onclick="selectPresetTZ('America/New_York')"
+                >
                   EST
                 </button>
               </div>
@@ -2332,7 +2432,12 @@
             <div class="goal-container">
               <div class="status-badge goal-inputs" style="padding: 0 0.8rem">
                 <span class="label">Goal:</span>
-                <input type="text" id="goal-time" value="8h 0m" onfocus="this.select()" />
+                <input
+                  type="text"
+                  id="goal-time"
+                  value="8h 0m"
+                  onfocus="this.select()"
+                />
                 <input type="hidden" id="goal-hours" value="8" />
                 <input type="hidden" id="goal-mins" value="0" />
                 <svg
@@ -2354,7 +2459,11 @@
               </div>
               <div class="goal-presets">
                 <!-- Adjustment Button -->
-                <button class="preset-pill" onclick="adjustGoal(-15)" title="Remove 15 mins">
+                <button
+                  class="preset-pill"
+                  onclick="adjustGoal(-15)"
+                  title="Remove 15 mins"
+                >
                   -15m
                 </button>
 
@@ -2377,13 +2486,24 @@
                 </button>
 
                 <!-- Adjustment Button -->
-                <button class="preset-pill" onclick="adjustGoal(15)" title="Add 15 mins">
+                <button
+                  class="preset-pill"
+                  onclick="adjustGoal(15)"
+                  title="Add 15 mins"
+                >
                   +15m
                 </button>
               </div>
             </div>
-            <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">
-              <span id="theme-toggle-icon" style="display: flex; align-items: center"></span>
+            <button
+              class="theme-toggle-btn"
+              onclick="toggleTheme()"
+              title="Toggle Theme"
+            >
+              <span
+                id="theme-toggle-icon"
+                style="display: flex; align-items: center"
+              ></span>
             </button>
           </div>
         </div>
@@ -2426,7 +2546,9 @@
         <div class="actions">
           <button id="start-btn" class="btn-work">Start Work</button>
           <button id="pause-btn" class="btn-break">Take Break</button>
-          <button id="submit-btn" class="btn-log" onclick="openSubmitModal()">Submit EOD</button>
+          <button id="submit-btn" class="btn-log" onclick="openSubmitModal()">
+            Submit EOD
+          </button>
         </div>
       </div>
 
@@ -2434,10 +2556,18 @@
       <div class="sidebar">
         <!-- Navigation tabs switcher -->
         <div class="tab-nav">
-          <button class="tab-btn active" data-target="insights" onclick="switchTab('insights')">
+          <button
+            class="tab-btn active"
+            data-target="insights"
+            onclick="switchTab('insights')"
+          >
             Insights
           </button>
-          <button class="tab-btn" data-target="logbook" onclick="switchTab('logbook')">
+          <button
+            class="tab-btn"
+            data-target="logbook"
+            onclick="switchTab('logbook')"
+          >
             Logbook
           </button>
         </div>
@@ -2552,8 +2682,15 @@
                 gap: 8px;
               "
             >
-              <div style="display: flex; align-items: center; gap: 8px; flex: 1">
-                <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 700"
+              <div
+                style="display: flex; align-items: center; gap: 8px; flex: 1"
+              >
+                <span
+                  style="
+                    font-size: 0.65rem;
+                    color: var(--text-muted);
+                    font-weight: 700;
+                  "
                   >From</span
                 >
                 <input
@@ -2571,9 +2708,23 @@
                   "
                 />
               </div>
-              <span style="color: var(--text-muted); font-size: 0.8rem; font-weight: bold">→</span>
-              <div style="display: flex; align-items: center; gap: 8px; flex: 1">
-                <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 700"
+              <span
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.8rem;
+                  font-weight: bold;
+                "
+                >→</span
+              >
+              <div
+                style="display: flex; align-items: center; gap: 8px; flex: 1"
+              >
+                <span
+                  style="
+                    font-size: 0.65rem;
+                    color: var(--text-muted);
+                    font-weight: 700;
+                  "
                   >To</span
                 >
                 <input
@@ -2595,7 +2746,11 @@
 
             <!-- Hours Filter -->
             <div class="filter-row">
-              <select id="filter-hours-op" class="filter-select" style="flex: 1.5">
+              <select
+                id="filter-hours-op"
+                class="filter-select"
+                style="flex: 1.5"
+              >
                 <option value="ALL">Hours worked...</option>
                 <option value="MORE">More than</option>
                 <option value="LESS">Less than</option>
@@ -2628,7 +2783,12 @@
                   "
                   disabled
                 />
-                <span style="font-size: 0.65rem; color: var(--text-muted); font-weight: 700"
+                <span
+                  style="
+                    font-size: 0.65rem;
+                    color: var(--text-muted);
+                    font-weight: 700;
+                  "
                   >hrs</span
                 >
               </div>
@@ -2653,7 +2813,11 @@
                 <select
                   id="filter-view-presets"
                   class="filter-select"
-                  style="font-size: 0.7rem; padding: 4px 8px; border-radius: 8px"
+                  style="
+                    font-size: 0.7rem;
+                    padding: 4px 8px;
+                    border-radius: 8px;
+                  "
                 >
                   <option value="">Saved Views...</option>
                 </select>
@@ -2675,7 +2839,11 @@
                   Save View
                 </button>
               </div>
-              <button class="clear-filter-btn" onclick="clearFilters()" style="margin-left: 0">
+              <button
+                class="clear-filter-btn"
+                onclick="clearFilters()"
+                style="margin-left: 0"
+              >
                 Clear Filters
               </button>
             </div>
@@ -2684,7 +2852,12 @@
           <!-- Active Filter Chips Container -->
           <div
             id="filter-chips-container"
-            style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px"
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 6px;
+              margin-bottom: 12px;
+            "
           ></div>
 
           <!-- Virtual list target container -->
@@ -2711,7 +2884,10 @@
                 margin-bottom: 8px;
               "
             >
-              <div class="font-mono" style="display: flex; align-items: baseline">
+              <div
+                class="font-mono"
+                style="display: flex; align-items: baseline"
+              >
                 <span
                   style="
                     font-size: 0.75rem;
@@ -2741,9 +2917,19 @@
                   (0%)
                 </span>
               </div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600">
+              <div
+                style="
+                  font-size: 0.75rem;
+                  color: var(--text-muted);
+                  font-weight: 600;
+                "
+              >
                 Total Break:
-                <span id="total-weekly-break" class="font-mono" style="color: var(--accent-break)">
+                <span
+                  id="total-weekly-break"
+                  class="font-mono"
+                  style="color: var(--accent-break)"
+                >
                   00:00:00
                 </span>
               </div>
@@ -2877,11 +3063,19 @@
             "
           >
             <div style="display: flex; align-items: center; gap: 12px">
-              <span class="nav-arrow" onclick="changeWeekOffset(-1)" title="Previous Week"
+              <span
+                class="nav-arrow"
+                onclick="changeWeekOffset(-1)"
+                title="Previous Week"
                 >&lt;</span
               >
               <span id="week-month-label"></span>
-              <span class="nav-arrow" onclick="changeWeekOffset(1)" title="Next Week">&gt;</span>
+              <span
+                class="nav-arrow"
+                onclick="changeWeekOffset(1)"
+                title="Next Week"
+                >&gt;</span
+              >
             </div>
           </div>
 
@@ -2896,16 +3090,33 @@
         <div class="sidebar-footer">
           <!-- Left Bottom: Two Lines Metadata -->
           <div class="footer-metadata">
-            <div><span class="label">DB:</span> <span class="value">LOCAL_BROWSER</span></div>
-            <div><span class="label">TIME/DATE:</span> <span class="value">PST_FORMAT</span></div>
+            <div>
+              <span class="label">DB:</span>
+              <span class="value">LOCAL_BROWSER</span>
+            </div>
+            <div>
+              <span class="label">TIME/DATE:</span>
+              <span class="value">PST_FORMAT</span>
+            </div>
           </div>
 
           <!-- Right: Icons with Labels at Bottom -->
           <div class="footer-icons">
             <div class="icon-stack">
-              <button title="Export CSV" class="icon-btn sq-btn" onclick="exportCSV()">
-                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <button
+                title="Export CSV"
+                class="icon-btn sq-btn"
+                onclick="exportCSV()"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                  ></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
                   <line x1="16" y1="13" x2="8" y2="13"></line>
                   <line x1="16" y1="17" x2="8" y2="17"></line>
@@ -2916,8 +3127,17 @@
             </div>
 
             <div class="icon-stack">
-              <button title="Copy Logs" class="icon-btn sq-btn" onclick="copyLog()">
-                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+              <button
+                title="Copy Logs"
+                class="icon-btn sq-btn"
+                onclick="copyLog()"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="2"
+                >
                   <path
                     d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
                   ></path>
@@ -2928,8 +3148,17 @@
             </div>
 
             <div class="icon-stack">
-              <button title="Backup JSON" class="icon-btn sq-btn" onclick="exportJSON()">
-                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+              <button
+                title="Backup JSON"
+                class="icon-btn sq-btn"
+                onclick="exportJSON()"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="2"
+                >
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="7 10 12 15 17 10"></polyline>
                   <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -2944,7 +3173,12 @@
                 class="icon-btn sq-btn"
                 onclick="document.getElementById('import-file').click()"
               >
-                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="2"
+                >
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="17 8 12 3 7 8"></polyline>
                   <line x1="12" y1="3" x2="12" y2="15"></line>
@@ -2959,7 +3193,12 @@
                 class="icon-btn sq-btn"
                 onclick="openLeaveModal()"
               >
-                <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="2"
+                >
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                   <line x1="16" y1="2" x2="16" y2="6"></line>
                   <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -2977,16 +3216,28 @@
                 class="icon-btn sq-btn danger-icon"
                 onclick="clearAllData()"
               >
-                <svg viewBox="0 0 24 24" stroke="#f87171" fill="none" stroke-width="2">
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke="#f87171"
+                  fill="none"
+                  stroke-width="2"
+                >
                   <polyline points="3 6 5 6 21 6"></polyline>
                   <path
                     d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
                   ></path>
                 </svg>
               </button>
-              <span class="icon-tag" style="color: var(--accent-break)">WIPE</span>
+              <span class="icon-tag" style="color: var(--accent-break)"
+                >WIPE</span
+              >
             </div>
-            <input type="file" id="import-file" accept=".json" style="display: none" />
+            <input
+              type="file"
+              id="import-file"
+              accept=".json"
+              style="display: none"
+            />
           </div>
         </div>
       </div>
@@ -3064,7 +3315,9 @@
       let lastActivity = Date.now();
       let activityThrottle = false;
       let editingLogId = null;
-      let cachedBaseFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      let cachedBaseFontSize = parseFloat(
+        getComputedStyle(document.documentElement).fontSize,
+      );
       // Added a layout cache to avoid clientHeight calls on scrolls
       let cachedViewportHeight = 0;
 
@@ -3128,7 +3381,9 @@
           document.querySelector(`.progress-segment[data-day="${i + 1}"]`),
         ),
         progressSegmentFills: Array.from({ length: 5 }, (_, i) =>
-          document.querySelector(`.progress-segment[data-day="${i + 1}"] .progress-segment-fill`),
+          document.querySelector(
+            `.progress-segment[data-day="${i + 1}"] .progress-segment-fill`,
+          ),
         ),
       };
 
@@ -3234,10 +3489,9 @@
           const chunks = {};
           logsData.forEach((log) => {
             const dObj = new Date(log.epochMs);
-            const chunkId = `${dObj.getUTCFullYear()}-${String(dObj.getUTCMonth() + 1).padStart(
-              2,
-              "0",
-            )}`;
+            const chunkId = `${dObj.getUTCFullYear()}-${String(
+              dObj.getUTCMonth() + 1,
+            ).padStart(2, "0")}`;
             if (!chunks[chunkId]) chunks[chunkId] = [];
             chunks[chunkId].push(log);
           });
@@ -3251,7 +3505,9 @@
             reqKeys.result.forEach((k) => {
               if (!newKeySet.has(k)) store.delete(k);
             });
-            newKeySet.forEach((chunkId) => store.put({ chunkId, data: chunks[chunkId] }));
+            newKeySet.forEach((chunkId) =>
+              store.put({ chunkId, data: chunks[chunkId] }),
+            );
             tx.oncomplete = () => resolve();
             tx.onerror = () => resolve();
           };
@@ -3282,7 +3538,10 @@
           };
 
           try {
-            const txCheck = db.transaction(["logs", "logs_chunked"], "readonly");
+            const txCheck = db.transaction(
+              ["logs", "logs_chunked"],
+              "readonly",
+            );
             const reqCheck = txCheck.objectStore("logs").get("all_logs");
 
             reqCheck.onsuccess = () => {
@@ -3298,12 +3557,15 @@
                 const reqChunk = txChunk.objectStore("logs_chunked").getAll();
                 reqChunk.onsuccess = () => {
                   if (reqChunk.result) {
-                    reqChunk.result.sort((a, b) => b.chunkId.localeCompare(a.chunkId));
+                    reqChunk.result.sort((a, b) =>
+                      b.chunkId.localeCompare(a.chunkId),
+                    );
                     let allLogs = [];
                     reqChunk.result.forEach((chunk) => {
                       allLogs = allLogs.concat(chunk.data);
                     });
-                    for (let i = 0; i < allLogs.length; i++) allLogs[i]._idx = i;
+                    for (let i = 0; i < allLogs.length; i++)
+                      allLogs[i]._idx = i;
                     done(allLogs);
                   } else {
                     done([]);
@@ -3386,7 +3648,10 @@
 
       function setClock(el, formattedTime) {
         if (!el) return;
-        const html = formattedTime.replace(/\s*(AM|PM)/i, '<span class="clock-ampm">$1</span>');
+        const html = formattedTime.replace(
+          /\s*(AM|PM)/i,
+          '<span class="clock-ampm">$1</span>',
+        );
         if (el.innerHTML !== html) el.innerHTML = html;
       }
 
@@ -3694,7 +3959,10 @@
         const hasStarted = !!state.loginTimestamp;
         const mode = state.currentMode;
         document.documentElement.setAttribute("data-theme", currentTheme);
-        document.documentElement.setAttribute("data-session-mode", mode || "idle");
+        document.documentElement.setAttribute(
+          "data-session-mode",
+          mode || "idle",
+        );
 
         if (!hasStarted) {
           DOM.startBtn.style.display = "flex";
@@ -3722,8 +3990,16 @@
         const workSec = getCurrentWorkSeconds();
         const breakSec = getCurrentBreakSeconds();
 
-        setStyle(DOM.workTimer, "transition", "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)");
-        setStyle(DOM.breakTimer, "transition", "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)");
+        setStyle(
+          DOM.workTimer,
+          "transition",
+          "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        );
+        setStyle(
+          DOM.breakTimer,
+          "transition",
+          "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        );
 
         if (state.currentMode === "work") {
           setStyle(DOM.workTimer, "color", "var(--accent-work)");
@@ -3771,7 +4047,9 @@
       function renderTimersOnly(nowDate = new Date(getTrueTime())) {
         syncGoalTimeInput();
         const nowMs = nowDate.getTime();
-        const workSeconds = pendingSubmitData ? pendingSubmitData.workSec : getCurrentWorkSeconds();
+        const workSeconds = pendingSubmitData
+          ? pendingSubmitData.workSec
+          : getCurrentWorkSeconds();
         const breakSeconds = pendingSubmitData
           ? pendingSubmitData.breakSec
           : getCurrentBreakSeconds();
@@ -3831,12 +4109,15 @@
         const loggedSec = getTodayLoggedWorkSeconds();
         const totalWorkToday = loggedSec + workSeconds;
 
-        const sessionPercent = uiGoalSec > 0 ? Math.min((workSeconds / uiGoalSec) * 100, 100) : 100;
+        const sessionPercent =
+          uiGoalSec > 0 ? Math.min((workSeconds / uiGoalSec) * 100, 100) : 100;
         const sessionDiff = workSeconds - uiGoalSec;
         const sessionScale = sessionPercent / 100;
 
         const dailyPercent =
-          anchorGoalSec > 0 ? Math.min((totalWorkToday / anchorGoalSec) * 100, 100) : 100;
+          anchorGoalSec > 0
+            ? Math.min((totalWorkToday / anchorGoalSec) * 100, 100)
+            : 100;
         const dailyDiff = totalWorkToday - anchorGoalSec;
         const dailyScale = dailyPercent / 100;
 
@@ -3847,7 +4128,8 @@
         }
 
         // Color and Shadow Write Guard
-        const fillBg = sessionPercent >= 100 ? "var(--accent-work)" : "var(--accent-blue)";
+        const fillBg =
+          sessionPercent >= 100 ? "var(--accent-work)" : "var(--accent-blue)";
         if (domWriteCache.progressFillBg !== fillBg) {
           domWriteCache.progressFillBg = fillBg;
           setStyle(DOM.progressFill, "background", fillBg);
@@ -3882,7 +4164,8 @@
           }
         }
 
-        const isGoalReached = totalWorkToday >= anchorGoalSec && anchorGoalSec > 0;
+        const isGoalReached =
+          totalWorkToday >= anchorGoalSec && anchorGoalSec > 0;
         if (domWriteCache.progressRailCompleted !== isGoalReached) {
           domWriteCache.progressRailCompleted = isGoalReached;
           if (DOM.progressRail) {
@@ -3989,7 +4272,11 @@
         const wSec = Math.floor(getCurrentWorkSeconds());
         const bSec = Math.floor(getCurrentBreakSeconds());
         if (wSec <= 0) return;
-        pendingSubmitData = { workSec: wSec, breakSec: bSec, loginTs: state.loginTimestamp };
+        pendingSubmitData = {
+          workSec: wSec,
+          breakSec: bSec,
+          loginTs: state.loginTimestamp,
+        };
         if (wSec < 60) {
           DOM.ghostModal.style.display = "flex";
         } else {
@@ -4046,7 +4333,9 @@
         const breakSeconds = pendingSubmitData
           ? pendingSubmitData.breakSec
           : Math.floor(state.breakAccumulated);
-        const loginTs = pendingSubmitData ? pendingSubmitData.loginTs : state.loginTimestamp;
+        const loginTs = pendingSubmitData
+          ? pendingSubmitData.loginTs
+          : state.loginTimestamp;
 
         pendingSubmitData = null;
         if (workSeconds <= 0) return;
@@ -4054,14 +4343,20 @@
         const goal = getGoalSeconds();
         const diff = workSeconds - goal;
         const entryDate = overrideDate || state.activeDate || getPSTDate();
-        const loginTime = loginTs ? loginFormatter.format(new Date(loginTs)) : "--";
+        const loginTime = loginTs
+          ? loginFormatter.format(new Date(loginTs))
+          : "--";
         const logoutTime = pstFormatter.format(new Date(getTrueTime()));
 
         const logs = getLogs();
         const displayDate = entryDate.replace(/\/20(\d{2})$/, "/$1");
         const [m, d, y] = entryDate.split("/");
         const fullYear = y.length === 2 ? `20${y}` : y;
-        const epochMs = Date.UTC(parseInt(fullYear), parseInt(m) - 1, parseInt(d));
+        const epochMs = Date.UTC(
+          parseInt(fullYear),
+          parseInt(m) - 1,
+          parseInt(d),
+        );
 
         const entry = {
           date: entryDate,
@@ -4133,13 +4428,30 @@
               state.breakAccumulated += deltaSec;
             }
           }
+        } else if (deltaMs < 0) {
+          // If the idle trigger is in the past (e.g. inactivity timeout triggered after some background ticking),
+          // we deduct the time actively accumulated since inactivity started so it can be re-allocated.
+          if (!state.idleLock && state.currentMode !== null) {
+            const deductSec = Math.abs(deltaMs) / 1000;
+            if (state.currentMode === "work") {
+              state.workAccumulated = Math.max(
+                0,
+                state.workAccumulated - deductSec,
+              );
+            } else if (state.currentMode === "break") {
+              state.breakAccumulated = Math.max(
+                0,
+                state.breakAccumulated - deductSec,
+              );
+            }
+          }
         }
 
         state.preIdleMode = state.currentMode;
         state.currentMode = null;
         state.idleStart = timeOfIdle;
         state.idleLock = true;
-        lastTickTime = timeOfIdle; // Synchronize tick anchor with idle onset
+        lastTickTime = timeOfIdle;
         saveState();
         renderStaticUI();
         renderTimersOnly(new Date(timeOfIdle));
@@ -4266,7 +4578,8 @@
           deleteSingleShift(index);
         } else if (action === "view-note") {
           const logs = getLogs();
-          if (logs[index] && logs[index].notes) openNoteModal(logs[index].notes);
+          if (logs[index] && logs[index].notes)
+            openNoteModal(logs[index].notes);
         }
       });
 
@@ -4277,7 +4590,8 @@
         const timeFilter = DOM.filterTime.value !== "ALL";
         const statusFilter = DOM.filterStatus.value !== "ALL";
         const notesFilter = DOM.filterNotes.checked;
-        const dateStart = document.getElementById("filter-date-start").value !== "";
+        const dateStart =
+          document.getElementById("filter-date-start").value !== "";
         const dateEnd = document.getElementById("filter-date-end").value !== "";
         const hoursFilter = DOM.filterHoursOp.value !== "ALL";
 
@@ -4341,12 +4655,14 @@
         const chips = [];
 
         if (DOM.filterTime.value !== "ALL") {
-          const timeLabel = DOM.filterTime.options[DOM.filterTime.selectedIndex].text;
+          const timeLabel =
+            DOM.filterTime.options[DOM.filterTime.selectedIndex].text;
           chips.push({ id: "time", label: `Time: ${timeLabel}` });
         }
 
         if (DOM.filterStatus.value !== "ALL") {
-          const statusLabel = DOM.filterStatus.options[DOM.filterStatus.selectedIndex].text;
+          const statusLabel =
+            DOM.filterStatus.options[DOM.filterStatus.selectedIndex].text;
           chips.push({ id: "status", label: `Status: ${statusLabel}` });
         }
 
@@ -4361,9 +4677,13 @@
         }
 
         if (DOM.filterHoursOp.value !== "ALL") {
-          const hoursOpLabel = DOM.filterHoursOp.options[DOM.filterHoursOp.selectedIndex].text;
+          const hoursOpLabel =
+            DOM.filterHoursOp.options[DOM.filterHoursOp.selectedIndex].text;
           const hoursVal = DOM.filterHoursVal.value || "0";
-          chips.push({ id: "hours", label: `Hours: ${hoursOpLabel} ${hoursVal}h` });
+          chips.push({
+            id: "hours",
+            label: `Hours: ${hoursOpLabel} ${hoursVal}h`,
+          });
         }
 
         if (DOM.filterNotes.checked) {
@@ -4541,7 +4861,8 @@
         if (view) {
           DOM.filterTime.value = view.time || "ALL";
           DOM.filterStatus.value = view.status || "ALL";
-          document.getElementById("filter-date-start").value = view.dateStart || "";
+          document.getElementById("filter-date-start").value =
+            view.dateStart || "";
           document.getElementById("filter-date-end").value = view.dateEnd || "";
           DOM.filterHoursOp.value = view.hoursOp || "ALL";
           DOM.filterHoursVal.value = view.hoursVal || "";
@@ -4576,8 +4897,10 @@
             const pref = JSON.parse(saved);
             DOM.filterTime.value = pref.time || "ALL";
             DOM.filterStatus.value = pref.status || "ALL";
-            document.getElementById("filter-date-start").value = pref.dateStart || "";
-            document.getElementById("filter-date-end").value = pref.dateEnd || "";
+            document.getElementById("filter-date-start").value =
+              pref.dateStart || "";
+            document.getElementById("filter-date-end").value =
+              pref.dateEnd || "";
             DOM.filterHoursOp.value = pref.hoursOp || "ALL";
             DOM.filterHoursVal.value = pref.hoursVal || "";
             DOM.filterNotes.checked = !!pref.hasNotes;
@@ -4623,13 +4946,17 @@
 
         const todayStr = getPSTDate();
         const now = new Date(getTrueTime());
-        const nowUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+        const nowUTC = new Date(
+          Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()),
+        );
         const day = nowUTC.getUTCDay();
         const diffToMonday = day === 0 ? -6 : 1 - day;
         const mondayUTC = new Date(nowUTC);
         mondayUTC.setUTCDate(nowUTC.getUTCDate() + diffToMonday);
         const weekStartMs = mondayUTC.getTime();
-        const monthStartUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), 1));
+        const monthStartUTC = new Date(
+          Date.UTC(now.getFullYear(), now.getMonth(), 1),
+        );
         const monthStartMs = monthStartUTC.getTime();
 
         let startMs = dateStartVal ? new Date(dateStartVal).getTime() : null;
@@ -4639,7 +4966,8 @@
           let matchTime = true;
           if (timeFilter === "TODAY") matchTime = l.date === todayStr;
           else if (timeFilter === "WEEK") matchTime = l.epochMs >= weekStartMs;
-          else if (timeFilter === "MONTH") matchTime = l.epochMs >= monthStartMs;
+          else if (timeFilter === "MONTH")
+            matchTime = l.epochMs >= monthStartMs;
 
           const matchStatus = status === "ALL" || l.status === status;
           const matchNotes = !hasNotes || (l.notes && l.notes.trim() !== "");
@@ -4657,7 +4985,9 @@
             if (hoursOp === "LESS") matchHours = workHours <= hoursVal;
           }
 
-          return matchTime && matchStatus && matchNotes && matchDate && matchHours;
+          return (
+            matchTime && matchStatus && matchNotes && matchDate && matchHours
+          );
         });
         filterCache = result;
         filterCacheKey = cacheKey;
@@ -4667,7 +4997,9 @@
       window.addEventListener(
         "resize",
         debounce(() => {
-          cachedBaseFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+          cachedBaseFontSize = parseFloat(
+            getComputedStyle(document.documentElement).fontSize,
+          );
           const logbookTab = document.getElementById("tab-logbook");
           if (logbookTab) {
             cachedViewportHeight = logbookTab.clientHeight;
@@ -4711,13 +5043,17 @@
         const itemHeight = getDynamicItemHeight();
 
         const overscan = 5;
-        const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - overscan);
+        const startIndex = Math.max(
+          0,
+          Math.floor(scrollTop / itemHeight) - overscan,
+        );
         const endIndex = Math.min(
           virtualScrollLogs.length - 1,
           Math.ceil((scrollTop + viewportHeight) / itemHeight) + overscan,
         );
 
-        if (startIndex === lastVirtualStart && endIndex === lastVirtualEnd) return;
+        if (startIndex === lastVirtualStart && endIndex === lastVirtualEnd)
+          return;
         lastVirtualStart = startIndex;
         lastVirtualEnd = endIndex;
 
@@ -4727,7 +5063,10 @@
           const top = i * itemHeight;
           const isSelected = i === selectedLogIdx;
           const rowHtml = generateLogRow(log, log._idx, isSelected);
-          html += rowHtml.replace(/(<div class="log-row[^>]*)>/, `$1 style="top: ${top}px;">`);
+          html += rowHtml.replace(
+            /(<div class="log-row[^>]*)>/,
+            `$1 style="top: ${top}px;">`,
+          );
         }
         DOM.logContainer.innerHTML = html;
       }
@@ -4750,11 +5089,18 @@
           const timeFilter = DOM.filterTime.value !== "ALL";
           const statusFilter = DOM.filterStatus.value !== "ALL";
           const notesFilter = DOM.filterNotes.checked;
-          const dateStart = document.getElementById("filter-date-start").value !== "";
-          const dateEnd = document.getElementById("filter-date-end").value !== "";
+          const dateStart =
+            document.getElementById("filter-date-start").value !== "";
+          const dateEnd =
+            document.getElementById("filter-date-end").value !== "";
           const hoursFilter = DOM.filterHoursOp.value !== "ALL";
           const isFiltering =
-            timeFilter || statusFilter || notesFilter || dateStart || dateEnd || hoursFilter;
+            timeFilter ||
+            statusFilter ||
+            notesFilter ||
+            dateStart ||
+            dateEnd ||
+            hoursFilter;
 
           if (isFiltering) {
             countDisplay.textContent = `Showing ${filteredCount.toLocaleString()} of ${totalLogsCount.toLocaleString()} log${totalLogsCount !== 1 ? "s" : ""}`;
@@ -4838,7 +5184,8 @@
           `Week of ${shortMonths[mondayUTC.getUTCMonth()]} ${mondayUTC.getUTCDate()}, ${mondayUTC.getUTCFullYear()}`,
         );
 
-        const leaveDates = typeof getLeaveDates === "function" ? getLeaveDates() : [];
+        const leaveDates =
+          typeof getLeaveDates === "function" ? getLeaveDates() : [];
         const isVacationDate = (dStr) => leaveDates.includes(dStr);
 
         let numLeaveDaysMonFri = 0;
@@ -4846,10 +5193,9 @@
         for (let idx = 0; idx < 5; idx++) {
           weekDateChecker.setTime(mondayUTC.getTime());
           weekDateChecker.setUTCDate(mondayUTC.getUTCDate() + idx);
-          const checkerStr = `${String(weekDateChecker.getUTCMonth() + 1).padStart(
-            2,
-            "0",
-          )}/${String(weekDateChecker.getUTCDate()).padStart(
+          const checkerStr = `${String(
+            weekDateChecker.getUTCMonth() + 1,
+          ).padStart(2, "0")}/${String(weekDateChecker.getUTCDate()).padStart(
             2,
             "0",
           )}/${weekDateChecker.getUTCFullYear().toString().slice(-2)}`;
@@ -4877,7 +5223,10 @@
 
           const dateStr = `${String(reusableDate.getUTCMonth() + 1).padStart(2, "0")}/${String(
             reusableDate.getUTCDate(),
-          ).padStart(2, "0")}/${reusableDate.getUTCFullYear().toString().slice(-2)}`;
+          ).padStart(
+            2,
+            "0",
+          )}/${reusableDate.getUTCFullYear().toString().slice(-2)}`;
           const dayW = logsByDate[dateStr] ? logsByDate[dateStr].w : 0;
           const dayB = logsByDate[dateStr] ? logsByDate[dateStr].b : 0;
 
@@ -4904,7 +5253,10 @@
           }; font-size: 0.8rem;">
             ${dayNames[dayOfWeekIndex]} <span style="opacity: 0.5; font-size: 0.7rem; font-weight: 400;">(${String(
               reusableDate.getUTCMonth() + 1,
-            ).padStart(2, "0")}/${String(reusableDate.getUTCDate()).padStart(2, "0")})</span>
+            ).padStart(
+              2,
+              "0",
+            )}/${String(reusableDate.getUTCDate()).padStart(2, "0")})</span>
           </span>
           ${leaveBadge}
         </div>
@@ -4917,7 +5269,9 @@
             if (dayW > 0 || dayB > 0) {
               const anchorGoal = dailyAnchorMap.get(dateStr) || dailyGoalSec;
               const isOver = dayW >= anchorGoal;
-              const badgeColor = isOver ? "var(--accent-work)" : "var(--accent-warning)";
+              const badgeColor = isOver
+                ? "var(--accent-work)"
+                : "var(--accent-warning)";
               statusBadge = `<span style="border: 1px solid ${badgeColor}; color: ${badgeColor}; border-radius: 4px; padding: 1px 3px; font-size: 0.5rem; margin-left: 5px; font-weight: 800; line-height: 1;">${
                 isOver ? "O" : "U"
               }</span>`;
@@ -4936,7 +5290,10 @@
             }; font-size: 0.8rem;">
               ${dayNames[dayOfWeekIndex]} <span style="opacity: 0.5; font-size: 0.7rem; font-weight: 400;">(${String(
                 reusableDate.getUTCMonth() + 1,
-              ).padStart(2, "0")}/${String(reusableDate.getUTCDate()).padStart(2, "0")})</span>
+              ).padStart(
+                2,
+                "0",
+              )}/${String(reusableDate.getUTCDate()).padStart(2, "0")})</span>
             </span>
             ${statusBadge}
             ${weekendBadge}
@@ -4997,7 +5354,9 @@
           const isVacation = isVacationDate(dateStr);
           const segment = DOM.progressSegments[i];
           if (segment) {
-            const labelEl = segment.querySelector("div:not(.progress-segment-fill)");
+            const labelEl = segment.querySelector(
+              "div:not(.progress-segment-fill)",
+            );
             const dayLetter = ["M", "T", "W", "T", "F"][i];
 
             if (isVacation) {
@@ -5016,7 +5375,8 @@
               }
 
               const anchorGoal = dailyAnchorMap.get(dateStr);
-              const denominator = anchorGoal || (isToday ? dailyGoalSec : 28800);
+              const denominator =
+                anchorGoal || (isToday ? dailyGoalSec : 28800);
 
               const fill = DOM.progressSegmentFills[i];
               const fillScale = Math.min(dayWorkSeconds / denominator, 1);
@@ -5029,7 +5389,10 @@
               }
             }
 
-            if (weekStartMs === currentWeekStartMs && i + 1 === (nowDay === 0 ? 7 : nowDay)) {
+            if (
+              weekStartMs === currentWeekStartMs &&
+              i + 1 === (nowDay === 0 ? 7 : nowDay)
+            ) {
               segment.classList.add("is-today");
             }
           }
@@ -5059,7 +5422,10 @@
         }
 
         if (weekMsg) {
-          const remainingSec = Math.max(0, adjustedWeeklyGoalSec - totalW_MonFri);
+          const remainingSec = Math.max(
+            0,
+            adjustedWeeklyGoalSec - totalW_MonFri,
+          );
 
           if (weekStartMs > currentWeekStartMs) {
             weekMsg.textContent = "Upcoming Week";
@@ -5072,10 +5438,9 @@
                 for (let d = todayIdx; d <= 5; d++) {
                   const checkDate = new Date(mondayUTC);
                   checkDate.setUTCDate(mondayUTC.getUTCDate() + (d - 1));
-                  const checkDateStr = `${String(checkDate.getUTCMonth() + 1).padStart(
-                    2,
-                    "0",
-                  )}/${String(checkDate.getUTCDate()).padStart(
+                  const checkDateStr = `${String(
+                    checkDate.getUTCMonth() + 1,
+                  ).padStart(2, "0")}/${String(checkDate.getUTCDate()).padStart(
                     2,
                     "0",
                   )}/${checkDate.getUTCFullYear().toString().slice(-2)}`;
@@ -5136,14 +5501,18 @@
         saveActiveFilters();
         renderLogbook();
       });
-      document.getElementById("filter-date-start").addEventListener("change", () => {
-        saveActiveFilters();
-        renderLogbook();
-      });
-      document.getElementById("filter-date-end").addEventListener("change", () => {
-        saveActiveFilters();
-        renderLogbook();
-      });
+      document
+        .getElementById("filter-date-start")
+        .addEventListener("change", () => {
+          saveActiveFilters();
+          renderLogbook();
+        });
+      document
+        .getElementById("filter-date-end")
+        .addEventListener("change", () => {
+          saveActiveFilters();
+          renderLogbook();
+        });
       DOM.filterHoursVal.addEventListener("input", () => {
         saveActiveFilters();
         debouncedRenderLogbook();
@@ -5162,8 +5531,12 @@
         if (!log) return;
         editingLogId = log._idx;
         document.getElementById("edit-date").value = log.date;
-        document.getElementById("edit-work").value = formatDuration(log.workSec).slice(0, 5);
-        document.getElementById("edit-break").value = formatDuration(log.breakSec).slice(0, 5);
+        document.getElementById("edit-work").value = formatDuration(
+          log.workSec,
+        ).slice(0, 5);
+        document.getElementById("edit-break").value = formatDuration(
+          log.breakSec,
+        ).slice(0, 5);
         document.getElementById("edit-notes").value = log.notes || "";
         document.getElementById("edit-modal").style.display = "flex";
       }
@@ -5190,19 +5563,29 @@
         const wSec = parseTime(newWork);
         const bSec = parseTime(newBreak);
 
-        if (wSec !== null && bSec !== null && newDate.match(/^\d{1,2}\/\d{1,2}\/\d{2}$/)) {
+        if (
+          wSec !== null &&
+          bSec !== null &&
+          newDate.match(/^\d{1,2}\/\d{1,2}\/\d{2}$/)
+        ) {
           log.date = newDate;
           log.displayDate = newDate.replace(/\/20(\d{2})$/, "/$1");
           log.workSec = wSec;
           log.breakSec = bSec;
-          const goal = typeof getGoalSeconds === "function" ? getGoalSeconds() : 8 * 3600;
+          const goal =
+            typeof getGoalSeconds === "function" ? getGoalSeconds() : 8 * 3600;
           log.status = wSec - goal >= 0 ? "OVER" : "UNDER";
           log.diff = formatDuration(Math.abs(wSec - goal));
           const [m, d, y] = newDate.split("/");
           const fullYear = y.length === 2 ? `20${y}` : y;
-          log.epochMs = Date.UTC(parseInt(fullYear), parseInt(m) - 1, parseInt(d));
+          log.epochMs = Date.UTC(
+            parseInt(fullYear),
+            parseInt(m) - 1,
+            parseInt(d),
+          );
           log.notes = newNotes;
-          log.searchStr = `${log.displayDate} ${log.date} ${log.notes || ""}`.toLowerCase();
+          log.searchStr =
+            `${log.displayDate} ${log.date} ${log.notes || ""}`.toLowerCase();
           saveLogs(logs);
           // Removed synchronous rendering calls to let background Web Worker callback handle updates safely
           closeEditModal();
@@ -5246,17 +5629,23 @@
           return;
         }
 
-        let csv = "Date,Login,Logout,Work Time,Work (Hrs),Break Time,Net Delta (Hrs),Notes\n";
+        let csv =
+          "Date,Login,Logout,Work Time,Work (Hrs),Break Time,Net Delta (Hrs),Notes\n";
 
         csv += logs
           .map((l) => {
             const workDec = (l.workSec / 3600).toFixed(2);
-            const goalSec = typeof getGoalSeconds === "function" ? getGoalSeconds() : 8 * 3600;
+            const goalSec =
+              typeof getGoalSeconds === "function"
+                ? getGoalSeconds()
+                : 8 * 3600;
             const deltaDec = (
               (l.status === "OVER" ? 1 : -1) *
               (Math.abs(l.workSec - goalSec) / 3600)
             ).toFixed(2);
-            const notes = l.notes ? l.notes.replace(/"/g, '""').replace(/\n/g, " ") : "";
+            const notes = l.notes
+              ? l.notes.replace(/"/g, '""').replace(/\n/g, " ")
+              : "";
 
             return `"${l.date}","${l.login}","${l.logout}","${formatDuration(
               l.workSec,
@@ -5289,7 +5678,9 @@
 
         const a = document.createElement("a");
         a.href = URL.createObjectURL(
-          new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }),
+          new Blob([JSON.stringify(data, null, 2)], {
+            type: "application/json",
+          }),
         );
         a.download = `Backup_${getPSTDate().replace(/\//g, "-")}.json`;
         a.click();
@@ -5312,18 +5703,26 @@
             }
             if (data.goalH !== undefined) {
               localStorage.setItem(GOAL_H_KEY, data.goalH);
-              DOM.goalHours.value = String(parseInt(data.goalH, 10) || 0).padStart(2, "0");
+              DOM.goalHours.value = String(
+                parseInt(data.goalH, 10) || 0,
+              ).padStart(2, "0");
             }
             if (data.goalM !== undefined) {
               localStorage.setItem(GOAL_M_KEY, data.goalM);
-              DOM.goalMins.value = String(parseInt(data.goalM, 10) || 0).padStart(2, "0");
+              DOM.goalMins.value = String(
+                parseInt(data.goalM, 10) || 0,
+              ).padStart(2, "0");
             }
             if (data.logs) {
               data.logs.forEach((l) => {
                 l.displayDate = l.date.replace(/\/20(\d{2})$/, "/$1");
                 const [m, d, y] = l.date.split("/");
                 const fullY = y.length === 2 ? `20${y}` : y;
-                l.epochMs = Date.UTC(parseInt(fullY), parseInt(m) - 1, parseInt(d));
+                l.epochMs = Date.UTC(
+                  parseInt(fullY),
+                  parseInt(m) - 1,
+                  parseInt(d),
+                );
               });
               saveLogs(data.logs);
             }
@@ -5527,7 +5926,11 @@
         }
 
         const logbookTab = document.getElementById("tab-logbook");
-        if (logbookTab && logbookTab.style.display !== "none" && virtualScrollLogs.length > 0) {
+        if (
+          logbookTab &&
+          logbookTab.style.display !== "none" &&
+          virtualScrollLogs.length > 0
+        ) {
           if (e.key === "ArrowDown" || e.key === "ArrowUp") {
             e.preventDefault();
             const dir = e.key === "ArrowDown" ? 1 : -1;
@@ -5565,7 +5968,9 @@
        */
       function playGoalSound() {
         try {
-          const context = new (window.AudioContext || window.webkitAudioContext)();
+          const context = new (
+            window.AudioContext || window.webkitAudioContext
+          )();
           const osc = context.createOscillator();
           const gain = context.createGain();
 
@@ -5638,18 +6043,28 @@
         const breakStr = document.getElementById("manual-break").value.trim();
         const notes = document.getElementById("manual-notes").value.trim();
 
-        const gh = parseInt(document.getElementById("manual-goal-h").value) || 0;
-        const gm = parseInt(document.getElementById("manual-goal-m").value) || 0;
+        const gh =
+          parseInt(document.getElementById("manual-goal-h").value) || 0;
+        const gm =
+          parseInt(document.getElementById("manual-goal-m").value) || 0;
         const goal = gh * 3600 + gm * 60;
 
         const wSec = parseTime(workStr);
         const bSec = parseTime(breakStr);
 
-        if (wSec !== null && bSec !== null && dateStr.match(/^\d{1,2}\/\d{1,2}\/\d{2}$/)) {
+        if (
+          wSec !== null &&
+          bSec !== null &&
+          dateStr.match(/^\d{1,2}\/\d{1,2}\/\d{2}$/)
+        ) {
           const diff = wSec - goal;
           const [m, d, y] = dateStr.split("/");
           const fullYear = y.length === 2 ? `20${y}` : y;
-          const epochMs = Date.UTC(parseInt(fullYear), parseInt(m) - 1, parseInt(d));
+          const epochMs = Date.UTC(
+            parseInt(fullYear),
+            parseInt(m) - 1,
+            parseInt(d),
+          );
 
           const entry = {
             date: dateStr,
@@ -5703,12 +6118,20 @@
         }
       });
 
-      document.getElementById("import-file").addEventListener("change", importJSON);
+      document
+        .getElementById("import-file")
+        .addEventListener("change", importJSON);
 
       const initGoalH = localStorage.getItem(GOAL_H_KEY) || "8";
       const initGoalM = localStorage.getItem(GOAL_M_KEY) || "0";
-      DOM.goalHours.value = String(parseInt(initGoalH, 10) || 0).padStart(2, "0");
-      DOM.goalMins.value = String(parseInt(initGoalM, 10) || 0).padStart(2, "0");
+      DOM.goalHours.value = String(parseInt(initGoalH, 10) || 0).padStart(
+        2,
+        "0",
+      );
+      DOM.goalMins.value = String(parseInt(initGoalM, 10) || 0).padStart(
+        2,
+        "0",
+      );
 
       const blockInvalidKeys = (e) => {
         const allowed = [
@@ -5730,7 +6153,9 @@
         const cleanVal = val.trim();
         if (!cleanVal) return { hh: 8, mm: 0 };
 
-        const naturalMatch = cleanVal.match(/^(?:(\d+(?:\.\d+)?)\s*h)?\s*(?:(\d+)\s*m)?$/i);
+        const naturalMatch = cleanVal.match(
+          /^(?:(\d+(?:\.\d+)?)\s*h)?\s*(?:(\d+)\s*m)?$/i,
+        );
         const colonMatch = cleanVal.match(/^(\d+):(\d{1,2})$/);
         const decimalMatch = cleanVal.match(/^(\d+(?:\.\d+))$/);
 
@@ -5744,7 +6169,8 @@
         } else if (naturalMatch && (naturalMatch[1] || naturalMatch[2])) {
           const rawH = parseFloat(naturalMatch[1] || 0);
           hh = Math.floor(rawH);
-          mm = Math.round((rawH - hh) * 60) + parseInt(naturalMatch[2] || 0, 10);
+          mm =
+            Math.round((rawH - hh) * 60) + parseInt(naturalMatch[2] || 0, 10);
         } else {
           const digits = cleanVal.replace(/\D/g, "");
           if (digits) {
@@ -5917,7 +6343,9 @@
 
       window.savePresetModal = function () {
         if (editingPresetIndex === -1) return;
-        const newVal = parseFloat(document.getElementById("preset-input").value);
+        const newVal = parseFloat(
+          document.getElementById("preset-input").value,
+        );
 
         if (!isNaN(newVal) && newVal >= 0 && newVal <= 24) {
           const presets = getSavedPresets();
@@ -6040,7 +6468,8 @@
                 let y = currentYearShort;
                 if (parts.length >= 3 && parts[2].trim()) {
                   const rawY = parts[2].trim();
-                  y = rawY.length === 4 ? rawY.slice(-2) : rawY.padStart(2, "0");
+                  y =
+                    rawY.length === 4 ? rawY.slice(-2) : rawY.padStart(2, "0");
                 }
                 finalDateStr = `${m}/${d}/${y}`;
               }
@@ -6072,7 +6501,9 @@
               if ([4, 6, 9, 11].includes(mm) && dd > 30) dd = 30;
               if (mm === 2) {
                 const fullYear = parseInt("20" + yy, 10);
-                const isLeap = (fullYear % 4 === 0 && fullYear % 100 !== 0) || fullYear % 400 === 0;
+                const isLeap =
+                  (fullYear % 4 === 0 && fullYear % 100 !== 0) ||
+                  fullYear % 400 === 0;
                 if (dd > (isLeap ? 29 : 28)) dd = isLeap ? 29 : 28;
               }
               return `${String(mm).padStart(2, "0")}/${String(dd).padStart(2, "0")}/${yy}`;
@@ -6099,7 +6530,9 @@
 
             el.addEventListener("input", update);
             el.addEventListener("focus", update);
-            el.addEventListener("blur", () => tooltip.classList.remove("visible"));
+            el.addEventListener("blur", () =>
+              tooltip.classList.remove("visible"),
+            );
           };
 
           bindInput("goal-time", parseGoalPreview);
@@ -6112,14 +6545,18 @@
         };
 
         setupDynamicPreview();
-        document.getElementById("preset-input").addEventListener("keydown", (e) => {
-          if (e.key === "Enter") savePresetModal();
-          if (e.key === "Escape") closePresetModal();
-        });
-        document.getElementById("leave-date-input").addEventListener("keydown", (e) => {
-          if (e.key === "Enter") addLeaveDate();
-          if (e.key === "Escape") closeLeaveModal();
-        });
+        document
+          .getElementById("preset-input")
+          .addEventListener("keydown", (e) => {
+            if (e.key === "Enter") savePresetModal();
+            if (e.key === "Escape") closePresetModal();
+          });
+        document
+          .getElementById("leave-date-input")
+          .addEventListener("keydown", (e) => {
+            if (e.key === "Enter") addLeaveDate();
+            if (e.key === "Escape") closeLeaveModal();
+          });
       }
 
       function handleTimeInputBlur(e) {
@@ -6131,10 +6568,12 @@
         input.value = `${String(parsed.hh).padStart(2, "0")}:${String(parsed.mm).padStart(2, "0")}`;
       }
 
-      ["manual-work", "manual-break", "edit-work", "edit-break"].forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) el.addEventListener("blur", handleTimeInputBlur);
-      });
+      ["manual-work", "manual-break", "edit-work", "edit-break"].forEach(
+        (id) => {
+          const el = document.getElementById(id);
+          if (el) el.addEventListener("blur", handleTimeInputBlur);
+        },
+      );
 
       function handleDateInputBlur(e) {
         const input = e.target;
@@ -6208,7 +6647,9 @@
           if ([4, 6, 9, 11].includes(mm) && dd > 30) dd = 30;
           if (mm === 2) {
             const fullYear = parseInt("20" + yy, 10);
-            const isLeap = (fullYear % 4 === 0 && fullYear % 100 !== 0) || fullYear % 400 === 0;
+            const isLeap =
+              (fullYear % 4 === 0 && fullYear % 100 !== 0) ||
+              fullYear % 400 === 0;
             if (dd > (isLeap ? 29 : 28)) dd = isLeap ? 29 : 28;
           }
 
@@ -6224,7 +6665,8 @@
         if (el) el.addEventListener("blur", handleDateInputBlur);
       });
 
-      DOM.primaryTz.value = localStorage.getItem(TZ_KEY) || "America/Los_Angeles";
+      DOM.primaryTz.value =
+        localStorage.getItem(TZ_KEY) || "America/Los_Angeles";
       updateTZLabel();
       DOM.primaryTz.addEventListener("change", () => {
         localStorage.setItem(TZ_KEY, DOM.primaryTz.value);
@@ -6261,13 +6703,15 @@
         document.getElementById("confirm-desc").textContent = desc;
         const btn = document.getElementById("confirm-action-btn");
         if (isDestructive) {
-          document.getElementById("confirm-title").style.color = "var(--accent-break)";
+          document.getElementById("confirm-title").style.color =
+            "var(--accent-break)";
           btn.style.color = "var(--accent-break)";
           btn.style.background = "rgba(248, 113, 113, 0.1)";
           btn.style.borderColor = "rgba(248, 113, 113, 0.3)";
           btn.textContent = "Delete";
         } else {
-          document.getElementById("confirm-title").style.color = "var(--accent-warning)";
+          document.getElementById("confirm-title").style.color =
+            "var(--accent-warning)";
           btn.style.color = "var(--accent-warning)";
           btn.style.background = "rgba(245, 158, 11, 0.1)";
           btn.style.borderColor = "rgba(245, 158, 11, 0.3)";
@@ -6282,17 +6726,25 @@
         confirmCallback = null;
       }
 
-      document.getElementById("confirm-action-btn").addEventListener("click", () => {
-        if (confirmCallback) confirmCallback();
-        closeConfirmModal();
-      });
+      document
+        .getElementById("confirm-action-btn")
+        .addEventListener("click", () => {
+          if (confirmCallback) confirmCallback();
+          closeConfirmModal();
+        });
 
       function escapeHTML(str) {
         if (!str) return "";
         return str.replace(
           /[&<>'"]/g,
           (tag) =>
-            ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[tag] || tag,
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              "'": "&#39;",
+              '"': "&quot;",
+            })[tag] || tag,
         );
       }
 
@@ -6308,7 +6760,9 @@
         document.querySelectorAll(".tab-content").forEach((el) => {
           el.style.display = "none";
         });
-        document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((btn) => btn.classList.remove("active"));
         const targetContent = document.getElementById("tab-" + target);
         if (target === "insights") {
           targetContent.style.display = "flex";
@@ -6321,7 +6775,9 @@
             renderLogbook();
           }
         }
-        document.querySelector(`.tab-btn[data-target="${target}"]`).classList.add("active");
+        document
+          .querySelector(`.tab-btn[data-target="${target}"]`)
+          .classList.add("active");
       }
 
       function changeWeekOffset(delta) {
@@ -6369,7 +6825,11 @@
         if (p.length === 2) {
           return parseInt(p[0], 10) * 3600 + parseInt(p[1], 10) * 60;
         } else if (p.length === 3) {
-          return parseInt(p[0], 10) * 3600 + parseInt(p[1], 10) * 60 + parseInt(p[2], 10);
+          return (
+            parseInt(p[0], 10) * 3600 +
+            parseInt(p[1], 10) * 60 +
+            parseInt(p[2], 10)
+          );
         }
         return null;
       }
@@ -6378,7 +6838,8 @@
         sec,
         emptyPlaceholder = '<span style="opacity: 0.25; font-weight: 400;">—</span>',
       ) {
-        if (sec === undefined || sec === null || sec <= 0) return emptyPlaceholder;
+        if (sec === undefined || sec === null || sec <= 0)
+          return emptyPlaceholder;
         sec = Math.floor(sec);
         const h = Math.floor(sec / 3600);
         const m = Math.floor((sec % 3600) / 60);
@@ -6416,7 +6877,11 @@
 
           if (state.activeDate && state.activeDate !== currentDate) {
             if (state.workAccumulated > 60) {
-              executeSubmit(null, "Auto-submitted (Page Load)", state.activeDate);
+              executeSubmit(
+                null,
+                "Auto-submitted (Page Load)",
+                state.activeDate,
+              );
             } else {
               resetSession();
             }
