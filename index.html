@@ -24,6 +24,9 @@
       /* =========================================================================
        1. GLOBAL BASE STYLES & VARIABLE CONFIGURATION
        ========================================================================= */
+      /* =========================================================================
+       1. GLOBAL BASE STYLES & VARIABLE CONFIGURATION
+       ========================================================================= */
       :root {
         /* Shared Color Scheme Accents */
         --accent-work: #4ade80;
@@ -36,27 +39,44 @@
           "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
           sans-serif;
         --font-mono: "JetBrains Mono", monospace;
+
+        --text-xs: 0.75rem;
+        --text-sm: 0.85rem;
+        --text-base: 1rem;
+        --text-lg: 1.15rem;
+        --text-xl: 1.5rem;
+
+        /* Spacing Scale */
+        --space-1: 0.25rem;
+        --space-2: 0.5rem;
+        --space-3: 0.75rem;
+        --space-4: 1rem;
+        --space-5: 1.5rem;
+        --space-6: 2rem;
+
+        /* Border Radius */
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+
         --header-el-height: 45px;
-        --header-el-radius: 12px;
+        --header-el-radius: var(--radius-lg);
       }
 
       /* =========================================================================
-       2. PREMIUM NOIR THEME (MIDNIGHT)
+       2. PREMIUM NOIR THEME (MIDNIGHT) - OPTIMIZED FOR CPU-ONLY SOFTWARE RENDER
        ========================================================================= */
       :root[data-theme="midnight"] {
         --page-bg:
-          radial-gradient(at 0% 0%, rgba(30, 27, 75, 0.1) 0%, transparent 50%),
-          radial-gradient(at 100% 0%, rgba(15, 23, 42, 0.15) 0%, transparent 50%),
-          radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.15) 0%, transparent 50%),
-          radial-gradient(at 0% 100%, rgba(30, 27, 75, 0.1) 0%, transparent 50%), #030303;
-        --panel-bg: rgba(10, 10, 12, 0.45);
-        --panel-shadow:
-          0 0 0 1px rgba(255, 255, 255, 0.05), 0 30px 60px rgba(0, 0, 0, 0.9),
-          0 0 80px rgba(96, 165, 250, 0.03);
-        --panel-blur: blur(32px) saturate(160%);
+          radial-gradient(circle at 10% 10%, rgba(79, 70, 229, 0.08) 0%, transparent 45%),
+          radial-gradient(circle at 90% 90%, rgba(6, 182, 212, 0.08) 0%, transparent 45%), #030303;
+        --panel-bg: rgba(10, 10, 12, 0.82);
+        --panel-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 15px 40px rgba(0, 0, 0, 0.8);
+        --panel-blur: none;
 
-        --element-bg: rgba(255, 255, 255, 0.02);
-        --element-hover: rgba(255, 255, 255, 0.06);
+        --element-bg: rgba(255, 255, 255, 0.03);
+        --element-hover: rgba(255, 255, 255, 0.07);
         --element-bg-light: rgba(255, 255, 255, 0.04);
 
         --border-main: rgba(255, 255, 255, 0.08);
@@ -82,36 +102,32 @@
       }
 
       :root[data-theme="midnight"][data-session-mode="work"] {
-        --panel-shadow:
-          0 0 0 1px rgba(255, 255, 255, 0.08), 0 30px 60px rgba(0, 0, 0, 0.95),
-          0 0 80px rgba(74, 222, 128, 0.06);
+        --panel-shadow: 0 0 0 1px rgba(74, 222, 128, 0.25), 0 15px 40px rgba(0, 0, 0, 0.85);
       }
 
       :root[data-theme="midnight"][data-session-mode="break"] {
-        --panel-shadow:
-          0 0 0 1px rgba(255, 255, 255, 0.08), 0 30px 60px rgba(0, 0, 0, 0.95),
-          0 0 80px rgba(248, 113, 113, 0.06);
+        --panel-shadow: 0 0 0 1px rgba(248, 113, 113, 0.25), 0 15px 40px rgba(0, 0, 0, 0.85);
       }
 
       /* =========================================================================
-       3. MODERN GLASSMORPHISM THEME (GLASS)
+       3. MODERN GLASSMORPHISM THEME (GLASS) - OPTIMIZED FOR CPU-ONLY SOFTWARE RENDER
        ========================================================================= */
       :root[data-theme="glass"] {
         --page-bg:
-          radial-gradient(at 0% 0%, #1e293b 0%, transparent 50%),
-          radial-gradient(at 100% 0%, #334155 0%, transparent 50%),
-          radial-gradient(at 100% 100%, #0f172a 0%, transparent 50%),
-          radial-gradient(at 0% 100%, #1e1b4b 0%, transparent 50%), #020617;
-        --panel-bg: rgba(255, 255, 255, 0.05);
-        --panel-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-        --panel-blur: blur(18px) saturate(180%);
+          radial-gradient(circle at 10% 20%, rgba(30, 41, 59, 0.8) 0%, transparent 40%),
+          radial-gradient(circle at 90% 10%, rgba(51, 65, 85, 0.8) 0%, transparent 40%),
+          radial-gradient(circle at 80% 80%, rgba(15, 23, 42, 0.85) 0%, transparent 50%),
+          radial-gradient(circle at 10% 90%, rgba(30, 27, 75, 0.8) 0%, transparent 40%), #020617;
+        --panel-bg: rgba(15, 23, 42, 0.72);
+        --panel-shadow: 0 15px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        --panel-blur: none;
 
-        --element-bg: rgba(0, 0, 0, 0.2);
-        --element-hover: rgba(255, 255, 255, 0.1);
+        --element-bg: rgba(0, 0, 0, 0.25);
+        --element-hover: rgba(255, 255, 255, 0.08);
         --element-bg-light: #ffffff;
 
-        --border-main: rgba(255, 255, 255, 0.15);
-        --border-light: rgba(255, 255, 255, 0.3);
+        --border-main: rgba(255, 255, 255, 0.12);
+        --border-light: rgba(255, 255, 255, 0.25);
 
         --text-main: #f8fafc;
         --text-muted: #94a3b8;
@@ -130,6 +146,122 @@
 
         --dropdown-bg: #0f172a;
         --modal-bg: #0f172a;
+      }
+
+      /* =========================================================================
+       3.5. ABSTRACTED UI COMPONENTS
+       ========================================================================= */
+      .input-standard {
+        width: 100%;
+        background: var(--panel-bg);
+        border: 1px solid var(--border-main);
+        color: var(--text-main);
+        padding: var(--space-3);
+        border-radius: var(--radius-md);
+        font-family: var(--font-sans);
+        font-size: var(--text-sm);
+        outline: none;
+        box-sizing: border-box;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+      .input-standard:focus {
+        border-color: var(--border-light);
+        background: var(--element-hover);
+      }
+      textarea.input-standard {
+        resize: vertical;
+        min-height: 60px;
+      }
+      .form-group {
+        margin-bottom: var(--space-4);
+        text-align: left;
+      }
+      .form-row {
+        display: flex;
+        gap: var(--space-4);
+        margin-bottom: var(--space-4);
+      }
+      .form-row .form-group {
+        flex: 1;
+        margin-bottom: 0;
+      }
+      .form-label {
+        display: block;
+        font-size: var(--text-xs);
+        color: var(--text-muted);
+        margin-bottom: var(--space-2);
+        font-weight: 600;
+      }
+      .modal-header {
+        margin-top: 0;
+        margin-bottom: var(--space-4);
+        font-size: var(--text-lg);
+        font-weight: 600;
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+      }
+      .modal-header.warning {
+        color: var(--accent-warning);
+      }
+      .modal-header.danger {
+        color: var(--accent-break);
+      }
+      .modal-header.info {
+        color: var(--accent-blue);
+      }
+      .modal-body-text {
+        margin-bottom: var(--space-5);
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+      .action-row {
+        display: flex;
+        gap: var(--space-3);
+      }
+      .action-row > button {
+        flex: 1;
+        padding: var(--space-3);
+        border-radius: var(--radius-lg);
+        font-weight: 600;
+      }
+      .btn-secondary {
+        background: transparent;
+        border: 1px solid var(--border-light);
+        color: var(--text-main);
+      }
+      .btn-secondary:hover:not(:disabled) {
+        background: var(--element-hover);
+      }
+      .btn-danger-outline {
+        background: rgba(248, 113, 113, 0.1);
+        color: var(--accent-break);
+        border: 1px solid rgba(248, 113, 113, 0.3);
+      }
+      .btn-warning-outline {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--accent-warning);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+      .btn-success-outline {
+        background: rgba(74, 222, 128, 0.1);
+        color: var(--accent-work);
+        border: 1px solid rgba(74, 222, 128, 0.3);
+      }
+      .btn-info-outline {
+        background: rgba(96, 165, 250, 0.1);
+        color: var(--accent-blue);
+        border: 1px solid rgba(96, 165, 250, 0.3);
+      }
+      .ui-icon {
+        width: 1.2em;
+        height: 1.2em;
+        stroke-width: 2;
+        flex-shrink: 0;
       }
 
       /* =========================================================================
@@ -183,73 +315,12 @@
         position: relative;
       }
 
-      /* Animated Ambient Auroras (Living Canvas) */
+      /* Animated Ambient Auroras (Living Canvas) - Disabled for 0% CPU Software Rendering */
       body::before,
-      body::after {
-        content: "";
-        position: absolute;
-        width: 35vmax;
-        height: 35vmax;
-        border-radius: 50%;
-        filter: blur(100px);
-        z-index: -1;
-        pointer-events: none;
-        will-change: transform;
-        opacity: 0;
-        transition: opacity 1s ease;
-      }
-
+      body::after,
       :root[data-theme="midnight"]::before,
       :root[data-theme="midnight"]::after {
-        content: "";
-        position: absolute;
-        width: 35vmax;
-        height: 35vmax;
-        border-radius: 50%;
-        filter: blur(100px);
-        z-index: -1;
-        pointer-events: none;
-        will-change: transform;
-      }
-
-      :root[data-theme="midnight"]::before {
-        background: #4f46e5;
-        top: -10%;
-        left: -10%;
-        animation: aurora-drift-1 35s infinite alternate ease-in-out;
-        opacity: 0.08;
-      }
-
-      :root[data-theme="midnight"]::after {
-        background: #06b6d4;
-        bottom: -10%;
-        right: -10%;
-        animation: aurora-drift-2 40s infinite alternate ease-in-out;
-        opacity: 0.08;
-      }
-
-      @keyframes aurora-drift-1 {
-        0% {
-          transform: translate3d(0, 0, 0) scale(1);
-        }
-        50% {
-          transform: translate3d(8vw, 12vh, 0) scale(1.15);
-        }
-        100% {
-          transform: translate3d(-3vw, 4vh, 0) scale(0.9);
-        }
-      }
-
-      @keyframes aurora-drift-2 {
-        0% {
-          transform: translate3d(0, 0, 0) scale(0.9);
-        }
-        50% {
-          transform: translate3d(-12vw, -8vh, 0) scale(1.1);
-        }
-        100% {
-          transform: translate3d(4vw, -4vh, 0) scale(1.15);
-        }
+        display: none !important;
       }
 
       /* Monospaced Data Styling for Alignment Precision */
@@ -274,11 +345,6 @@
         max-width: 90rem;
         height: 85vh;
         background: var(--panel-bg);
-        background-image:
-          linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 40%),
-          url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.012'/%3E%3C/svg%3E");
-        backdrop-filter: var(--panel-blur);
-        -webkit-backdrop-filter: var(--panel-blur);
         border: 1px solid var(--border-main);
         border-radius: 1.5rem;
         box-shadow: var(--panel-shadow);
@@ -286,7 +352,6 @@
         grid-template-columns: 1.15fr 1fr;
         gap: 2.2rem;
         padding: 2.2rem;
-        transition: box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .main-ui {
@@ -431,55 +496,11 @@
           transform: scale(1);
           opacity: 0.8;
         }
+
         50% {
           transform: scale(1.3);
           opacity: 1;
           box-shadow: 0 0 10px currentColor;
-        }
-      }
-
-      .goal-status-dot {
-        width: 0;
-        height: 6px;
-        border-radius: 50%;
-        background: transparent;
-        margin-right: 0;
-        opacity: 0;
-        flex-shrink: 0;
-        transition:
-          width 0.3s,
-          margin-right 0.3s,
-          background 0.3s,
-          box-shadow 0.3s,
-          opacity 0.3s;
-      }
-
-      .goal-inputs.goal-accumulating .goal-status-dot {
-        width: 6px;
-        margin-right: 6px;
-        opacity: 1;
-        background: var(--accent-blue);
-        box-shadow: 0 0 6px var(--accent-blue);
-        animation: goal-pulse 2s infinite ease-in-out;
-      }
-
-      .goal-inputs.goal-completed .goal-status-dot {
-        width: 6px;
-        margin-right: 6px;
-        opacity: 1;
-        background: var(--accent-work);
-        box-shadow: 0 0 8px var(--accent-work);
-      }
-
-      @keyframes goal-pulse {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 0.7;
-        }
-        50% {
-          transform: scale(1.35);
-          opacity: 1;
         }
       }
 
@@ -1538,6 +1559,7 @@
         background: transparent;
         border-color: transparent;
       }
+
       :root[data-theme="midnight"] .sidebar-footer .sq-btn:hover {
         background: var(--element-hover);
         border-color: var(--border-main);
@@ -1556,12 +1578,15 @@
       [title="Export CSV"]:hover svg {
         transform: translateY(1.5px);
       }
+
       [title="Copy Logs"]:hover svg {
         transform: scale(1.12) translateY(-0.5px);
       }
+
       [title="Backup JSON"]:hover svg {
         transform: translateY(1.5px);
       }
+
       [title="Restore JSON"]:hover svg {
         transform: translateY(-1.5px);
       }
@@ -1571,13 +1596,16 @@
         background: rgba(248, 113, 113, 0.04);
         border-color: rgba(248, 113, 113, 0.12);
       }
+
       .sidebar-footer .sq-btn.danger-icon svg {
         stroke: var(--accent-break) !important;
       }
+
       .sidebar-footer .sq-btn.danger-icon:hover {
         background: rgba(248, 113, 113, 0.14) !important;
         border-color: var(--accent-break) !important;
       }
+
       .sidebar-footer .sq-btn.danger-icon:hover svg {
         animation: trill 0.15s ease infinite;
       }
@@ -1587,9 +1615,11 @@
         100% {
           transform: rotate(0) scale(1.05);
         }
+
         25% {
           transform: rotate(-8deg) scale(1.05);
         }
+
         75% {
           transform: rotate(8deg) scale(1.05);
         }
@@ -1665,6 +1695,7 @@
         border-bottom: 1px solid var(--border-main);
         font-variant-numeric: tabular-nums;
         flex: 1;
+        contain: layout paint;
       }
 
       .breakdown-row:last-child {
@@ -1958,56 +1989,19 @@
         }
       }
 
-      /* Ticker Animation Styles */
+      /* High-Performance Flat Timer Styles - 0% CPU Software Rendering */
       .timer-val {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: 0.1rem;
-        font-size: clamp(4rem, 11vw, 6.5rem);
+        font-size: clamp(3.2rem, 9vw, 5.5rem);
         line-height: 1;
         font-weight: 700;
-        letter-spacing: -0.05em;
+        letter-spacing: -0.02em;
         margin-bottom: 0;
         transition: color 0.3s ease;
+        font-family: var(--font-mono);
         font-variant-numeric: tabular-nums;
-        will-change: transform;
-        transform: translate3d(0, 0, 0);
-      }
-
-      .digit-slot {
-        position: relative;
-        height: 1em;
-        width: 0.62em;
-        /* Fixed width prevents the timer from "jumping" left/right */
-        overflow: hidden;
-        display: inline-flex;
-        justify-content: center;
-      }
-
-      .digit-strip {
-        position: absolute;
-        top: 0;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-        will-change: transform;
-      }
-
-      .digit-strip span {
-        height: 1em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .timer-separator {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 0.2em;
-        opacity: 0.4;
-        margin-top: -0.1em;
       }
     </style>
   </head>
@@ -2041,24 +2035,8 @@
     <!-- Idle Lockout Detection Overlay Modal -->
     <div id="idle-modal" class="modal-overlay">
       <div class="modal-container">
-        <h3
-          style="
-            color: var(--accent-warning);
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-          "
-        >
-          Idle Detected
-        </h3>
-        <div
-          style="
-            margin-bottom: 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-          "
-        >
+        <h3 class="modal-header warning">Idle Detected</h3>
+        <p class="modal-body-text">
           You were away for
           <span
             id="idle-duration-text"
@@ -2066,22 +2044,10 @@
             style="color: var(--text-main); font-weight: bold"
           ></span
           >. Where should this time go?
-        </div>
-        <div style="display: flex; gap: 10px">
-          <button
-            class="btn-work"
-            style="flex: 1; padding: 12px; border-radius: 12px; font-weight: 600"
-            onclick="resolveIdle('work')"
-          >
-            Log as Work
-          </button>
-          <button
-            class="btn-break"
-            style="flex: 1; padding: 12px; border-radius: 12px; font-weight: 600"
-            onclick="resolveIdle('break')"
-          >
-            Log as Break
-          </button>
+        </p>
+        <div class="action-row">
+          <button class="btn-success-outline" onclick="resolveIdle('work')">Log as Work</button>
+          <button class="btn-danger-outline" onclick="resolveIdle('break')">Log as Break</button>
         </div>
       </div>
     </div>
@@ -2089,56 +2055,13 @@
     <!-- Micro-Shift Alert Modal (Ghost Filter) -->
     <div id="ghost-modal" class="modal-overlay">
       <div class="modal-container">
-        <h3
-          style="
-            color: var(--accent-warning);
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-          "
-        >
-          Short Shift Detected
-        </h3>
-        <div
-          style="
-            margin-bottom: 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-          "
-        >
+        <h3 class="modal-header warning">Short Shift Detected</h3>
+        <p class="modal-body-text">
           This shift is under 60 seconds. Are you sure you want to log it?
-        </div>
-        <div style="display: flex; gap: 10px">
-          <button
-            class="btn-secondary"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: transparent;
-              border: 1px solid var(--border-light);
-              color: var(--text-main);
-              border-radius: 12px;
-            "
-            onclick="closeGhostModal()"
-          >
-            Cancel
-          </button>
-          <button
-            class="btn-log"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: rgba(245, 158, 11, 0.1);
-              color: var(--accent-warning);
-              border: 1px solid rgba(245, 158, 11, 0.3);
-              border-radius: 12px;
-              font-weight: 600;
-            "
-            onclick="confirmGhost()"
-          >
-            Log Anyway
-          </button>
+        </p>
+        <div class="action-row">
+          <button class="btn-secondary" onclick="closeGhostModal()">Cancel</button>
+          <button class="btn-warning-outline" onclick="confirmGhost()">Log Anyway</button>
         </div>
       </div>
     </div>
@@ -2146,83 +2069,42 @@
     <!-- End of Day Note & Submission Modal -->
     <div id="submit-modal" class="modal-overlay">
       <div class="modal-container">
-        <h3>End of Day Submission</h3>
-        <div class="label-xs">Tasks Completed / Shift Notes (Optional)</div>
-        <input
-          type="text"
-          id="modal-shift-notes"
-          list="note-suggestions"
-          placeholder="Enter notes here..."
-          style="
-            width: 100%;
-            margin-bottom: 20px;
-            text-align: left;
-            padding: 10px;
-            font-size: 0.85rem;
-          "
-        />
-        <datalist id="note-suggestions"></datalist>
-
-        <div style="display: flex; gap: 10px">
-          <button
-            class="btn-secondary"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: transparent;
-              border: 1px solid var(--border-light);
-              color: var(--text-main);
-              border-radius: 12px;
-            "
-            onclick="closeSubmitModal()"
+        <h3 class="modal-header">End of Day Submission</h3>
+        <div class="form-group">
+          <label class="form-label" for="modal-shift-notes"
+            >Tasks Completed / Shift Notes (Optional)</label
           >
-            Cancel
-          </button>
-          <button
-            class="btn-log"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: var(--btn-log-bg);
-              color: var(--btn-log-text);
-              border: 1px solid var(--btn-log-border);
-              border-radius: 12px;
-              font-weight: 600;
-            "
-            onclick="confirmSubmit()"
-          >
-            Confirm EOD
-          </button>
+          <input
+            type="text"
+            id="modal-shift-notes"
+            class="input-standard"
+            list="note-suggestions"
+            placeholder="Enter notes here..."
+          />
+          <datalist id="note-suggestions"></datalist>
+        </div>
+        <div class="action-row">
+          <button class="btn-secondary" onclick="closeSubmitModal()">Cancel</button>
+          <button class="btn-info-outline" onclick="confirmSubmit()">Confirm EOD</button>
         </div>
       </div>
     </div>
 
-    <!-- Cross-Tab Instance Conflict Warning Modal -->
     <div
       id="tab-conflict-modal"
       class="modal-overlay"
       style="z-index: 9999; background: var(--page-bg)"
     >
-      <div
-        class="modal-container"
-        style="text-align: center; border: 1px solid var(--accent-break)"
-      >
-        <h1 style="font-size: 3rem; margin-bottom: 10px; margin-top: 0">⚠️</h1>
-        <h3 style="color: var(--accent-break); margin-bottom: 15px">Multiple Tabs Detected</h3>
-        <div
-          style="
-            margin-bottom: 25px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-          "
-        >
+      <div class="modal-container" style="text-align: center; border-color: var(--accent-break)">
+        <h1 style="font-size: 3rem; margin-bottom: var(--space-3); margin-top: 0">⚠️</h1>
+        <h3 class="modal-header danger" style="justify-content: center">Multiple Tabs Detected</h3>
+        <p class="modal-body-text">
           Work Hour Tracker is currently active in another tab. Running multiple instances
           simultaneously can cause data corruption and double-counting.
+        </p>
+        <div class="action-row">
+          <button class="btn-danger-outline" onclick="forceTakeover()">Take Over Here</button>
         </div>
-        <button class="btn-break" style="width: 100%; padding: 14px" onclick="forceTakeover()">
-          Take Over Here
-        </button>
       </div>
     </div>
 
@@ -2248,55 +2130,13 @@
       <span id="app-toast-content">Message</span>
     </div>
 
-    <!-- Confirmation dialog for destructive actions -->
     <div id="confirm-modal" class="modal-overlay" style="z-index: 3500">
       <div class="modal-container">
-        <h3
-          id="confirm-title"
-          style="
-            color: var(--accent-warning);
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-          "
-        >
-          Confirm Action
-        </h3>
-        <div
-          id="confirm-desc"
-          style="
-            margin-bottom: 25px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-          "
-        >
-          Are you sure?
-        </div>
-        <div style="display: flex; gap: 10px">
-          <button
-            class="btn-secondary"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: transparent;
-              border: 1px solid var(--border-light);
-              color: var(--text-main);
-              border-radius: 12px;
-              cursor: pointer;
-              font-weight: 600;
-            "
-            onclick="closeConfirmModal()"
-          >
-            Cancel
-          </button>
-          <button
-            id="confirm-action-btn"
-            class="btn-log"
-            style="flex: 1; padding: 12px; border-radius: 12px; font-weight: 600; cursor: pointer"
-          >
-            Confirm
-          </button>
+        <h3 id="confirm-title" class="modal-header warning">Confirm Action</h3>
+        <p id="confirm-desc" class="modal-body-text">Are you sure?</p>
+        <div class="action-row">
+          <button class="btn-secondary" onclick="closeConfirmModal()">Cancel</button>
+          <button id="confirm-action-btn" class="btn-warning-outline">Confirm</button>
         </div>
       </div>
     </div>
@@ -2304,167 +2144,40 @@
     <!-- Log Edit Form Popup -->
     <div id="edit-modal" class="modal-overlay" style="z-index: 3500">
       <div class="modal-container" style="max-width: 350px">
-        <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-main)">
-          Edit Shift
-        </h3>
-
-        <div style="text-align: left">
-          <label
-            style="
-              display: block;
-              font-size: 0.75rem;
-              color: var(--text-muted);
-              margin-bottom: 6px;
-              font-weight: 600;
-            "
-          >
-            Date (MM/DD/YY)
-          </label>
-          <input
-            type="text"
-            id="edit-date"
-            onfocus="this.select()"
-            style="
-              width: 100%;
-              margin-bottom: 15px;
-              box-sizing: border-box;
-              background: var(--panel-bg);
-              border: 1px solid var(--border-main);
-              color: var(--text-main);
-              padding: 10px;
-              border-radius: 8px;
-              font-family: inherit;
-              font-size: 0.85rem;
-              outline: none;
-            "
-          />
-
-          <label
-            style="
-              display: block;
-              font-size: 0.75rem;
-              color: var(--text-muted);
-              margin-bottom: 6px;
-              font-weight: 600;
-            "
-          >
-            Work Time (HH:MM)
-          </label>
-          <input
-            type="text"
-            id="edit-work"
-            placeholder="08:00"
-            onfocus="this.select()"
-            style="
-              width: 100%;
-              margin-bottom: 15px;
-              box-sizing: border-box;
-              background: var(--panel-bg);
-              border: 1px solid var(--border-main);
-              color: var(--text-main);
-              padding: 10px;
-              border-radius: 8px;
-              font-family: inherit;
-              font-size: 0.85rem;
-              outline: none;
-            "
-          />
-
-          <label
-            style="
-              display: block;
-              font-size: 0.75rem;
-              color: var(--text-muted);
-              margin-bottom: 6px;
-              font-weight: 600;
-            "
-          >
-            Break Time (HH:MM)
-          </label>
-          <input
-            type="text"
-            id="edit-break"
-            placeholder="00:00"
-            onfocus="this.select()"
-            style="
-              width: 100%;
-              margin-bottom: 15px;
-              box-sizing: border-box;
-              background: var(--panel-bg);
-              border: 1px solid var(--border-main);
-              color: var(--text-main);
-              padding: 10px;
-              border-radius: 8px;
-              font-family: inherit;
-              font-size: 0.85rem;
-              outline: none;
-            "
-          />
-
-          <label
-            style="
-              display: block;
-              font-size: 0.75rem;
-              color: var(--text-muted);
-              margin-bottom: 6px;
-              font-weight: 600;
-            "
-          >
-            Notes (Optional)
-          </label>
-          <textarea
-            id="edit-notes"
-            style="
-              width: 100%;
-              margin-bottom: 25px;
-              box-sizing: border-box;
-              resize: vertical;
-              min-height: 60px;
-              background: var(--panel-bg);
-              border: 1px solid var(--border-main);
-              color: var(--text-main);
-              padding: 10px;
-              border-radius: 8px;
-              font-family: inherit;
-              font-size: 0.85rem;
-              outline: none;
-            "
-          ></textarea>
+        <h3 class="modal-header">Edit Shift</h3>
+        <div class="form-group">
+          <label class="form-label" for="edit-date">Date (MM/DD/YY)</label>
+          <input type="text" id="edit-date" class="input-standard" onfocus="this.select()" />
         </div>
-
-        <div style="display: flex; gap: 10px">
-          <button
-            class="btn-secondary"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: transparent;
-              border: 1px solid var(--border-light);
-              color: var(--text-main);
-              border-radius: 12px;
-              cursor: pointer;
-              font-weight: 600;
-            "
-            onclick="closeEditModal()"
-          >
-            Cancel
-          </button>
-          <button
-            class="btn-log"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: rgba(96, 165, 250, 0.1);
-              color: var(--accent-blue);
-              border: 1px solid rgba(96, 165, 250, 0.3);
-              border-radius: 12px;
-              font-weight: 600;
-              cursor: pointer;
-            "
-            onclick="saveEditModal()"
-          >
-            Save
-          </button>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="edit-work">Work Time (HH:MM)</label>
+            <input
+              type="text"
+              id="edit-work"
+              class="input-standard"
+              placeholder="08:00"
+              onfocus="this.select()"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="edit-break">Break Time (HH:MM)</label>
+            <input
+              type="text"
+              id="edit-break"
+              class="input-standard"
+              placeholder="00:00"
+              onfocus="this.select()"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="edit-notes">Notes (Optional)</label>
+          <textarea id="edit-notes" class="input-standard"></textarea>
+        </div>
+        <div class="action-row">
+          <button class="btn-secondary" onclick="closeEditModal()">Cancel</button>
+          <button class="btn-info-outline" onclick="saveEditModal()">Save</button>
         </div>
       </div>
     </div>
@@ -2472,361 +2185,123 @@
     <!-- Manual Entry Form Popup Overlay -->
     <div id="manual-modal" class="modal-overlay" style="z-index: 3500">
       <div class="modal-container" style="max-width: 350px">
-        <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-main)">
-          Add Manual Shift
-        </h3>
-        <div style="text-align: left">
-          <label
-            style="
-              display: block;
-              font-size: 0.75rem;
-              color: var(--text-muted);
-              margin-bottom: 6px;
-              font-weight: 600;
-            "
-          >
-            Date (MM/DD/YY)
-          </label>
+        <h3 class="modal-header">Add Manual Shift</h3>
+        <div class="form-group">
+          <label class="form-label" for="manual-date">Date (MM/DD/YY)</label>
           <input
             type="text"
             id="manual-date"
+            class="input-standard"
             placeholder="05/16/26"
             onfocus="this.select()"
-            style="
-              width: 100%;
-              margin-bottom: 15px;
-              box-sizing: border-box;
-              background: var(--panel-bg);
-              border: 1px solid var(--border-main);
-              color: var(--text-main);
-              padding: 10px;
-              border-radius: 8px;
-              font-family: inherit;
-              font-size: 0.85rem;
-              outline: none;
-            "
           />
-
-          <div style="display: flex; gap: 15px">
-            <div style="flex: 1">
-              <label
-                style="
-                  display: block;
-                  font-size: 0.75rem;
-                  color: var(--text-muted);
-                  margin-bottom: 6px;
-                  font-weight: 600;
-                "
-              >
-                Work (HH:MM)
-              </label>
-              <input
-                type="text"
-                id="manual-work"
-                placeholder="08:00"
-                onfocus="this.select()"
-                style="
-                  width: 100%;
-                  margin-bottom: 15px;
-                  box-sizing: border-box;
-                  background: var(--panel-bg);
-                  border: 1px solid var(--border-main);
-                  color: var(--text-main);
-                  padding: 10px;
-                  border-radius: 8px;
-                  font-family: inherit;
-                  font-size: 0.85rem;
-                  outline: none;
-                "
-              />
-            </div>
-            <div style="flex: 1">
-              <label
-                style="
-                  display: block;
-                  font-size: 0.75rem;
-                  color: var(--text-muted);
-                  margin-bottom: 6px;
-                  font-weight: 600;
-                "
-              >
-                Break (HH:MM)
-              </label>
-              <input
-                type="text"
-                id="manual-break"
-                value="00:00"
-                onfocus="this.select()"
-                style="
-                  width: 100%;
-                  margin-bottom: 15px;
-                  box-sizing: border-box;
-                  background: var(--panel-bg);
-                  border: 1px solid var(--border-main);
-                  color: var(--text-main);
-                  padding: 10px;
-                  border-radius: 8px;
-                  font-family: inherit;
-                  font-size: 0.85rem;
-                  outline: none;
-                "
-              />
-            </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="manual-work">Work (HH:MM)</label>
+            <input
+              type="text"
+              id="manual-work"
+              class="input-standard"
+              placeholder="08:00"
+              onfocus="this.select()"
+            />
           </div>
-
-          <label
-            style="
-              display: block;
-              font-size: 0.75rem;
-              color: var(--accent-blue);
-              margin-bottom: 6px;
-              font-weight: 700;
-            "
+          <div class="form-group">
+            <label class="form-label" for="manual-break">Break (HH:MM)</label>
+            <input
+              type="text"
+              id="manual-break"
+              class="input-standard"
+              value="00:00"
+              onfocus="this.select()"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" style="color: var(--accent-blue)"
+            >Daily Goal for this shift</label
           >
-            Daily Goal for this shift
-          </label>
-          <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px">
+          <div style="display: flex; gap: var(--space-2); align-items: center">
             <input
               type="number"
               id="manual-goal-h"
+              class="input-standard"
               min="0"
               max="23"
-              style="
-                width: 60px;
-                background: var(--panel-bg);
-                border: 1px solid var(--border-main);
-                color: var(--text-main);
-                padding: 8px;
-                border-radius: 8px;
-                text-align: center;
-              "
+              style="width: 70px; text-align: center; padding: var(--space-2)"
             />
-            <span style="font-size: 0.8rem; color: var(--text-muted)">h</span>
+            <span style="font-size: var(--text-sm); color: var(--text-muted)">h</span>
             <input
               type="number"
               id="manual-goal-m"
+              class="input-standard"
               min="0"
               max="59"
-              style="
-                width: 60px;
-                background: var(--panel-bg);
-                border: 1px solid var(--border-main);
-                color: var(--text-main);
-                padding: 8px;
-                border-radius: 8px;
-                text-align: center;
-              "
+              style="width: 70px; text-align: center; padding: var(--space-2)"
             />
-            <span style="font-size: 0.8rem; color: var(--text-muted)">m</span>
+            <span style="font-size: var(--text-sm); color: var(--text-muted)">m</span>
           </div>
-
-          <label
-            style="
-              display: block;
-              font-size: 0.75rem;
-              color: var(--text-muted);
-              margin-bottom: 6px;
-              font-weight: 600;
-            "
-          >
-            Notes (Optional)
-          </label>
-          <textarea
-            id="manual-notes"
-            style="
-              width: 100%;
-              margin-bottom: 25px;
-              box-sizing: border-box;
-              resize: vertical;
-              min-height: 60px;
-              background: var(--panel-bg);
-              border: 1px solid var(--border-main);
-              color: var(--text-main);
-              padding: 10px;
-              border-radius: 8px;
-              font-family: inherit;
-              font-size: 0.85rem;
-              outline: none;
-            "
-          ></textarea>
         </div>
-        <div style="display: flex; gap: 10px">
-          <button
-            class="btn-secondary"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: transparent;
-              border: 1px solid var(--border-light);
-              color: var(--text-main);
-              border-radius: 12px;
-              cursor: pointer;
-              font-weight: 600;
-            "
-            onclick="closeManualModal()"
-          >
-            Cancel
-          </button>
-          <button
-            class="btn-log"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: rgba(74, 222, 128, 0.1);
-              color: var(--accent-work);
-              border: 1px solid rgba(74, 222, 128, 0.3);
-              border-radius: 12px;
-              font-weight: 600;
-              cursor: pointer;
-            "
-            onclick="saveManualModal()"
-          >
-            Add Log
-          </button>
+        <div class="form-group">
+          <label class="form-label" for="manual-notes">Notes (Optional)</label>
+          <textarea id="manual-notes" class="input-standard"></textarea>
+        </div>
+        <div class="action-row">
+          <button class="btn-secondary" onclick="closeManualModal()">Cancel</button>
+          <button class="btn-success-outline" onclick="saveManualModal()">Add Log</button>
         </div>
       </div>
     </div>
 
-    <!-- Note details display popup -->
     <div id="note-modal" class="modal-overlay">
       <div class="modal-container">
-        <h3 style="color: var(--accent-blue); margin-bottom: 10px">Shift Note</h3>
+        <h3 class="modal-header info">Shift Note</h3>
         <div
           id="note-modal-text"
+          class="input-standard"
           style="
-            background: var(--element-bg);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            border: 1px solid var(--border-main);
+            margin-bottom: var(--space-4);
             max-height: 250px;
             overflow-y: auto;
             word-wrap: break-word;
           "
         ></div>
-        <button
-          class="btn-log"
-          style="
-            width: 100%;
-            padding: 12px;
-            background: var(--btn-log-bg);
-            color: var(--btn-log-text);
-            border: 1px solid var(--btn-log-border);
-            border-radius: 12px;
-            font-weight: 600;
-          "
-          onclick="closeNoteModal()"
-        >
-          Close
-        </button>
+        <div class="action-row">
+          <button class="btn-info-outline" onclick="closeNoteModal()">Close</button>
+        </div>
       </div>
     </div>
 
     <!-- Unified Dynamic Floating Tooltip -->
     <div id="app-tooltip" class="app-tooltip"></div>
 
-    <!-- Edit Preset Goal Modal -->
     <div id="preset-modal" class="modal-overlay" style="z-index: 3500">
       <div class="modal-container" style="max-width: 320px">
-        <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-main)">
-          Edit Preset
-        </h3>
-        <div style="text-align: left">
-          <label
-            style="
-              display: block;
-              font-size: 0.75rem;
-              color: var(--text-muted);
-              margin-bottom: 6px;
-              font-weight: 600;
-            "
-          >
-            Target Hours (e.g. 7.5)
-          </label>
+        <h3 class="modal-header">Edit Preset</h3>
+        <div class="form-group">
+          <label class="form-label" for="preset-input">Target Hours (e.g. 7.5)</label>
           <input
             type="number"
             id="preset-input"
+            class="input-standard"
             step="0.5"
             min="0"
             max="24"
             onfocus="this.select()"
-            style="
-              width: 100%;
-              margin-bottom: 20px;
-              box-sizing: border-box;
-              background: var(--panel-bg);
-              border: 1px solid var(--border-main);
-              color: var(--text-main);
-              padding: 12px;
-              border-radius: 8px;
-              font-family: inherit;
-              font-size: 1rem;
-              outline: none;
-            "
           />
         </div>
-        <div style="display: flex; gap: 10px">
-          <button
-            class="btn-secondary"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: transparent;
-              border: 1px solid var(--border-light);
-              color: var(--text-main);
-              border-radius: 12px;
-              cursor: pointer;
-              font-weight: 600;
-            "
-            onclick="closePresetModal()"
-          >
-            Cancel
-          </button>
-          <button
-            class="btn-log"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: rgba(96, 165, 250, 0.1);
-              color: var(--accent-blue);
-              border: 1px solid rgba(96, 165, 250, 0.3);
-              border-radius: 12px;
-              font-weight: 600;
-              cursor: pointer;
-            "
-            onclick="savePresetModal()"
-          >
-            Save
-          </button>
+        <div class="action-row">
+          <button class="btn-secondary" onclick="closePresetModal()">Cancel</button>
+          <button class="btn-info-outline" onclick="savePresetModal()">Save</button>
         </div>
       </div>
     </div>
 
-    <!-- Manage Leaves & Holidays Modal -->
     <div id="leave-modal" class="modal-overlay" style="z-index: 3500">
       <div class="modal-container" style="max-width: 360px">
-        <h3
-          style="
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-          "
-        >
-          <svg
-            viewBox="0 0 24 24"
-            width="18"
-            height="18"
-            stroke="currentColor"
-            fill="none"
-            stroke-width="2"
-            style="color: var(--accent-blue)"
-          >
+        <h3 class="modal-header info">
+          <svg viewBox="0 0 24 24" class="ui-icon" stroke="currentColor" fill="none">
             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
             <line x1="16" y1="2" x2="16" y2="6"></line>
             <line x1="8" y1="2" x2="8" y2="6"></line>
@@ -2834,101 +2309,37 @@
           </svg>
           Manage Leaves & Holidays
         </h3>
-
-        <div style="text-align: left; margin-bottom: 20px">
-          <label
-            style="
-              display: block;
-              font-size: 0.75rem;
-              color: var(--text-muted);
-              margin-bottom: 6px;
-              font-weight: 600;
-            "
-          >
-            Add Leave Date
-          </label>
-          <div style="display: flex; gap: 8px">
-            <input
-              type="date"
-              id="leave-date-input"
-              style="
-                flex: 1;
-                background: var(--panel-bg);
-                border: 1px solid var(--border-main);
-                color: var(--text-main);
-                padding: 10px;
-                border-radius: 8px;
-                font-family: inherit;
-                font-size: 0.9rem;
-                outline: none;
-              "
-            />
+        <div class="form-group">
+          <label class="form-label" for="leave-date-input">Add Leave Date</label>
+          <div style="display: flex; gap: var(--space-2)">
+            <input type="date" id="leave-date-input" class="input-standard" style="flex: 1" />
             <button
-              class="btn-log"
-              style="
-                padding: 10px 16px;
-                background: rgba(96, 165, 250, 0.1);
-                color: var(--accent-blue);
-                border: 1px solid rgba(96, 165, 250, 0.3);
-                border-radius: 8px;
-                font-weight: 600;
-                cursor: pointer;
-              "
+              class="btn-info-outline"
+              style="flex: 0 0 auto; padding: var(--space-2) var(--space-4)"
               onclick="addLeaveDate()"
             >
               Add
             </button>
           </div>
         </div>
-
-        <label
-          style="
-            display: block;
-            text-align: left;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            font-weight: 600;
-          "
-        >
-          Active Leave Dates
-        </label>
+        <label class="form-label">Active Leave Dates</label>
         <div
           id="leave-dates-list"
           style="
             max-height: 150px;
             overflow-y: auto;
-            text-align: left;
             background: rgba(0, 0, 0, 0.15);
             border: 1px solid var(--border-light);
-            padding: 8px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            padding: var(--space-2);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-4);
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: var(--space-1);
           "
-        >
-          <!-- Active leave dates will be dynamically inserted here -->
-        </div>
-
-        <div style="display: flex; gap: 10px">
-          <button
-            class="btn-secondary"
-            style="
-              flex: 1;
-              padding: 12px;
-              background: transparent;
-              border: 1px solid var(--border-light);
-              color: var(--text-main);
-              border-radius: 12px;
-              cursor: pointer;
-              font-weight: 600;
-            "
-            onclick="closeLeaveModal()"
-          >
-            Close
-          </button>
+        ></div>
+        <div class="action-row">
+          <button class="btn-secondary" onclick="closeLeaveModal()">Close</button>
         </div>
       </div>
     </div>
@@ -2996,7 +2407,6 @@
           <div style="display: flex; gap: 15px; align-items: stretch">
             <div class="goal-container">
               <div class="status-badge goal-inputs" style="padding: 0 0.8rem">
-                <span class="goal-status-dot"></span>
                 <span class="label">Goal:</span>
                 <input type="text" id="goal-time" value="8h 0m" onfocus="this.select()" />
                 <input type="hidden" id="goal-hours" value="8" />
@@ -3711,8 +3121,6 @@
         workAccumulated: 0,
         breakAccumulated: 0,
         currentMode: null,
-        workStartTime: null,
-        breakStartTime: null,
         loginTimestamp: null,
         activeDate: null,
         idleLock: false,
@@ -3725,7 +3133,6 @@
       // Shared State Backups and Transaction Variables
       let appToastTimeout;
       let confirmCallback = null;
-      let timeOffsetMs = 0;
       let undoTimeout;
       let lastStateBackup = null;
       let displayBaseDate = null;
@@ -3735,6 +3142,10 @@
       let editingLogId = null;
       let cachedBaseFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
 
+      // High-frequency delta anchor and defensive lock flags
+      let lastTickTime = Date.now();
+      let isTabConflict = false;
+
       // Memory Caches
       let cachedLogs = [];
       let virtualScrollLogs = [];
@@ -3742,6 +3153,7 @@
       let lastVirtualEnd = -1;
       let selectedLogIdx = -1; // Keyboard-navigated row index into virtualScrollLogs
       let weeklyCache = new Map(); // Key: UTC Monday Epoch Milliseconds
+      let dailyAnchorMap = new Map(); // DateString -> GoalSeconds
       let filterCache = null; // Memoized result of getFilteredLogs()
       let filterCacheKey = null; // Serialized filter state for cache invalidation
       let insightsCacheKey = null; // Memoized insights render key
@@ -3771,7 +3183,6 @@
         filterNotes: document.getElementById("filter-notes"),
         filterHoursOp: document.getElementById("filter-hours-op"),
         filterHoursVal: document.getElementById("filter-hours-val"),
-
         filterChipsContainer: document.getElementById("filter-chips-container"),
         filterViewPresets: document.getElementById("filter-view-presets"),
         weekMonthLabel: document.getElementById("week-month-label"),
@@ -3853,44 +3264,16 @@
       }
 
       /*==========================================================================
-       * 4. ATOMIC TIME SYNCHRONIZATION ENGINE
+       * 4. LOCAL TIME SYNCHRONIZATION ENGINE
        * =========================================================================*/
 
       /**
-       * Syncs browser clock drift offset against atomic clock time servers in the background.
-       * Prevents client timezone manipulation or machine delay inconsistencies.
-       */
-      async function fetchTrueTime() {
-        try {
-          const start = performance.now();
-          const controller = new AbortController();
-          const timeoutId = setTimeout(() => controller.abort(), 3000);
-
-          const res = await fetch("https://timeapi.io/api/Time/current/zone?timeZone=UTC", {
-            cache: "no-store",
-            signal: controller.signal,
-          });
-          clearTimeout(timeoutId);
-
-          if (!res.ok) throw new Error("API not ok");
-          const data = await res.json();
-          const latency = (performance.now() - start) / 2;
-
-          // TimeAPI returns ISO structure without 'Z' trailing notation
-          const serverTime = new Date(data.dateTime + "Z").getTime() + latency;
-          timeOffsetMs = serverTime - Date.now();
-          console.log("Atomic time synced. Offset:", timeOffsetMs, "ms");
-        } catch (err) {
-          console.warn("Atomic time sync failed. Using local clock fallback.");
-        }
-      }
-
-      /**
-       * Returns the adjusted server/atomic epoch timestamp in milliseconds.
-       * @returns {number} The true epoch timestamp.
+       * Fallback local time provider using the client system's system epoch clock.
+       * Bypasses online atomic APIs to operate cleanly in restricted work networks.
+       * @returns {number} Local epoch timestamp.
        */
       function getTrueTime() {
-        return Date.now() + timeOffsetMs;
+        return Date.now();
       }
 
       /*==========================================================================
@@ -3899,7 +3282,6 @@
 
       /**
        * Database connection promise. Orchestrates stores setup.
-       * logs_chunked is partitioned by YYYY-MM keys to load/save massive logs incrementally without memory limits.
        */
       const dbPromise = new Promise((resolve, reject) => {
         const request = indexedDB.open("WorkTrackerDB", 2);
@@ -3918,17 +3300,18 @@
 
       /**
        * Persists historical logs grouped into chronological chunk blocks.
-       * Uses targeted put/delete per chunk instead of clear+rewrite — O(1) I/O relative to history size.
        * @param {Array} logsData - Full array of log entries to divide and save.
        */
       async function saveLogsToDB(logsData) {
         const db = await dbPromise;
         return new Promise((resolve) => {
-          // Regroup logs chronologically into month-level buckets (e.g. "2026-05")
           const chunks = {};
           logsData.forEach((log) => {
             const dObj = new Date(log.epochMs);
-            const chunkId = `${dObj.getUTCFullYear()}-${String(dObj.getUTCMonth() + 1).padStart(2, "0")}`;
+            const chunkId = `${dObj.getUTCFullYear()}-${String(dObj.getUTCMonth() + 1).padStart(
+              2,
+              "0",
+            )}`;
             if (!chunks[chunkId]) chunks[chunkId] = [];
             chunks[chunkId].push(log);
           });
@@ -3936,15 +3319,12 @@
           const tx = db.transaction("logs_chunked", "readwrite");
           const store = tx.objectStore("logs_chunked");
 
-          // Get existing keys to find chunks that became empty and need deletion
           const reqKeys = store.getAllKeys();
           reqKeys.onsuccess = () => {
             const newKeySet = new Set(Object.keys(chunks));
-            // Delete stale chunks (e.g. entire month was cleared)
             reqKeys.result.forEach((k) => {
               if (!newKeySet.has(k)) store.delete(k);
             });
-            // Put only the chunks that exist in current data
             newKeySet.forEach((chunkId) => store.put({ chunkId, data: chunks[chunkId] }));
             tx.oncomplete = () => resolve();
             tx.onerror = () => resolve();
@@ -3962,7 +3342,7 @@
         try {
           db = await dbPromise;
         } catch (e) {
-          console.warn("IndexedDB unavailable (private mode or corrupted):", e);
+          console.warn("IndexedDB unavailable:", e);
           showAppToast("Storage unavailable — running in session-only mode.");
           return [];
         }
@@ -4033,11 +3413,12 @@
         const conflictModal = document.getElementById("tab-conflict-modal");
         if (e.data.type === "ping") {
           // If this active instance is healthy (not currently locked out), claim ownership
-          if (conflictModal.style.display !== "flex") {
+          if (!isTabConflict) {
             tabSyncChannel.postMessage({ type: "pong" });
           }
         } else if (e.data.type === "pong" || e.data.type === "takeover") {
           // Halt and lock down this tab if another instance exists or is forcing ownership
+          isTabConflict = true;
           conflictModal.style.display = "flex";
         }
       };
@@ -4046,8 +3427,12 @@
        * Reclaims master tracking ownership on the local tab and forces other instances to step down.
        */
       function forceTakeover() {
+        isTabConflict = false;
         document.getElementById("tab-conflict-modal").style.display = "none";
         tabSyncChannel.postMessage({ type: "takeover" });
+
+        // Synchronize delta anchor when active tab takes priority
+        lastTickTime = Date.now();
 
         // Pull latest database and localStorage states to synchronize this session instantly
         loadState();
@@ -4161,8 +3546,11 @@
         return cachedLogs;
       }
 
+      let pendingDBSave = null;
+
       /**
-       * Saves runtime logs array both in-memory and database stores, injecting fast O(1) indices.
+       * Saves runtime logs array both in-memory and database stores.
+       * Pipelines consecutive writes into a single transaction at the end of the thread queue.
        * @param {Array} logs - Updated shift list array.
        */
       function saveLogs(logs) {
@@ -4172,50 +3560,82 @@
         cachedLogs = logs;
         filterCache = null; // Invalidate filter cache on data change
         filterCacheKey = null;
-        insightsCacheKey = null; // Invalidate insights cache on data change
+        insightsCacheKey = null; // Force invalidate insights cache immediately to prevent race conditions
         dataVersion++; // Bump version for all derivative caches
         rebuildWeeklyCache();
-        saveLogsToDB(logs);
+
+        // Delay database operations until the current thread yields, batching parallel changes
+        if (!pendingDBSave) {
+          pendingDBSave = Promise.resolve().then(() => {
+            saveLogsToDB(cachedLogs);
+            pendingDBSave = null;
+          });
+        }
       }
+
+      // High-performance inline Web Worker compiled in-memory via Virtual Blob
+      const workerCode = `
+    self.onmessage = function(e) {
+      const logs = e.data
+      const weeklyGroups = {}
+      const dailyAnchors = {}
+
+      for (let i = logs.length - 1; i >= 0; i--) {
+        const log = logs[i]
+        if (!log.epochMs || log.epochMs <= 0) continue
+
+        const daysSinceEpoch = Math.floor(log.epochMs / 86400000)
+        const dayOfWeek = (daysSinceEpoch + 4) % 7
+        const diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek
+        const key = (daysSinceEpoch + diffToMonday) * 86400000
+
+        if (!weeklyGroups[key]) weeklyGroups[key] = []
+        weeklyGroups[key].push(log)
+
+        const dateKey = log.date
+        if (!dailyAnchors[dateKey] && log.dayGoal) {
+          dailyAnchors[dateKey] = log.dayGoal
+        }
+      }
+
+      for (let key in weeklyGroups) {
+        weeklyGroups[key].sort((a, b) => b.epochMs - a.epochMs)
+      }
+
+      self.postMessage({ weeklyGroups, dailyAnchors })
+    }
+  `;
+      const blob = new Blob([workerCode], { type: "application/javascript" });
+      const workerUrl = URL.createObjectURL(blob);
+      const analyticsWorker = new Worker(workerUrl);
 
       /**
-       * Groups shifts by ISO UTC Monday start bounds and identifies the "Anchor Goal"
-       * (the goal of the first shift submitted) for every date in history.
+       * Delegates weekly database sorting and grouping logic to our background Web Worker thread.
        */
-      let dailyAnchorMap = new Map(); // DateString -> GoalSeconds
-
       function rebuildWeeklyCache() {
         const logs = getLogs();
-        weeklyCache.clear();
-        dailyAnchorMap.clear();
-
-        // Loop backwards (oldest to newest) to ensure the FIRST goal seen for any date
-        // is the oldest one. This becomes the "Anchor Goal".
-        for (let i = logs.length - 1; i >= 0; i--) {
-          const log = logs[i];
-          if (!log.epochMs || log.epochMs <= 0) continue;
-
-          // Grouping for Weekly Tabs
-          const daysSinceEpoch = Math.floor(log.epochMs / 86400000);
-          const dayOfWeek = (daysSinceEpoch + 4) % 7;
-          const diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-          const key = (daysSinceEpoch + diffToMonday) * 86400000;
-
-          if (!weeklyCache.has(key)) weeklyCache.set(key, []);
-          weeklyCache.get(key).push(log);
-
-          // Identify Daily Anchor (First-in-wins)
-          const dateKey = log.date;
-          if (!dailyAnchorMap.has(dateKey) && log.dayGoal) {
-            dailyAnchorMap.set(dateKey, log.dayGoal);
-          }
-        }
-
-        // Re-sort the logs within each week to newest-first for the Insights list
-        for (let [key, weekLogs] of weeklyCache) {
-          weekLogs.sort((a, b) => b.epochMs - a.epochMs);
-        }
+        analyticsWorker.postMessage(logs);
       }
+
+      // Receive processed arrays back from background thread
+      analyticsWorker.onmessage = (e) => {
+        const { weeklyGroups, dailyAnchors } = e.data;
+
+        weeklyCache.clear();
+        for (const [key, val] of Object.entries(weeklyGroups)) {
+          weeklyCache.set(Number(key), val);
+        }
+
+        dailyAnchorMap.clear();
+        for (const [key, val] of Object.entries(dailyAnchors)) {
+          dailyAnchorMap.set(key, val);
+        }
+
+        renderInsights();
+        if (document.getElementById("tab-logbook").style.display !== "none") {
+          renderLogbook();
+        }
+      };
 
       // Timezone Conversions and Getters
       function getPSTClock() {
@@ -4228,22 +3648,21 @@
 
       function getPSTDateObj() {
         return new Date(
-          new Date(getTrueTime()).toLocaleString("en-US", { timeZone: "America/Los_Angeles" }),
+          new Date(getTrueTime()).toLocaleString("en-US", {
+            timeZone: "America/Los_Angeles",
+          }),
         );
       }
 
       /**
        * Calculates the total work seconds logged in the database for today's date.
-       * Aggregates history logs to support cumulative daily target evaluation across split shifts.
-       *
-       * @returns {number} The cumulative sum of today's archived shift durations in seconds.
+       * @returns {number} Today's archived shift durations in seconds.
        */
       function getTodayLoggedWorkSeconds() {
         const todayStr = getPSTDate();
         const logs = getLogs();
         let total = 0;
         for (let i = 0; i < logs.length; i++) {
-          // Match shifts logged either with standard date or display formatting
           if (logs[i].displayDate === todayStr || logs[i].date === todayStr) {
             total += logs[i].workSec;
           }
@@ -4272,56 +3691,52 @@
        * =========================================================================*/
 
       /**
-       * Calculates the cumulative work duration in seconds.
-       * @param {number} nowMs - Current true epoch time.
-       * @returns {number} Accumulated active work time.
+       * Returns the directly accumulated work seconds tracked by real-time delta loops.
+       * @returns {number} Active work duration.
        */
-      function getCurrentWorkSeconds(nowMs = getTrueTime()) {
-        let total = state.workAccumulated;
-        if (state.currentMode === "work" && state.workStartTime) {
-          total += Math.max(0, (nowMs - state.workStartTime) / 1000);
-        }
-        return total;
+      function getCurrentWorkSeconds() {
+        return state.workAccumulated;
       }
 
       /**
-       * Calculates the cumulative break duration in seconds.
-       * @param {number} nowMs - Current true epoch time.
-       * @returns {number} Accumulated break time.
+       * Returns the directly accumulated break seconds tracked by real-time delta loops.
+       * @returns {number} Active break duration.
        */
-      function getCurrentBreakSeconds(nowMs = getTrueTime()) {
-        let total = state.breakAccumulated;
-        if (state.currentMode === "break" && state.breakStartTime) {
-          total += Math.max(0, (nowMs - state.breakStartTime) / 1000);
-        }
-        return total;
+      function getCurrentBreakSeconds() {
+        return state.breakAccumulated;
       }
 
       /**
-       * Backup mechanism to save work state continuously. Rescues unsaved progress on reload/crashes.
-       * @param {number} overrideNow - Optional timestamp adjustment context.
+       * Accumulates elapsed active duration via high-frequency delta intervals.
+       * Blocks time warp anomalies (VM freezes, machine sleep, NTP changes) using safety limits.
        */
-      function commitCrashRecoveryTime(overrideNow) {
-        if (document.getElementById("tab-conflict-modal").style.display === "flex") return;
+      function accumulateCurrentDelta() {
+        if (isTabConflict) return;
 
-        const now = overrideNow || getTrueTime();
-        let changed = false;
+        const nowMs = Date.now();
+        const isBackground = document.hidden;
+        const threshold = isBackground ? 75000 : 10000; // Background throttled at 75s, foreground at 10s
+        const deltaMs = nowMs - lastTickTime;
 
-        if (state.lastActivity !== lastActivity) {
-          state.lastActivity = lastActivity;
-          changed = true;
+        if (deltaMs > 0) {
+          if (deltaMs > threshold) {
+            // Intercept large time gap and shift it safely into the idle handler
+            if (state.currentMode !== null && !state.idleLock) {
+              triggerIdleLock(lastTickTime);
+            }
+          } else {
+            // Process standard, trusted, real-world delta slices incrementally
+            if (!state.idleLock && state.currentMode !== null) {
+              const deltaSec = deltaMs / 1000;
+              if (state.currentMode === "work") {
+                state.workAccumulated += deltaSec;
+              } else if (state.currentMode === "break") {
+                state.breakAccumulated += deltaSec;
+              }
+            }
+          }
         }
-
-        if (state.currentMode === "work" && state.workStartTime) {
-          state.workAccumulated += Math.max(0, now - state.workStartTime) / 1000;
-          state.workStartTime = now;
-          changed = true;
-        } else if (state.currentMode === "break" && state.breakStartTime) {
-          state.breakAccumulated += Math.max(0, now - state.breakStartTime) / 1000;
-          state.breakStartTime = now;
-          changed = true;
-        }
-        if (changed) saveState();
+        lastTickTime = nowMs;
       }
 
       /**
@@ -4330,17 +3745,11 @@
        */
       function switchMode(mode) {
         if (state.currentMode === mode) return;
-        commitCrashRecoveryTime();
+        accumulateCurrentDelta();
         state.currentMode = mode;
-        const now = getTrueTime();
+        const now = Date.now();
         if (mode === "work") {
-          state.workStartTime = now;
-          state.breakStartTime = null;
           if (!state.loginTimestamp) state.loginTimestamp = now;
-        }
-        if (mode === "break") {
-          state.breakStartTime = now;
-          state.workStartTime = null;
         }
         saveState();
         renderStaticUI();
@@ -4358,6 +3767,7 @@
         const isIdle = !!state.idleLock;
         const hasStarted = !!state.loginTimestamp;
         const mode = state.currentMode;
+        document.documentElement.setAttribute("data-theme", currentTheme);
         document.documentElement.setAttribute("data-session-mode", mode || "idle");
 
         if (!hasStarted) {
@@ -4420,57 +3830,53 @@
             setStyle(DOM.breakTimer, "filter", "none");
           }
         }
-
-        // No timer clock glow active
       }
 
       /**
-       * Repaints current live clock indicators, document title, and progress bars.
-       * Skips DOM modifications if window tab is backgrounded.
+       * Updates the main timer and status clock displays once per second.
        *
-       * @param {Date} nowDate - True local date instance.
+       * Software-Rendering Optimizations:
+       * - Bypasses sliding digit tracks, updating the DOM text values directly.
+       * - Eliminates layout reflow and rendering calculations inside the clock ticks.
+       * - Restricts clock updates to active, visible tabs, reducing resource usage when hidden.
+       *
+       * @param {Date} [nowDate=new Date(getTrueTime())] - Current target date instance.
        */
       function renderTimersOnly(nowDate = new Date(getTrueTime())) {
         syncGoalTimeInput();
         const nowMs = nowDate.getTime();
-        const workSeconds = pendingSubmitData
-          ? pendingSubmitData.workSec
-          : getCurrentWorkSeconds(nowMs);
+        const workSeconds = pendingSubmitData ? pendingSubmitData.workSec : getCurrentWorkSeconds();
         const breakSeconds = pendingSubmitData
           ? pendingSubmitData.breakSec
-          : getCurrentBreakSeconds(nowMs);
+          : getCurrentBreakSeconds();
 
-        // Browser active tab status update (Text status only, no timer)
         let activeTitle = "Paused";
-        let iconColor = "#f59e0b"; // Yellow
+        let iconColor = "#f59e0b";
 
         if (state.currentMode === "work") {
           activeTitle = "Work";
-          iconColor = "#4ade80"; // Green
+          iconColor = "#4ade80";
         } else if (state.currentMode === "break") {
           activeTitle = "Break";
-          iconColor = "#f87171"; // Red
+          iconColor = "#f87171";
         }
 
-        // Only update the DOM title if the string has actually changed
         if (document.title !== activeTitle) {
           document.title = activeTitle;
         }
 
-        // Update the Tab Icon color to match the status
         const faviconKey = iconColor;
         if (faviconKey !== lastFaviconKey) {
           lastFaviconKey = faviconKey;
           if (faviconLink) faviconLink.href = getDotSVG(iconColor, 1);
         }
 
-        // Refresh daily targets
         updateProgress(workSeconds);
 
-        // Render visible controls (UI Tickers) only if tab is visible
         if (!document.hidden) {
-          updateTickerDisplay(DOM.workTimer, formatDuration(workSeconds));
-          updateTickerDisplay(DOM.breakTimer, formatDuration(breakSeconds));
+          // High-Performance Plain Text Clock update costing 0% CPU on Software Rendering
+          setText(DOM.workTimer, formatDuration(workSeconds));
+          setText(DOM.breakTimer, formatDuration(breakSeconds));
           setClock(DOM.primaryClock, primaryFormatter.format(nowDate));
           setClock(DOM.bstClock, bstFormatter.format(nowDate));
         }
@@ -4478,35 +3884,26 @@
 
       /**
        * Dual-Perspective Progress Engine
-       * Perspective A (Session): Active timer vs. Current UI Goal
-       * Perspective B (Daily): Total Day (History + Active) vs. Anchor Goal
        */
       function updateProgress(workSeconds) {
         const todayStr = getPSTDate();
 
-        // 1. Perspective Setup
         const uiGoalSec = getGoalSeconds();
         const anchorGoalSec = dailyAnchorMap.get(todayStr) || uiGoalSec;
         const loggedSec = getTodayLoggedWorkSeconds();
         const totalWorkToday = loggedSec + workSeconds;
 
-        // 2. Perspective A: Session Progress (Dashboard Horizontal Bar)
         const sessionPercent = uiGoalSec > 0 ? Math.min((workSeconds / uiGoalSec) * 100, 100) : 100;
         const sessionDiff = workSeconds - uiGoalSec;
         const sessionScale = sessionPercent / 100;
 
-        // 3. Perspective B: Daily Progress (Insights Segments & ETA)
         const dailyPercent =
           anchorGoalSec > 0 ? Math.min((totalWorkToday / anchorGoalSec) * 100, 100) : 100;
         const dailyDiff = totalWorkToday - anchorGoalSec;
         const dailyScale = dailyPercent / 100;
 
-        // --- RENDERING PERSPECTIVE A (SESSION) ---
-
-        // Update the main Dashboard progress bar
         setStyle(DOM.progressFill, "transform", `scaleX(${sessionScale})`);
 
-        // Color the bar based on session completion
         if (sessionPercent >= 100) {
           setStyle(DOM.progressFill, "background", "var(--accent-work)");
           setStyle(
@@ -4523,25 +3920,20 @@
           );
         }
 
-        // Update session text (X% and Remaining/Overtime)
         const progStr =
           sessionDiff >= 0
             ? `${sessionPercent.toFixed(1)}% (Overtime: ${formatFriendlyDuration(sessionDiff, "0m")})`
             : `${sessionPercent.toFixed(1)}% (Left: ${formatFriendlyDuration(Math.abs(sessionDiff), "0m")})`;
         setText(DOM.progressText, progStr);
 
-        // --- RENDERING PERSPECTIVE B (DAILY) ---
-
-        // Update the specific Weekly Progress Segment for today
         const nowPST = getPSTDateObj();
-        const dayIdx = nowPST.getDay(); // 0 (Sun) to 6 (Sat)
-        const isoDay = dayIdx === 0 ? 7 : dayIdx; // 1 (Mon) to 7 (Sun)
+        const dayIdx = nowPST.getDay();
+        const isoDay = dayIdx === 0 ? 7 : dayIdx;
 
         if (isoDay <= 5) {
           const todaySegmentFill = DOM.progressSegmentFills[isoDay - 1];
           if (todaySegmentFill) {
             todaySegmentFill.style.transform = `scaleX(${dailyScale})`;
-            // Color segment green only if full daily goal is hit
             if (dailyPercent >= 100) {
               todaySegmentFill.style.background = "var(--accent-work)";
             } else {
@@ -4551,7 +3943,6 @@
           }
         }
 
-        // Handle ambient pulsing glow on the rail (Daily Target trigger)
         if (DOM.progressRail) {
           if (totalWorkToday >= anchorGoalSec && anchorGoalSec > 0) {
             DOM.progressRail.classList.add("goal-completed");
@@ -4565,7 +3956,7 @@
           if (totalWorkToday >= anchorGoalSec && anchorGoalSec > 0) {
             goalBadge.classList.add("goal-completed");
             goalBadge.classList.remove("goal-accumulating");
-          } else if (state.currentMode === "WORK") {
+          } else if (state.currentMode === "work") {
             goalBadge.classList.add("goal-accumulating");
             goalBadge.classList.remove("goal-completed");
           } else {
@@ -4573,7 +3964,6 @@
           }
         }
 
-        // Recalculate ETA based on total daily work vs anchor goal
         const etaEl = document.getElementById("eta-text");
         if (dailyDiff >= 0) {
           setText(etaEl, "Daily Goal Reached");
@@ -4586,9 +3976,6 @@
           etaEl.style.color = "var(--text-muted)";
         }
 
-        // --- NOTIFICATIONS ---
-
-        // Dispatch alert only when the DAILY total reaches the Anchor Goal
         if (
           totalWorkToday >= anchorGoalSec &&
           !state.goalNotified &&
@@ -4616,7 +4003,7 @@
        * =========================================================================*/
 
       /**
-       * Gathers high-frequency suggestion phrases from historic notes to speed up entry inputs.
+       * Gathers high-frequency suggestion phrases from historic notes.
        */
       function populateNoteSuggestions() {
         const logs = getLogs();
@@ -4632,9 +4019,10 @@
       }
 
       /**
-       * Initializes log validation filters (prevents submission under 60 seconds).
+       * Initializes log validation filters.
        */
       function openSubmitModal() {
+        accumulateCurrentDelta();
         const wSec = Math.floor(getCurrentWorkSeconds());
         const bSec = Math.floor(getCurrentBreakSeconds());
         if (wSec <= 0) return;
@@ -4686,13 +4074,9 @@
 
       /**
        * Serializes session accumulation into storage shift logs.
-       *
-       * @param {Event} e - DOM event target.
-       * @param {string} forceNotes - Task notes comments.
-       * @param {string} overrideDate - Forced MM/DD/YY date bounds mapping.
        */
       function executeSubmit(e, forceNotes = "", overrideDate = null) {
-        commitCrashRecoveryTime();
+        accumulateCurrentDelta();
         const workSeconds = pendingSubmitData
           ? pendingSubmitData.workSec
           : Math.floor(state.workAccumulated);
@@ -4738,10 +4122,8 @@
         logs.unshift(entry);
         saveLogs(logs);
         resetSession();
-        renderLogbook();
-        renderInsights();
+        // Removed synchronous rendering calls to let background Web Worker callback handle updates safely
 
-        // Pop Undo Toast banner for 7 seconds
         const toast = document.getElementById("undo-toast");
         toast.style.bottom = "30px";
         clearTimeout(undoTimeout);
@@ -4776,16 +4158,25 @@
 
       /**
        * Pauses active timers and locks application under Inactivity mode if thresholds pass.
-       * @param {number} timeOfIdle - Epoch timestamp when state went idle.
        */
       function triggerIdleLock(timeOfIdle) {
-        commitCrashRecoveryTime(timeOfIdle);
+        const deltaMs = timeOfIdle - lastTickTime;
+        if (deltaMs > 0) {
+          if (!state.idleLock && state.currentMode !== null) {
+            const deltaSec = deltaMs / 1000;
+            if (state.currentMode === "work") {
+              state.workAccumulated += deltaSec;
+            } else if (state.currentMode === "break") {
+              state.breakAccumulated += deltaSec;
+            }
+          }
+        }
+
         state.preIdleMode = state.currentMode;
         state.currentMode = null;
-        state.workStartTime = null;
-        state.breakStartTime = null;
         state.idleStart = timeOfIdle;
         state.idleLock = true;
+        lastTickTime = timeOfIdle; // Synchronize tick anchor with idle onset
         saveState();
         renderStaticUI();
         renderTimersOnly(new Date(timeOfIdle));
@@ -4796,7 +4187,7 @@
        * @param {string} choice - 'work' or 'break' mapping target.
        */
       function resolveIdle(choice) {
-        const now = getTrueTime();
+        const now = Date.now();
         const idleDurationSec = (now - state.idleStart) / 1000;
         if (choice === "work") {
           state.workAccumulated += idleDurationSec;
@@ -4811,6 +4202,7 @@
         state.preIdleMode = null;
         lastActivity = now;
         state.lastActivity = now;
+        lastTickTime = now; // Recalibrate high-frequency accumulation anchor
         saveState();
         document.getElementById("idle-modal").style.display = "none";
         switchMode("work");
@@ -4824,17 +4216,16 @@
           workAccumulated: 0,
           breakAccumulated: 0,
           currentMode: null,
-          workStartTime: null,
-          breakStartTime: null,
           loginTimestamp: null,
           activeDate: getPSTDate(),
           idleLock: false,
           idleStart: null,
           preIdleMode: null,
           goalNotified: false,
-          lastActivity: getTrueTime(),
+          lastActivity: Date.now(),
         };
-        lastActivity = getTrueTime();
+        lastActivity = Date.now();
+        lastTickTime = Date.now(); // Recalibrate high-frequency accumulation anchor
         saveState();
         DOM.submitModal.style.display = "none";
         DOM.ghostModal.style.display = "none";
@@ -4867,37 +4258,34 @@
           ? `<span style="font-size: 0.5rem; color: var(--text-muted); border: 1px solid var(--border-main); padding: 1px 4px; border-radius: 4px; margin-left: 8px; font-weight: 400; opacity: 0.7;">Weekend</span>`
           : "";
 
-        // Calculate friendly delta dynamically to maintain full database backward compatibility
         const rawDeltaSec = Math.abs(log.workSec - (log.dayGoal || 8 * 3600));
         const friendlyDiff = formatFriendlyDuration(rawDeltaSec, "0m");
         const selectedClass = isSelected ? " kb-selected" : "";
 
         return `
-        <div class="log-row${selectedClass}">
-            <!-- TOP ROW -->
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div style="display: flex; align-items: center;">
-                    <strong style="font-size: 0.8rem; letter-spacing: -0.02em;">${log.displayDate}</strong>
-                    <span class="font-mono" style="font-size: 0.65rem; color: var(--text-muted); margin-left: 8px;">${log.login} - ${log.logout}</span>
-                    ${weekendBadge}
-                </div>
-                <span class="tag ${log.status === "OVER" ? "tag-over" : "tag-under"}" style="padding: 2px 6px; font-size: 0.6rem;">${displayStatus}: ${friendlyDiff}</span>
+    <div class="log-row${selectedClass}">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center;">
+                <strong style="font-size: var(--text-sm); letter-spacing: -0.02em;">${log.displayDate}</strong>
+                <span class="font-mono" style="font-size: var(--text-xs); color: var(--text-muted); margin-left: var(--space-2);">${log.login} - ${log.logout}</span>
+                ${weekendBadge}
             </div>
-            
-            <!-- BOTTOM ROW -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
-                <div class="font-mono" style="display: flex; gap: 12px; font-size: 0.75rem;">
-                    <span style="display: inline-block; min-width: 75px;"><span style="color: var(--accent-work); font-weight: bold;">W:</span> ${formatFriendlyDuration(log.workSec)}</span>
-                    <span style="display: inline-block; min-width: 65px;"><span style="color: var(--accent-break); font-weight: bold;">B:</span> ${formatFriendlyDuration(log.breakSec)}</span>
-                </div>
-                <div class="icon-actions" style="gap: 4px;">
-                    <button class="${noteIconClass}" ${noteBtnAttr} style="padding: 4px; width: 28px; height: 28px;">${SVGs.note}</button>
-                    <button title="Copy Log" class="icon-btn" data-action="copy" data-index="${index}" style="padding: 4px; width: 28px; height: 28px;">${SVGs.copy}</button>
-                    <button title="Edit Times" class="icon-btn" data-action="edit" data-index="${index}" style="padding: 4px; width: 28px; height: 28px;">${SVGs.edit}</button>
-                    <button title="Delete Shift" class="icon-btn danger-text" data-action="delete" data-index="${index}" style="padding: 4px; width: 28px; height: 28px;">${SVGs.trash}</button>
-                </div>
+            <span class="tag ${log.status === "OVER" ? "tag-over" : "tag-under"}">${displayStatus}: ${friendlyDiff}</span>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-1);">
+            <div class="font-mono" style="display: flex; gap: var(--space-3); font-size: var(--text-xs);">
+                <span style="display: inline-block; min-width: 75px;"><span style="color: var(--accent-work); font-weight: bold;">W:</span> ${formatFriendlyDuration(log.workSec)}</span>
+                <span style="display: inline-block; min-width: 65px;"><span style="color: var(--accent-break); font-weight: bold;">B:</span> ${formatFriendlyDuration(log.breakSec)}</span>
             </div>
-        </div>`;
+            <div class="icon-actions">
+                <button class="${noteIconClass}" ${noteBtnAttr}>${SVGs.note}</button>
+                <button title="Copy Log" class="icon-btn" data-action="copy" data-index="${index}">${SVGs.copy}</button>
+                <button title="Edit Times" class="icon-btn" data-action="edit" data-index="${index}">${SVGs.edit}</button>
+                <button title="Delete Shift" class="icon-btn danger-text" data-action="delete" data-index="${index}">${SVGs.trash}</button>
+            </div>
+        </div>
+    </div>`;
       }
 
       // Delegated actions dispatcher inside scrolling logs area
@@ -4922,9 +4310,6 @@
       /**
        * Changes active filtering badge highlight flags on advanced filters toggle.
        */
-      /**
-       * Changes active filtering badge highlight flags on advanced filters toggle.
-       */
       function updateFilterIconState() {
         const timeFilter = DOM.filterTime.value !== "ALL";
         const statusFilter = DOM.filterStatus.value !== "ALL";
@@ -4933,7 +4318,6 @@
         const dateEnd = document.getElementById("filter-date-end").value !== "";
         const hoursFilter = DOM.filterHoursOp.value !== "ALL";
 
-        // Calculate active count
         let activeCount = 0;
         if (timeFilter) activeCount++;
         if (statusFilter) activeCount++;
@@ -4944,39 +4328,38 @@
 
         const btn = document.getElementById("filter-toggle-btn");
 
-        // Update toggle button text & style with active count
         if (activeCount > 0) {
           btn.classList.add("filter-active");
           btn.innerHTML = `
-          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" width="18" height="18">
-            <line x1="4" y1="21" x2="4" y2="14"></line>
-            <line x1="4" y1="10" x2="4" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12" y2="3"></line>
-            <line x1="20" y1="21" x2="20" y2="16"></line>
-            <line x1="20" y1="12" x2="20" y2="3"></line>
-            <line x1="1" y1="14" x2="7" y2="14"></line>
-            <line x1="9" y1="8" x2="15" y2="8"></line>
-            <line x1="17" y1="16" x2="23" y2="16"></line>
-          </svg>
-          Filters (${activeCount})
-        `;
+      <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" width="18" height="18">
+        <line x1="4" y1="21" x2="4" y2="14"></line>
+        <line x1="4" y1="10" x2="4" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12" y2="3"></line>
+        <line x1="20" y1="21" x2="20" y2="16"></line>
+        <line x1="20" y1="12" x2="20" y2="3"></line>
+        <line x1="1" y1="14" x2="7" y2="14"></line>
+        <line x1="9" y1="8" x2="15" y2="8"></line>
+        <line x1="17" y1="16" x2="23" y2="16"></line>
+      </svg>
+      Filters (${activeCount})
+    `;
         } else {
           btn.classList.remove("filter-active");
           btn.innerHTML = `
-          <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" width="18" height="18">
-            <line x1="4" y1="21" x2="4" y2="14"></line>
-            <line x1="4" y1="10" x2="4" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="12"></line>
-            <line x1="12" y1="8" x2="12" y2="3"></line>
-            <line x1="20" y1="21" x2="20" y2="16"></line>
-            <line x1="20" y1="12" x2="20" y2="3"></line>
-            <line x1="1" y1="14" x2="7" y2="14"></line>
-            <line x1="9" y1="8" x2="15" y2="8"></line>
-            <line x1="17" y1="16" x2="23" y2="16"></line>
-          </svg>
-          Filters
-        `;
+      <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" width="18" height="18">
+        <line x1="4" y1="21" x2="4" y2="14"></line>
+        <line x1="4" y1="10" x2="4" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12" y2="3"></line>
+        <line x1="20" y1="21" x2="20" y2="16"></line>
+        <line x1="20" y1="12" x2="20" y2="3"></line>
+        <line x1="1" y1="14" x2="7" y2="14"></line>
+        <line x1="9" y1="8" x2="15" y2="8"></line>
+        <line x1="17" y1="16" x2="23" y2="16"></line>
+      </svg>
+      Filters
+    `;
         }
 
         DOM.filterHoursVal.disabled = DOM.filterHoursOp.value === "ALL";
@@ -4994,38 +4377,32 @@
         container.innerHTML = "";
         const chips = [];
 
-        // 1. Time filter
         if (DOM.filterTime.value !== "ALL") {
           const timeLabel = DOM.filterTime.options[DOM.filterTime.selectedIndex].text;
           chips.push({ id: "time", label: `Time: ${timeLabel}` });
         }
 
-        // 2. Status filter
         if (DOM.filterStatus.value !== "ALL") {
           const statusLabel = DOM.filterStatus.options[DOM.filterStatus.selectedIndex].text;
           chips.push({ id: "status", label: `Status: ${statusLabel}` });
         }
 
-        // 4. Date start
         const dateStart = document.getElementById("filter-date-start").value;
         if (dateStart) {
           chips.push({ id: "date-start", label: `From: ${dateStart}` });
         }
 
-        // 5. Date end
         const dateEnd = document.getElementById("filter-date-end").value;
         if (dateEnd) {
           chips.push({ id: "date-end", label: `To: ${dateEnd}` });
         }
 
-        // 6. Hours Filter
         if (DOM.filterHoursOp.value !== "ALL") {
           const hoursOpLabel = DOM.filterHoursOp.options[DOM.filterHoursOp.selectedIndex].text;
           const hoursVal = DOM.filterHoursVal.value || "0";
           chips.push({ id: "hours", label: `Hours: ${hoursOpLabel} ${hoursVal}h` });
         }
 
-        // 7. Notes checkbox
         if (DOM.filterNotes.checked) {
           chips.push({ id: "notes", label: "Has Notes" });
         }
@@ -5039,11 +4416,11 @@
         container.innerHTML = chips
           .map(
             (c) => `
-        <span class="filter-chip">
-          ${escapeHTML(c.label)}
-          <span class="filter-chip-remove" onclick="clearSingleFilter('${c.id}')">✕</span>
-        </span>
-      `,
+    <span class="filter-chip">
+      ${escapeHTML(c.label)}
+      <span class="filter-chip-remove" onclick="clearSingleFilter('${c.id}')">✕</span>
+    </span>
+  `,
           )
           .join("");
       }
@@ -5108,7 +4485,6 @@
           name: cleanName,
           time: DOM.filterTime.value,
           status: DOM.filterStatus.value,
-
           dateStart: document.getElementById("filter-date-start").value,
           dateEnd: document.getElementById("filter-date-end").value,
           hoursOp: DOM.filterHoursOp.value,
@@ -5155,7 +4531,6 @@
 
         let html = `<option value="">Saved Views...</option>`;
 
-        // Seed initial custom views if empty
         if (views.length === 0) {
           views.push({
             name: "Overtime Shifts",
@@ -5203,7 +4578,6 @@
         if (view) {
           DOM.filterTime.value = view.time || "ALL";
           DOM.filterStatus.value = view.status || "ALL";
-
           document.getElementById("filter-date-start").value = view.dateStart || "";
           document.getElementById("filter-date-end").value = view.dateEnd || "";
           DOM.filterHoursOp.value = view.hoursOp || "ALL";
@@ -5222,7 +4596,6 @@
         const activeFilters = {
           time: DOM.filterTime.value,
           status: DOM.filterStatus.value,
-
           dateStart: document.getElementById("filter-date-start").value,
           dateEnd: document.getElementById("filter-date-end").value,
           hoursOp: DOM.filterHoursOp.value,
@@ -5240,7 +4613,6 @@
             const pref = JSON.parse(saved);
             DOM.filterTime.value = pref.time || "ALL";
             DOM.filterStatus.value = pref.status || "ALL";
-
             document.getElementById("filter-date-start").value = pref.dateStart || "";
             document.getElementById("filter-date-end").value = pref.dateEnd || "";
             DOM.filterHoursOp.value = pref.hoursOp || "ALL";
@@ -5259,8 +4631,7 @@
       }
 
       /**
-       * Returns logs array filtered by user preferences. Result is memoized and only
-       * recomputed when filter state or underlying data changes.
+       * Returns logs array filtered by user preferences.
        * @returns {Array} Filtered list.
        */
       function getFilteredLogs() {
@@ -5273,7 +4644,6 @@
         const hoursOp = DOM.filterHoursOp.value;
         const hoursVal = parseFloat(DOM.filterHoursVal.value) || 0;
 
-        // Fast path: no filters active
         if (
           timeFilter === "ALL" &&
           status === "ALL" &&
@@ -5285,7 +4655,6 @@
           return logs;
         }
 
-        // Build a cache key from current filter state + log count (length is a cheap proxy for data change)
         const cacheKey = `${timeFilter}|${status}|${hasNotes}|${dateStartVal}|${dateEndVal}|${hoursOp}|${hoursVal}|${logs.length}`;
         if (filterCache && filterCacheKey === cacheKey) return filterCache;
 
@@ -5332,7 +4701,6 @@
         return result;
       }
 
-      // Performance window listener bound to view port resize adjustments
       window.addEventListener(
         "resize",
         debounce(() => {
@@ -5350,7 +4718,7 @@
       });
 
       /**
-       * Renders virtual elements visible in active scroll windows. Prevents excessive DOM nodes creation.
+       * Renders virtual elements visible in active scroll windows.
        */
       function renderVirtualVisibleItems() {
         if (virtualScrollLogs.length === 0) return;
@@ -5366,7 +4734,6 @@
           Math.ceil((scrollTop + viewportHeight) / itemHeight) + overscan,
         );
 
-        // Skip DOM rebuild if the visible range hasn't changed
         if (startIndex === lastVirtualStart && endIndex === lastVirtualEnd) return;
         lastVirtualStart = startIndex;
         lastVirtualEnd = endIndex;
@@ -5376,7 +4743,6 @@
           const log = virtualScrollLogs[i];
           const top = i * itemHeight;
           const isSelected = i === selectedLogIdx;
-          // Optimization: Pre-assigned indexes avoid O(N) linear array iterations
           const rowHtml = generateLogRow(log, log._idx, isSelected);
           html += rowHtml.replace(/(<div class="log-row[^>]*)>/, `$1 style="top: ${top}px;">`);
         }
@@ -5389,8 +4755,8 @@
       function renderLogbook() {
         updateFilterIconState();
         virtualScrollLogs = getFilteredLogs();
-        selectedLogIdx = -1; // Clear keyboard selection on data/filter change
-        lastVirtualStart = -1; // Force re-render after data/filter change
+        selectedLogIdx = -1;
+        lastVirtualStart = -1;
         lastVirtualEnd = -1;
         const itemHeight = getDynamicItemHeight();
         const countDisplay = document.getElementById("log-count-display");
@@ -5398,7 +4764,6 @@
           const totalLogsCount = getLogs().length;
           const filteredCount = virtualScrollLogs.length;
 
-          // Determine if filters are active
           const timeFilter = DOM.filterTime.value !== "ALL";
           const statusFilter = DOM.filterStatus.value !== "ALL";
           const notesFilter = DOM.filterNotes.checked;
@@ -5418,16 +4783,16 @@
         if (virtualScrollLogs.length === 0) {
           DOM.logContainer.style.height = "auto";
           DOM.logContainer.innerHTML = `
-          <div style="text-align:center; padding: 60px 20px; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 10px;">
-            <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" stroke-width="1.5" fill="none" style="opacity: 0.5;">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            <span style="font-size: 0.85rem; font-weight: 600;">No logs found</span>
-            <span style="font-size: 0.75rem; opacity: 0.7;">Adjust your filters or log some time!</span>
-          </div>`;
+      <div style="text-align:center; padding: 60px 20px; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        <svg viewBox="0 0 24 24" width="40" height="40" stroke="currentColor" stroke-width="1.5" fill="none" style="opacity: 0.5;">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <span style="font-size: 0.85rem; font-weight: 600;">No logs found</span>
+        <span style="font-size: 0.75rem; opacity: 0.7;">Adjust your filters or log some time!</span>
+      </div>`;
         } else {
           DOM.logContainer.style.height = `${virtualScrollLogs.length * itemHeight}px`;
           renderVirtualVisibleItems();
@@ -5435,12 +4800,11 @@
       }
 
       /*==========================================================================
-       * 14. DATA ANALYTICS & WEEKLY PERFORMANCE CHARTS (INSIGHTS)
+       * 14. DATA MIGRATIONS & BACKUP UTILITIES (CSV/JSON/TEXT)
        * =========================================================================*/
 
       /**
-       * Compiles weekly data aggregates. Computes daily goals, overtime margins,
-       * paces, and paints day segments.
+       * Compiles weekly data aggregates.
        */
       function renderInsights() {
         const y = displayBaseDate.getFullYear();
@@ -5455,7 +4819,6 @@
         const weekStartMs = mondayUTC.getTime();
         const todayStr = getPSTDate();
 
-        // Skip full re-render if week, today, and data are unchanged
         const iKey = `${weekStartMs}|${todayStr}|${dataVersion}`;
         if (iKey === insightsCacheKey) return;
         insightsCacheKey = iKey;
@@ -5492,19 +4855,21 @@
           `Week of ${shortMonths[mondayUTC.getUTCMonth()]} ${mondayUTC.getUTCDate()}, ${mondayUTC.getUTCFullYear()}`,
         );
 
-        // Fetch leave dates list
         const leaveDates = typeof getLeaveDates === "function" ? getLeaveDates() : [];
         const isVacationDate = (dStr) => leaveDates.includes(dStr);
 
-        // Calculate leave days count for Mon-Fri in this week
         let numLeaveDaysMonFri = 0;
         const weekDateChecker = new Date(mondayUTC);
         for (let idx = 0; idx < 5; idx++) {
           weekDateChecker.setTime(mondayUTC.getTime());
           weekDateChecker.setUTCDate(mondayUTC.getUTCDate() + idx);
-          const checkerStr = `${String(weekDateChecker.getUTCMonth() + 1).padStart(2, "0")}/${String(
-            weekDateChecker.getUTCDate(),
-          ).padStart(2, "0")}/${weekDateChecker.getUTCFullYear().toString().slice(-2)}`;
+          const checkerStr = `${String(weekDateChecker.getUTCMonth() + 1).padStart(
+            2,
+            "0",
+          )}/${String(weekDateChecker.getUTCDate()).padStart(
+            2,
+            "0",
+          )}/${weekDateChecker.getUTCFullYear().toString().slice(-2)}`;
           if (isVacationDate(checkerStr)) {
             numLeaveDaysMonFri++;
           }
@@ -5514,8 +4879,8 @@
         const adjustedWeeklyGoalSec = Math.max(0, 40 * 3600 - leaveDaysSec);
         const adjustedWeeklyGoalHrs = adjustedWeeklyGoalSec / 3600;
 
-        let totalW_MonFri = 0; // Cumulative Monday-Friday work time
-        let totalB_AllWeek = 0; // Total break time
+        let totalW_MonFri = 0;
+        let totalB_AllWeek = 0;
         let breakdownHTML = "";
         const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -5549,25 +4914,26 @@
           if (isVacation) {
             const leaveBadge = `<span style="font-size: 0.55rem; color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.3); padding: 2px 6px; border-radius: 4px; background: rgba(74, 222, 128, 0.05); margin-left: 8px; font-weight: 700; letter-spacing: 0.2px; white-space: nowrap;">On Leave</span>`;
             breakdownHTML += `
-          <div class="breakdown-row" style="flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 12px; ${rowStyle}">
-            <div style="display: flex; align-items: center; white-space: nowrap; overflow: hidden;">
-              <span style="font-weight: ${isToday ? "700" : "400"}; color: ${
-                isToday ? "var(--text-main)" : "var(--text-muted)"
-              }; font-size: 0.8rem;">
-                ${dayNames[dayOfWeekIndex]} <span style="opacity: 0.5; font-size: 0.7rem; font-weight: 400;">(${String(
-                  reusableDate.getUTCMonth() + 1,
-                ).padStart(2, "0")}/${String(reusableDate.getUTCDate()).padStart(2, "0")})</span>
-              </span>
-              ${leaveBadge}
-            </div>
-            <div class="font-mono" style="display: flex; gap: 12px; font-size: 0.75rem; flex-shrink: 0; color: #4ade80; font-weight: 600;">
-              <span>No Hours expected</span>
-            </div>
-          </div>`;
+      <div class="breakdown-row" style="flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 12px; ${rowStyle}">
+        <div style="display: flex; align-items: center; white-space: nowrap; overflow: hidden;">
+          <span style="font-weight: ${isToday ? "700" : "400"}; color: ${
+            isToday ? "var(--text-main)" : "var(--text-muted)"
+          }; font-size: 0.8rem;">
+            ${dayNames[dayOfWeekIndex]} <span style="opacity: 0.5; font-size: 0.7rem; font-weight: 400;">(${String(
+              reusableDate.getUTCMonth() + 1,
+            ).padStart(2, "0")}/${String(reusableDate.getUTCDate()).padStart(2, "0")})</span>
+          </span>
+          ${leaveBadge}
+        </div>
+        <div class="font-mono" style="display: flex; gap: 12px; font-size: 0.75rem; flex-shrink: 0; color: #4ade80; font-weight: 600;">
+          <span>No Hours expected</span>
+        </div>
+      </div>`;
           } else {
             let statusBadge = "";
             if (dayW > 0 || dayB > 0) {
-              const isOver = dayW >= dailyGoalSec;
+              const anchorGoal = dailyAnchorMap.get(dateStr) || dailyGoalSec;
+              const isOver = dayW >= anchorGoal;
               const badgeColor = isOver ? "var(--accent-work)" : "var(--accent-warning)";
               statusBadge = `<span style="border: 1px solid ${badgeColor}; color: ${badgeColor}; border-radius: 4px; padding: 1px 3px; font-size: 0.5rem; margin-left: 5px; font-weight: 800; line-height: 1;">${
                 isOver ? "O" : "U"
@@ -5580,32 +4946,31 @@
 
             if (!isWeekend || dayW > 0 || dayB > 0) {
               breakdownHTML += `
-            <div class="breakdown-row" style="flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 12px; ${rowStyle}">
-              <div style="display: flex; align-items: center; white-space: nowrap; overflow: hidden;">
-                <span style="font-weight: ${isToday ? "700" : "400"}; color: ${
-                  isToday ? "var(--text-main)" : "var(--text-muted)"
-                }; font-size: 0.8rem;">
-                  ${dayNames[dayOfWeekIndex]} <span style="opacity: 0.5; font-size: 0.7rem; font-weight: 400;">(${String(
-                    reusableDate.getUTCMonth() + 1,
-                  ).padStart(2, "0")}/${String(reusableDate.getUTCDate()).padStart(2, "0")})</span>
-                </span>
-                ${statusBadge}
-                ${weekendBadge}
-              </div>
-              <div class="font-mono" style="display: flex; gap: 12px; font-size: 0.75rem; flex-shrink: 0; color: var(--text-main);">
-                <span style="display: inline-block; min-width: 75px;">
-                  <span style="color:var(--accent-work); font-weight: 700;">W:</span> ${formatFriendlyDuration(dayW)}
-                </span>
-                <span style="display: inline-block; min-width: 65px;">
-                  <span style="color:var(--accent-break); font-weight: 700;">B:</span> ${formatFriendlyDuration(dayB)}
-                </span>
-              </div>
-            </div>`;
+        <div class="breakdown-row" style="flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 12px; ${rowStyle}">
+          <div style="display: flex; align-items: center; white-space: nowrap; overflow: hidden;">
+            <span style="font-weight: ${isToday ? "700" : "400"}; color: ${
+              isToday ? "var(--text-main)" : "var(--text-muted)"
+            }; font-size: 0.8rem;">
+              ${dayNames[dayOfWeekIndex]} <span style="opacity: 0.5; font-size: 0.7rem; font-weight: 400;">(${String(
+                reusableDate.getUTCMonth() + 1,
+              ).padStart(2, "0")}/${String(reusableDate.getUTCDate()).padStart(2, "0")})</span>
+            </span>
+            ${statusBadge}
+            ${weekendBadge}
+          </div>
+          <div class="font-mono" style="display: flex; gap: 12px; font-size: 0.75rem; flex-shrink: 0; color: var(--text-main);">
+            <span style="display: inline-block; min-width: 75px;">
+              <span style="color:var(--accent-work); font-weight: 700;">W:</span> ${formatFriendlyDuration(dayW)}
+            </span>
+            <span style="display: inline-block; min-width: 65px;">
+              <span style="color:var(--accent-break); font-weight: 700;">B:</span> ${formatFriendlyDuration(dayB)}
+            </span>
+          </div>
+        </div>`;
             }
           }
         }
 
-        // Progress Card Visual Calculations
         const progressCard = document.getElementById("weekly-progress-card");
         const summaryText = document.getElementById("weekly-summary-text");
         const percentText = document.getElementById("weekly-progress-percent");
@@ -5633,7 +4998,6 @@
           }
         });
 
-        // Update segment bars (Monday through Friday)
         for (let i = 0; i < 5; i++) {
           const dayDate = new Date(mondayUTC);
           dayDate.setUTCDate(mondayUTC.getUTCDate() + i);
@@ -5644,7 +5008,7 @@
 
           const isToday = dateStr === todayStr;
           if (isToday) {
-            dayWorkSeconds += getCurrentWorkSeconds(getTrueTime());
+            dayWorkSeconds += getCurrentWorkSeconds();
           }
 
           const isVacation = isVacationDate(dateStr);
@@ -5668,7 +5032,6 @@
                 labelEl.style.opacity = "0.7";
               }
 
-              // --- DAILY ANCHOR LOGIC ---
               const anchorGoal = dailyAnchorMap.get(dateStr);
               const denominator = anchorGoal || (isToday ? dailyGoalSec : 28800);
 
@@ -5692,7 +5055,7 @@
         if (weekStartMs === currentWeekStartMs) {
           const nowDayIdx = nowDay === 0 ? 7 : nowDay;
           if (nowDayIdx >= 1 && nowDayIdx <= 5) {
-            totalW_MonFri += getCurrentWorkSeconds(getTrueTime());
+            totalW_MonFri += getCurrentWorkSeconds();
           }
         }
 
@@ -5712,7 +5075,6 @@
           progressCard.classList.remove("goal-reached");
         }
 
-        // Dynamic daily pace calculation message
         if (weekMsg) {
           const remainingSec = Math.max(0, adjustedWeeklyGoalSec - totalW_MonFri);
 
@@ -5727,9 +5089,13 @@
                 for (let d = todayIdx; d <= 5; d++) {
                   const checkDate = new Date(mondayUTC);
                   checkDate.setUTCDate(mondayUTC.getUTCDate() + (d - 1));
-                  const checkDateStr = `${String(checkDate.getUTCMonth() + 1).padStart(2, "0")}/${String(
-                    checkDate.getUTCDate(),
-                  ).padStart(2, "0")}/${checkDate.getUTCFullYear().toString().slice(-2)}`;
+                  const checkDateStr = `${String(checkDate.getUTCMonth() + 1).padStart(
+                    2,
+                    "0",
+                  )}/${String(checkDate.getUTCDate()).padStart(
+                    2,
+                    "0",
+                  )}/${checkDate.getUTCFullYear().toString().slice(-2)}`;
                   if (!isVacationDate(checkDateStr)) {
                     activeDaysRemaining++;
                   }
@@ -5756,7 +5122,10 @@
               weekMsg.style.color = "var(--text-muted)";
             }
           } else {
-            weekMsg.textContent = `${adjustedWeeklyGoalHrs}h Goal reached! Overtime: ${formatFriendlyDuration(totalW_MonFri - adjustedWeeklyGoalSec, "0m")}`;
+            weekMsg.textContent = `${adjustedWeeklyGoalHrs}h Goal reached! Overtime: ${formatFriendlyDuration(
+              totalW_MonFri - adjustedWeeklyGoalSec,
+              "0m",
+            )}`;
             weekMsg.style.color = "var(--accent-work)";
           }
         }
@@ -5851,14 +5220,8 @@
           log.epochMs = Date.UTC(parseInt(fullYear), parseInt(m) - 1, parseInt(d));
           log.notes = newNotes;
           log.searchStr = `${log.displayDate} ${log.date} ${log.notes || ""}`.toLowerCase();
-          // log is a reference into the logs array — mutation is sufficient, no reassignment needed
           saveLogs(logs);
-          // Targeted refresh: list structure unchanged, only row content changed
-          virtualScrollLogs = getFilteredLogs();
-          lastVirtualStart = -1;
-          lastVirtualEnd = -1;
-          renderVirtualVisibleItems();
-          renderInsights();
+          // Removed synchronous rendering calls to let background Web Worker callback handle updates safely
           closeEditModal();
           showAppToast("Shift updated successfully.");
         } else {
@@ -5879,8 +5242,7 @@
             if (pos === -1) return;
             logs.splice(pos, 1);
             saveLogs(logs);
-            renderLogbook();
-            renderInsights();
+            // Removed synchronous rendering calls to let background Web Worker callback handle updates safely
             showAppToast("Shift deleted.");
           },
           true,
@@ -5995,7 +5357,7 @@
       }
 
       /**
-       * Copies a detailed representation text description of a single shift onto clipboards.
+       * Copies a detailed representation text description of a single shift.
        */
       function copySingleShift(index, btnElement) {
         const log = getLogs()[index];
@@ -6046,12 +5408,9 @@
           .join("\n\n");
 
         navigator.clipboard.writeText(txt).then(() => {
-          // DYNAMIC TOAST LOGIC:
           if (filteredLogs.length === allLogs.length) {
-            // No filters are active (or filters happen to include everything)
             showAppToast(`Copied all ${filteredLogs.length} logs to clipboard`);
           } else {
-            // A filter is clearly restricting the list
             showAppToast(`Copied ${filteredLogs.length} filtered logs`);
           }
         });
@@ -6081,8 +5440,7 @@
        * =========================================================================*/
 
       /**
-       * Prevents overnight shift breakups. If a user begins working at 11 PM Monday
-       * and logs out at 4 AM Tuesday, the entire shift stays mapped safely inside Monday.
+       * Prevents overnight shift breakups.
        */
       function checkMidnightReset(now = new Date(getTrueTime())) {
         const currentDatePST = pstDateFormatter.format(now);
@@ -6094,7 +5452,6 @@
         }
 
         if (state.activeDate !== currentDatePST) {
-          // Flipping tracking bounds only if active timers are not running
           if (state.currentMode === null && state.workAccumulated < 60) {
             state.activeDate = currentDatePST;
             saveState();
@@ -6102,20 +5459,22 @@
         }
       }
 
+      let saveTicks = 0;
+
       /**
        * Central master timing execution cycle running every single second.
        */
       function tick() {
-        const now = new Date(getTrueTime());
-        const nowMs = now.getTime();
-
-        // Halt processing cycles if current master tab lock modal overlay is active
-        if (document.getElementById("tab-conflict-modal").style.display === "flex") {
-          setTimeout(tick, 1000 - (nowMs % 1000));
+        if (isTabConflict) {
+          setTimeout(tick, 1000);
           return;
         }
 
-        // Idle lockout trigger check
+        accumulateCurrentDelta();
+
+        const now = new Date();
+        const nowMs = now.getTime();
+
         if (!state.idleLock && state.currentMode !== null) {
           if (nowMs - lastActivity > IDLE_THRESHOLD) {
             triggerIdleLock(lastActivity);
@@ -6123,7 +5482,6 @@
         }
 
         if (!document.hidden) {
-          // Repaint idle duration displays
           if (state.idleLock) {
             document.getElementById("idle-modal").style.display = "flex";
             setText(
@@ -6143,11 +5501,13 @@
 
         checkMidnightReset(now);
 
-        // Loop timing synchronization
+        if (++saveTicks % 5 === 0) {
+          saveState();
+        }
+
         setTimeout(tick, 1000 - (nowMs % 1000));
       }
 
-      // Repaint immediately when user returns to tab — avoids 1s stale display
       document.addEventListener("visibilitychange", () => {
         if (!document.hidden) renderTimersOnly();
       });
@@ -6158,7 +5518,6 @@
       window.addEventListener("keydown", (e) => {
         if (["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)) return;
 
-        // Spacebar: Toggle Mode
         if (e.code === "Space") {
           e.preventDefault();
           if (state.currentMode === "work") {
@@ -6168,14 +5527,12 @@
           }
         }
 
-        // S key: Trigger Shift submission modal
         if (e.key.toLowerCase() === "s") {
           if (DOM.submitModal.style.display !== "flex") {
             openSubmitModal();
           }
         }
 
-        // Logbook keyboard navigation (ArrowUp/Down/Enter/Delete) — only when logbook tab is visible
         const logbookTab = document.getElementById("tab-logbook");
         if (logbookTab && logbookTab.style.display !== "none" && virtualScrollLogs.length > 0) {
           if (e.key === "ArrowDown" || e.key === "ArrowUp") {
@@ -6185,7 +5542,6 @@
               0,
               Math.min(virtualScrollLogs.length - 1, selectedLogIdx + dir),
             );
-            // Scroll selected row into view
             const itemHeight = getDynamicItemHeight();
             const scrollTop = logbookTab.scrollTop;
             const viewH = logbookTab.clientHeight;
@@ -6212,7 +5568,7 @@
       });
 
       /**
-       * Uses browser Web Audio synthesizer to play a neat 880Hz Sine beep wave on goal achievements.
+       * Plays a 880Hz Sine beep wave on target goal completion.
        */
       function playGoalSound() {
         try {
@@ -6323,8 +5679,7 @@
           logs.sort((a, b) => b.epochMs - a.epochMs);
 
           saveLogs(logs);
-          renderLogbook();
-          renderInsights();
+          // Removed synchronous rendering calls to let background Web Worker callback handle updates safely
 
           closeManualModal();
           showAppToast("Manual shift added successfully.");
@@ -6337,7 +5692,6 @@
        * 20. INITIALIZATION PROCEDURES
        * =========================================================================*/
 
-      // Modal background clicks closing shortcuts
       window.onclick = function (event) {
         if (event.target == DOM.submitModal) closeSubmitModal();
         if (event.target == DOM.noteModal) closeNoteModal();
@@ -6358,7 +5712,6 @@
 
       document.getElementById("import-file").addEventListener("change", importJSON);
 
-      // Goal Hour updates
       const initGoalH = localStorage.getItem(GOAL_H_KEY) || "8";
       const initGoalM = localStorage.getItem(GOAL_M_KEY) || "0";
       DOM.goalHours.value = String(parseInt(initGoalH, 10) || 0).padStart(2, "0");
@@ -6375,7 +5728,6 @@
           "Enter",
         ];
         if (allowed.includes(e.key)) return;
-        // Allow digits, h, m, colon, dot, space
         if (!/[\dhmHM:. ]/.test(e.key)) e.preventDefault();
       };
 
@@ -6401,7 +5753,6 @@
           hh = Math.floor(rawH);
           mm = Math.round((rawH - hh) * 60) + parseInt(naturalMatch[2] || 0, 10);
         } else {
-          // Fallback: strip non-digits and parse based on length (like 159 -> 1h 59m)
           const digits = cleanVal.replace(/\D/g, "");
           if (digits) {
             if (digits.length <= 2) {
@@ -6448,7 +5799,6 @@
         updatePresetHighlights();
       };
 
-      // --- NEW COMBINED PRESET & ADJUSTMENT SYSTEM ---
       function getSavedPresets() {
         const saved = localStorage.getItem(PRESET_VALUES_KEY);
         const defaults = [4, 6];
@@ -6563,11 +5913,11 @@
         let html = "";
         currentLeaves.forEach((date) => {
           html += `
-            <div style="display: flex; justify-content: space-between; align-items: center; background: var(--panel-bg); border: 1px solid var(--border-main); padding: 6px 10px; border-radius: 6px; font-size: 0.8rem; font-family: monospace; color: var(--text-main);">
-              <span>${date}</span>
-              <button style="background: transparent; border: none; color: var(--accent-break); font-weight: bold; cursor: pointer; font-size: 0.85rem; padding: 0 4px; display: flex; align-items: center;" onclick="removeLeaveDate('${date}')" title="Remove Leave">✕</button>
-            </div>
-          `;
+        <div style="display: flex; justify-content: space-between; align-items: center; background: var(--panel-bg); border: 1px solid var(--border-main); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); font-size: var(--text-sm); font-family: var(--font-mono); color: var(--text-main);">
+          <span>${date}</span>
+          <button style="background: transparent; border: none; color: var(--accent-break); font-weight: bold; cursor: pointer; display: flex; align-items: center;" onclick="removeLeaveDate('${date}')" title="Remove Leave">✕</button>
+        </div>
+      `;
         });
         listContainer.innerHTML = html;
       }
@@ -6646,7 +5996,6 @@
           }
         });
 
-        // Live formatting preview tooltip listeners
         const setupDynamicPreview = () => {
           const tooltip = document.getElementById("app-tooltip");
           if (!tooltip) return;
@@ -6780,7 +6129,6 @@
         });
       }
 
-      // Auto-formatting helper for manual and edit time inputs on blur
       function handleTimeInputBlur(e) {
         const input = e.target;
         const val = input.value.trim();
@@ -6795,7 +6143,6 @@
         if (el) el.addEventListener("blur", handleTimeInputBlur);
       });
 
-      // Auto-formatting helper for manual and edit date inputs on blur
       function handleDateInputBlur(e) {
         const input = e.target;
         const val = input.value.trim().toLowerCase();
@@ -6808,7 +6155,6 @@
 
         let finalDateStr = "";
 
-        // 1. Relative Keyword Shortcuts
         if (val === "t" || val === "today" || val === "0") {
           const m = String(nowPST.getMonth() + 1).padStart(2, "0");
           const d = String(nowPST.getDate()).padStart(2, "0");
@@ -6828,9 +6174,7 @@
           const d = String(targetDate.getDate()).padStart(2, "0");
           const y = String(targetDate.getFullYear()).slice(-2);
           finalDateStr = `${m}/${d}/${y}`;
-        }
-        // 2. Partial input with slashes (e.g., 5/18 or 5/18/26)
-        else if (val.includes("/")) {
+        } else if (val.includes("/")) {
           const parts = val.split("/");
           if (parts.length >= 2) {
             const m = String(parseInt(parts[0], 10) || 1).padStart(2, "0");
@@ -6842,9 +6186,7 @@
             }
             finalDateStr = `${m}/${d}/${y}`;
           }
-        }
-        // 3. Digit-only shorthand (e.g., 051826, 0518, or 18)
-        else {
+        } else {
           const digits = val.replace(/\D/g, "");
           if (digits) {
             if (digits.length === 6) {
@@ -6870,7 +6212,6 @@
           let dd = Math.min(31, Math.max(1, parseInt(parts[1], 10)));
           let yy = parts[2];
 
-          // Basic boundary correction for shorter months
           if ([4, 6, 9, 11].includes(mm) && dd > 30) dd = 30;
           if (mm === 2) {
             const fullYear = parseInt("20" + yy, 10);
@@ -6890,7 +6231,6 @@
         if (el) el.addEventListener("blur", handleDateInputBlur);
       });
 
-      // Timezone preferences
       DOM.primaryTz.value = localStorage.getItem(TZ_KEY) || "America/Los_Angeles";
       updateTZLabel();
       DOM.primaryTz.addEventListener("change", () => {
@@ -6900,7 +6240,6 @@
         updateTZLabel();
       });
 
-      // Alert preventing window tabs closing if timer is actively tracking
       window.addEventListener("beforeunload", (e) => {
         if (state.currentMode !== null) {
           const msg = "Timer is still running! Are you sure you want to leave?";
@@ -6909,7 +6248,6 @@
         }
       });
 
-      // Native custom application toast notifier
       function showAppToast(msg) {
         const toast = document.getElementById("app-toast");
         const contentEl = document.getElementById("app-toast-content");
@@ -6925,7 +6263,6 @@
         }, 3000);
       }
 
-      // Modal confirmation dialog builder
       function openConfirmModal(title, desc, callback, isDestructive = true) {
         document.getElementById("confirm-title").textContent = title;
         document.getElementById("confirm-desc").textContent = desc;
@@ -6957,7 +6294,6 @@
         closeConfirmModal();
       });
 
-      // Escape character entities utility
       function escapeHTML(str) {
         if (!str) return "";
         return str.replace(
@@ -6967,7 +6303,6 @@
         );
       }
 
-      // High performance UI execution debouncer
       function debounce(func, wait) {
         let timeout;
         return function (...args) {
@@ -6976,7 +6311,6 @@
         };
       }
 
-      // Swaps between navigation tabs
       function switchTab(target) {
         document.querySelectorAll(".tab-content").forEach((el) => {
           el.style.display = "none";
@@ -6988,18 +6322,20 @@
           targetContent.style.flexDirection = "column";
         } else {
           targetContent.style.display = "block";
+          // Render the logbook on-demand whenever the tab is selected to ensure data is always fresh
+          if (target === "logbook") {
+            renderLogbook();
+          }
         }
         document.querySelector(`.tab-btn[data-target="${target}"]`).classList.add("active");
       }
 
-      // Insights week shifts navigation selector
       function changeWeekOffset(delta) {
         displayBaseDate.setDate(displayBaseDate.getDate() + delta * 7);
         insightsCacheKey = null;
         renderInsights();
       }
 
-      // Toggles advanced filter viewports
       function toggleFilters() {
         const panel = document.getElementById("advanced-filters");
         const btn = document.getElementById("filter-toggle-btn");
@@ -7012,7 +6348,6 @@
         }
       }
 
-      // Resets goal time selectors
       function getGoalSeconds() {
         const h = Math.max(0, parseFloat(DOM.goalHours.value) || 0);
         const m = Math.max(0, parseFloat(DOM.goalMins.value) || 0);
@@ -7020,7 +6355,6 @@
         return total > 0 ? total : 1;
       }
 
-      // Formats numbers representing seconds into HH:MM:SS format strings
       function formatDuration(sec) {
         sec = Math.max(0, Math.floor(sec));
         const h = Math.floor(sec / 3600)
@@ -7035,7 +6369,6 @@
         return `${h}:${m}:${s}`;
       }
 
-      // Parses a time string (HH:MM or HH:MM:SS) into seconds
       function parseTime(str) {
         if (!str) return null;
         const p = str.trim().split(":");
@@ -7047,7 +6380,6 @@
         return null;
       }
 
-      // Formats numbers representing seconds into clean, highly readable short text (e.g. 8h 30m, 45m 30s, or dimmed em-dash placeholder for zero)
       function formatFriendlyDuration(
         sec,
         emptyPlaceholder = '<span style="opacity: 0.25; font-weight: 400;">—</span>',
@@ -7069,60 +6401,18 @@
         }
       }
 
-      /**
-       * Creates the 0-9 strips inside each timer once.
-       */
       function initializeTickers() {
-        const timers = [DOM.workTimer, DOM.breakTimer];
-        timers.forEach((timer) => {
-          timer.innerHTML = ""; // Clear
-          // Pattern: HH:MM:SS (8 slots, including colons)
-          // Indexes: 01 2 34 5 67
-          for (let i = 0; i < 8; i++) {
-            if (i === 2 || i === 5) {
-              const sep = document.createElement("div");
-              sep.className = "timer-separator";
-              sep.textContent = ":";
-              timer.appendChild(sep);
-            } else {
-              const slot = document.createElement("div");
-              slot.className = "digit-slot";
-              const strip = document.createElement("div");
-              strip.className = "digit-strip";
-              for (let n = 0; n <= 9; n++) {
-                const span = document.createElement("span");
-                span.textContent = n;
-                strip.appendChild(span);
-              }
-              slot.appendChild(strip);
-              timer.appendChild(slot);
-            }
-          }
-        });
+        // Unused - sliding tickers are disabled to maintain 0% CPU software rendering
       }
 
-      /**
-       * Updates the translateY of each strip based on the time string (e.g. "01:22:05")
-       */
       function updateTickerDisplay(el, timeStr) {
-        const digitsOnly = timeStr.replace(/:/g, "");
-        const strips = el.querySelectorAll(".digit-strip");
-
-        digitsOnly.split("").forEach((digit, idx) => {
-          const val = parseInt(digit);
-          if (strips[idx]) {
-            // Use exactly -1em per digit value
-            strips[idx].style.transform = `translateY(${val * -1}em)`;
-          }
-        });
+        // Unused - sliding tickers are disabled to maintain 0% CPU software rendering
       }
 
-      // Persists tracking status configuration variables inside browser cache databases
       function saveState() {
         localStorage.setItem(STATE_KEY, JSON.stringify(state));
       }
 
-      // Decodes persisted session attributes on startup
       function loadState() {
         const saved = localStorage.getItem(STATE_KEY);
         if (saved) {
@@ -7130,7 +6420,6 @@
           if (state.lastActivity) lastActivity = state.lastActivity;
           const currentDate = getPSTDate();
 
-          // Submit pending work if calendar dates changed mid-session
           if (state.activeDate && state.activeDate !== currentDate) {
             if (state.workAccumulated > 60) {
               executeSubmit(null, "Auto-submitted (Page Load)", state.activeDate);
@@ -7145,10 +6434,6 @@
        * Launches first execution bootstrap cycle.
        */
       (async function initApp() {
-        fetchTrueTime().then(() => {
-          if (state.currentMode) renderTimersOnly();
-        });
-
         cachedLogs = await loadLogsFromDB();
 
         rebuildWeeklyCache();
@@ -7156,21 +6441,18 @@
         displayBaseDate = getPSTDateObj();
         loadState();
 
-        // Load saved views and restore active filters from preferences
         loadSavedFilterViews();
         loadActiveFilters();
 
         initializeTickers();
         renderStaticUI();
         renderTimersOnly();
-        renderLogbook();
-        renderInsights();
         renderThemeToggle();
         renderPresets();
-        tick();
 
-        // Set up secondary background save task routines (every 5 seconds)
-        setInterval(commitCrashRecoveryTime, 5000);
+        // Synchronize delta tracking anchor on app launch
+        lastTickTime = Date.now();
+        tick();
       })();
     </script>
   </body>
