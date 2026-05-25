@@ -2,7 +2,10 @@
 <html lang="en" data-theme="glass" style="font-size: clamp(14px, 1vw, 20px)">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <meta name="color-scheme" content="dark" />
     <title>Work Hour Tracker</title>
 
@@ -2509,19 +2512,32 @@
         filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.3));
       }
 
-      /* Screen Adaptive Media Queries */
+      /* ==========================================================================
+         RESPONSIVE BREAKPOINTS — INDUSTRY-STANDARD MOBILE-FIRST OVERRIDES
+         ========================================================================== */
+
+      /* ── TABLET  (≤ 900px) ────────────────────────────────────────────────── */
       @media (max-width: 900px) {
+        html {
+          font-size: 16px; /* lock to system default for readability */
+        }
+
         body {
           overflow: auto;
           align-items: flex-start;
+          padding: 12px;
+          -webkit-overflow-scrolling: touch;
         }
 
         .console-panel {
           grid-template-columns: 1fr;
-          padding: 25px;
+          padding: 20px;
           height: auto;
           min-height: auto;
           max-height: none;
+          width: 100%;
+          border-radius: 1rem;
+          gap: 1.5rem;
         }
 
         .main-ui,
@@ -2531,19 +2547,629 @@
 
         .sidebar {
           border-left: none;
+          border-top: 1px solid var(--border-main);
           padding-left: 0;
+          padding-top: 1.5rem;
         }
 
+        /* Status bar — wrap naturally on two rows */
+        .status-bar {
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: flex-start;
+        }
+
+        .status-badge {
+          flex-shrink: 1;
+          min-width: 0;
+        }
+
+        /* Tab content needs explicit height on tablet */
+        .tab-content {
+          max-height: 60vh;
+        }
+
+        /* Sidebar footer: wrap icon grid */
+        .sidebar-footer {
+          flex-wrap: wrap;
+          gap: 12px;
+          justify-content: center;
+        }
+
+        .footer-icons {
+          flex-wrap: wrap;
+          gap: 12px;
+          justify-content: center;
+        }
+
+        /* Modals: constrain to viewport */
+        .modal-container {
+          max-height: 85vh;
+          overflow-y: auto;
+        }
+
+        /* Settings popup repositioning */
+        .idle-popup {
+          position: fixed;
+          bottom: auto;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: min(90vw, 22rem);
+          z-index: 2000;
+        }
+
+        .idle-popup::before {
+          display: none;
+        }
+
+        /* Tab nav auto-size */
+        .tab-nav {
+          margin-right: 0;
+        }
+
+        /* Goal presets: static below badge instead of absolute */
+        .goal-presets {
+          position: fixed;
+          top: auto;
+          bottom: 50%;
+          left: 50%;
+          right: auto;
+          transform: translateX(-50%) translateY(50%);
+          z-index: 200;
+        }
+
+        /* TZ presets: fixed center on tablet */
+        .tz-presets {
+          position: fixed;
+          top: auto;
+          bottom: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(50%);
+          z-index: 200;
+        }
+      }
+
+      /* ── MOBILE  (≤ 600px) ────────────────────────────────────────────────── */
+      @media (max-width: 600px) {
+        body {
+          padding: 6px;
+        }
+
+        .console-panel {
+          padding: 14px;
+          border-radius: 0.75rem;
+          gap: 1.2rem;
+        }
+
+        /* === STATUS BAR === */
         .status-bar {
           flex-direction: column;
-          gap: 15px;
-          align-items: flex-start;
+          gap: 8px;
+          align-items: stretch;
         }
 
-        .sidebar-footer {
+        .status-badge {
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+          height: auto;
+          min-height: var(--header-el-height);
+          padding: 0.5rem 0.75rem;
+        }
+
+        .status-badge.status-time {
+          gap: 6px;
+          justify-content: center;
+        }
+
+        /* Clock divider hidden on mobile – line break via flex wrap */
+        .clock-divider {
+          display: none;
+        }
+
+        .last-seen-status {
+          margin-left: auto;
+        }
+
+        /* Goal + Theme row: full-width horizontal */
+        .status-bar-actions {
+          width: 100%;
+          display: flex !important;
+          gap: 8px !important;
+          align-items: stretch !important;
+        }
+
+        .goal-container {
+          flex: 1;
+        }
+
+        .goal-container .status-badge {
+          width: 100%;
+        }
+
+        .theme-toggle-btn {
+          flex-shrink: 0;
+          width: var(--header-el-height);
+          height: var(--header-el-height);
+        }
+
+        /* === TIMERS === */
+        .timer-val {
+          font-size: clamp(2.4rem, 12vw, 4rem);
+          justify-content: center;
+        }
+
+        #break-timer {
+          font-size: clamp(2rem, 10vw, 3.2rem);
+        }
+
+        .timer-group .label-xs,
+        .timer-group.inverted .label-xs {
+          text-align: center;
+        }
+
+        .timers-wrapper {
+          gap: 1rem;
+          margin: 0.5rem 0;
+        }
+
+        /* Progress text: stack vertically */
+        .progress-centerpiece > .font-mono {
           flex-direction: column;
-          gap: 15px;
+          gap: 2px;
           align-items: center;
+          text-align: center;
+          font-size: 0.7rem !important;
+        }
+
+        /* === ACTION BUTTONS === */
+        .actions {
+          flex-direction: column;
+          gap: 10px;
+          min-height: auto;
+        }
+
+        .actions button {
+          width: 100%;
+          height: 3.2rem;
+          font-size: 0.9rem;
+          min-height: 48px; /* iOS touch target */
+        }
+
+        /* === SIDEBAR === */
+        .tab-content {
+          padding-right: 0;
+        }
+
+        #tab-logbook {
+          max-height: 65vh;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .logbook-controls-header {
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .log-row {
+          padding: 0.5rem 0.6rem;
+        }
+
+        .log-top-left {
+          gap: 6px;
+        }
+
+        .log-bottom-left {
+          flex-wrap: wrap;
+          gap: 6px 10px;
+        }
+
+        .icon-actions {
+          gap: 4px;
+        }
+
+        .icon-btn {
+          padding: 8px; /* Larger touch target */
+        }
+
+        /* Filter drawer: stack rows */
+        .advanced-filters {
+          gap: 8px;
+          padding: 10px 8px;
+        }
+
+        .filter-row {
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+
+        .filter-row > * {
+          min-width: calc(50% - 6px) !important;
+          flex: 1 1 calc(50% - 6px) !important;
+        }
+
+        .filter-hours-group {
+          flex-wrap: wrap !important;
+        }
+
+        /* Stats cards */
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats-alignment-wrapper {
+          min-width: 0;
+          justify-content: flex-start;
+        }
+
+        /* Weekly progress card */
+        .progress-segment {
+          height: 22px; /* Bigger touch/visual target */
+        }
+
+        /* Breakdown rows */
+        .breakdown-row {
+          height: auto;
+          min-height: 48px;
+          padding: 8px 10px;
+        }
+
+        /* Sidebar footer icons */
+        .sidebar-footer {
+          padding-top: 1rem;
+        }
+
+        .footer-icons {
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+
+        .icon-stack {
+          width: auto;
+          min-width: 40px;
+        }
+
+        .sidebar-footer .sq-btn {
+          width: 40px;
+          height: 40px;
+          min-width: 40px;
+          min-height: 40px;
+        }
+
+        .icon-tag {
+          font-size: 9px;
+        }
+
+        .footer-divider {
+          display: none;
+        }
+
+        /* === MODALS === */
+        .modal-overlay {
+          padding: 10px;
+          align-items: flex-end; /* Slide-up sheet pattern on mobile */
+        }
+
+        .modal-container {
+          max-width: 100%;
+          max-height: 90vh;
+          overflow-y: auto;
+          border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+          padding: var(--space-5) var(--space-4);
+        }
+
+        .modal-width-sm,
+        .modal-width-md {
+          max-width: 100% !important;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: var(--space-3);
+        }
+
+        .action-row {
+          flex-direction: column;
+          gap: var(--space-2);
+        }
+
+        .action-row > button {
+          min-height: 48px;
+        }
+
+        /* Toasts: full width, horizontal safe margins */
+        #undo-toast,
+        #sync-toast,
+        #goal-toast,
+        #app-toast {
+          left: 10px;
+          right: 10px;
+          transform: none;
+          width: auto;
+          border-radius: 12px;
+          font-size: 0.8rem;
+        }
+
+        /* Dropdowns inside filter area */
+        select.input-standard,
+        .filter-select {
+          font-size: 16px; /* Prevents iOS zoom on focus */
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        textarea {
+          font-size: 16px; /* Prevents iOS zoom on focus */
+        }
+
+        /* Goal presets and TZ presets: bottom sheet on mobile */
+        .goal-presets,
+        .tz-presets {
+          position: fixed;
+          bottom: 0;
+          top: auto;
+          left: 0;
+          right: 0;
+          transform: none;
+          border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+          gap: 8px;
+          z-index: 300;
+          box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .goal-presets::before,
+        .tz-presets::before {
+          display: none;
+        }
+
+        .preset-pill {
+          padding: 10px 16px;
+          font-size: 0.85rem;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      /* ── SMALL MOBILE  (≤ 400px) ──────────────────────────────────────────── */
+      @media (max-width: 400px) {
+        body {
+          padding: 4px;
+        }
+
+        .console-panel {
+          padding: 10px;
+          border-radius: 0.5rem;
+          gap: 1rem;
+        }
+
+        .timer-val {
+          font-size: clamp(2rem, 14vw, 3rem);
+        }
+
+        #break-timer {
+          font-size: clamp(1.6rem, 11vw, 2.4rem);
+        }
+
+        .status-badge {
+          padding: 0.4rem 0.5rem;
+        }
+
+        #primary-clock,
+        #bst-clock {
+          font-size: 1rem;
+        }
+
+        .tz-trigger,
+        .tz-static-label {
+          font-size: 0.7rem;
+        }
+
+        .goal-inputs input[type="text"] {
+          font-size: 1rem;
+          width: 7ch;
+        }
+
+        .goal-inputs span.label {
+          font-size: 0.7rem;
+        }
+
+        .actions button {
+          height: 2.8rem;
+          font-size: 0.85rem;
+        }
+
+        .tab-btn {
+          font-size: 0.78rem;
+        }
+
+        .log-row {
+          padding: 0.4rem 0.5rem;
+        }
+
+        .log-top-left strong {
+          font-size: 0.75rem;
+        }
+
+        .log-top-left span {
+          font-size: 0.6rem;
+        }
+
+        .log-bottom-left {
+          font-size: 0.65rem;
+          gap: 4px 8px;
+        }
+
+        .stat-val {
+          font-size: 0.95rem;
+        }
+
+        .breakdown-row {
+          padding: 6px 8px;
+          min-height: 42px;
+        }
+
+        .modal-container {
+          padding: var(--space-4) var(--space-3);
+        }
+
+        .modal-header {
+          font-size: 1rem;
+        }
+
+        .sidebar-footer .sq-btn {
+          width: 36px;
+          height: 36px;
+          min-width: 36px;
+          min-height: 36px;
+        }
+
+        .sidebar-footer .sq-btn svg {
+          width: 14px;
+          height: 14px;
+        }
+
+        .icon-tag {
+          font-size: 8px;
+        }
+
+        .icon-stack {
+          min-width: 36px;
+        }
+      }
+
+      /* ── TOUCH DEVICE OPTIMIZATIONS ───────────────────────────────────────── */
+      @media (hover: none) and (pointer: coarse) {
+        /* Remove hover-only transforms that cause jank on touch */
+        button:hover:not(:disabled) {
+          transform: none;
+          filter: none;
+        }
+
+        .icon-btn:hover:not(:disabled) {
+          transform: none;
+        }
+
+        .header-icon-btn:hover {
+          background-color: transparent;
+        }
+
+        /* Ensure all interactive elements meet 44×44 minimum */
+        .icon-btn,
+        .header-icon-btn,
+        .preset-pill,
+        .filter-checkbox-chip,
+        .clear-filter-btn,
+        .preset-action-btn {
+          min-height: 44px;
+          min-width: 44px;
+        }
+
+        /* Disable hover-triggered dropdowns, rely on click/tap via JS */
+        .goal-container:hover .goal-presets,
+        .tz-container:hover .tz-presets {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        /* Override scrollbar to native */
+        ::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.15);
+        }
+      }
+
+      /* ── SAFE AREA (NOTCHED DEVICES) ──────────────────────────────────────── */
+      @supports (padding: env(safe-area-inset-bottom)) {
+        body {
+          padding-left: env(safe-area-inset-left);
+          padding-right: env(safe-area-inset-right);
+          padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .modal-overlay {
+          padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        #undo-toast,
+        #app-toast {
+          margin-bottom: env(safe-area-inset-bottom);
+        }
+      }
+
+      /* ── LANDSCAPE PHONE (short+wide) ─────────────────────────────────────── */
+      @media (max-height: 500px) and (orientation: landscape) {
+        body {
+          padding: 4px;
+        }
+
+        .console-panel {
+          grid-template-columns: 1fr 1fr;
+          height: auto;
+          padding: 12px;
+          gap: 12px;
+        }
+
+        .sidebar {
+          border-left: 1px solid var(--border-main);
+          border-top: none;
+          padding-left: 12px;
+          padding-top: 0;
+        }
+
+        .timer-val {
+          font-size: clamp(1.8rem, 6vw, 3rem);
+        }
+
+        #break-timer {
+          font-size: clamp(1.5rem, 5vw, 2.4rem);
+        }
+
+        .actions {
+          flex-direction: row;
+        }
+
+        .actions button {
+          min-height: 40px;
+          height: 2.5rem;
+        }
+      }
+
+      /* ── PRINT ────────────────────────────────────────────────────────────── */
+      @media print {
+        body {
+          background: #fff;
+          color: #000;
+          padding: 0;
+        }
+
+        .console-panel {
+          box-shadow: none;
+          border: none;
+          grid-template-columns: 1fr;
+        }
+
+        .actions,
+        .sidebar-footer,
+        .theme-toggle-btn,
+        .goal-presets,
+        .tz-presets,
+        .modal-overlay,
+        #undo-toast,
+        #sync-toast,
+        #goal-toast,
+        #app-toast {
+          display: none !important;
         }
       }
 
@@ -3372,7 +3998,10 @@
             <span id="bst-clock">00:00 PM</span>
             <div id="last-seen" class="last-seen-status">Active</div>
           </div>
-          <div style="display: flex; gap: 15px; align-items: stretch">
+          <div
+            class="status-bar-actions"
+            style="display: flex; gap: 15px; align-items: stretch"
+          >
             <div class="goal-container">
               <div class="status-badge goal-inputs" style="padding: 0 0.8rem">
                 <span class="label">Daily Goal</span>
@@ -4863,7 +5492,12 @@
       /*==========================================================================
        * 7. CUSTOM GLASS & NOIR SYSTEM UTILITY CONTROLLERS
        * =========================================================================*/
-      let currentTheme = localStorage.getItem(THEME_KEY) || "glass";
+      let currentTheme =
+        localStorage.getItem(THEME_KEY) ||
+        (window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "midnight"
+          : "glass");
       if (currentTheme === "linear") currentTheme = "glass";
       document.documentElement.setAttribute("data-theme", currentTheme);
 
@@ -9352,6 +9986,76 @@
         // Synchronize delta tracking anchor on app launch
         // Start the background Web Worker timer thread
         startUITimer();
+
+        // ── TOUCH DEVICE: tap-toggle for hover dropdowns with backdrop scrim ──
+        if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
+          const goalContainer = document.querySelector(".goal-container");
+          const goalPresets = document.querySelector(".goal-presets");
+          const tzContainer = document.querySelector(".tz-container");
+          const tzPresets = document.querySelector(".tz-presets");
+
+          // Reusable backdrop scrim — blocks accidental taps behind bottom sheets
+          const scrim = document.createElement("div");
+          scrim.style.cssText =
+            "position:fixed;inset:0;z-index:299;background:rgba(0,0,0,0.3);display:none;-webkit-tap-highlight-color:transparent;";
+          document.body.appendChild(scrim);
+
+          function showScrim() {
+            scrim.style.display = "block";
+          }
+          function hideScrim() {
+            scrim.style.display = "none";
+          }
+
+          function toggleDropdown(presets) {
+            const isOpen = presets.style.opacity === "1";
+            closeAllDropdowns();
+            if (!isOpen) {
+              presets.style.opacity = "1";
+              presets.style.pointerEvents = "auto";
+              showScrim();
+            }
+          }
+
+          function closeAllDropdowns() {
+            if (goalPresets) {
+              goalPresets.style.opacity = "0";
+              goalPresets.style.pointerEvents = "none";
+            }
+            if (tzPresets) {
+              tzPresets.style.opacity = "0";
+              tzPresets.style.pointerEvents = "none";
+            }
+            hideScrim();
+          }
+
+          if (goalContainer && goalPresets) {
+            goalContainer.addEventListener("click", function (e) {
+              if (e.target.closest(".goal-presets")) return;
+              e.stopPropagation();
+              toggleDropdown(goalPresets);
+            });
+          }
+
+          if (tzContainer && tzPresets) {
+            tzContainer.addEventListener("click", function (e) {
+              if (e.target.closest(".tz-presets")) return;
+              e.stopPropagation();
+              toggleDropdown(tzPresets);
+            });
+          }
+
+          // Tapping the scrim or anywhere outside closes the bottom sheet
+          scrim.addEventListener("click", closeAllDropdowns);
+          document.addEventListener("click", function (e) {
+            if (
+              !e.target.closest(".goal-container") &&
+              !e.target.closest(".tz-container")
+            ) {
+              closeAllDropdowns();
+            }
+          });
+        }
       })();
     </script>
   </body>
