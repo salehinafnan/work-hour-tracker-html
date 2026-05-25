@@ -220,6 +220,8 @@
         font-size: var(--text-sm);
         color: var(--text-muted);
         line-height: 1.5;
+        max-width: 45ch;
+        margin-inline: auto;
       }
 
       .action-row {
@@ -244,7 +246,7 @@
       }
 
       .action-row > button:active:not(:disabled) {
-        transform: translateY(0) scale(0.98);
+        filter: brightness(0.85);
       }
 
       .btn-secondary {
@@ -258,27 +260,39 @@
       }
 
       .btn-danger-outline {
-        background: rgba(248, 113, 113, 0.1);
+        background: color-mix(
+          in srgb,
+          var(--accent-break) 10%,
+          var(--panel-bg)
+        );
         color: var(--accent-break);
-        border: 1px solid rgba(248, 113, 113, 0.3);
+        border: 1px solid
+          color-mix(in srgb, var(--accent-break) 30%, var(--panel-bg));
       }
 
       .btn-warning-outline {
-        background: rgba(245, 158, 11, 0.1);
+        background: color-mix(
+          in srgb,
+          var(--accent-warning) 10%,
+          var(--panel-bg)
+        );
         color: var(--accent-warning);
-        border: 1px solid rgba(245, 158, 11, 0.3);
+        border: 1px solid
+          color-mix(in srgb, var(--accent-warning) 30%, var(--panel-bg));
       }
 
       .btn-success-outline {
-        background: rgba(74, 222, 128, 0.1);
+        background: color-mix(in srgb, var(--accent-work) 10%, var(--panel-bg));
         color: var(--accent-work);
-        border: 1px solid rgba(74, 222, 128, 0.3);
+        border: 1px solid
+          color-mix(in srgb, var(--accent-work) 30%, var(--panel-bg));
       }
 
       .btn-info-outline {
-        background: rgba(96, 165, 250, 0.1);
+        background: color-mix(in srgb, var(--accent-blue) 10%, var(--panel-bg));
         color: var(--accent-blue);
-        border: 1px solid rgba(96, 165, 250, 0.3);
+        border: 1px solid
+          color-mix(in srgb, var(--accent-blue) 30%, var(--panel-bg));
       }
 
       .ui-icon {
@@ -310,13 +324,13 @@
       .header-icon-btn svg,
       .sq-btn svg {
         transition:
-          stroke-width 0.15s ease,
+          stroke 0.15s ease,
           transform 0.15s ease;
       }
 
       .header-icon-btn:hover svg,
       .sq-btn:hover svg {
-        stroke-width: 2.8;
+        stroke: var(--text-main);
       }
 
       /* =========================================================================
@@ -387,8 +401,13 @@
       #primary-clock,
       #bst-clock,
       .stat-val,
-      .font-mono {
+      .font-mono,
+      input[type="number"],
+      #goal-time,
+      #progress-text,
+      #eta-text {
         font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
       }
 
       /* 2. Elements that should be Sans-Serif (Text, labels, and metadata) */
@@ -409,6 +428,12 @@
       #idle-current-time,
       #idle-duration-text {
         font-family: var(--font-mono);
+      }
+
+      .filter-row:not(:last-child) {
+        border-bottom: 1px solid var(--border-main);
+        padding-bottom: 12px;
+        margin-bottom: 12px;
       }
 
       /* =========================================================================
@@ -457,9 +482,7 @@
         height: var(--header-el-height);
         padding: 0 0.9rem;
         border-radius: var(--header-el-radius);
-        /* Optimization: Replaced large blur (12px) with a 2px solid-looking offset. 
-     CPU handles this significantly faster. */
-        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: none;
       }
 
       .theme-toggle-btn {
@@ -617,7 +640,7 @@
         background: var(--element-hover);
         border: 1px solid var(--border-light);
         border-radius: var(--header-el-radius);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+        box-shadow: none;
         transform: translateX(-50%) translateY(4px);
         z-index: 100;
         transition:
@@ -4108,10 +4131,10 @@
             </div>
           </div>
 
-          <!-- BOTTOM: Break Section (Inverted Label for Symmetry) -->
-          <div class="timer-group inverted">
-            <div id="break-timer" class="timer-val"></div>
+          <!-- BOTTOM: Break Section (Standardized Label for Scannability) -->
+          <div class="timer-group">
             <div class="label-xs">Break Time</div>
+            <div id="break-timer" class="timer-val"></div>
           </div>
         </div>
 
