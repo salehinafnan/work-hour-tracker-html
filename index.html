@@ -10884,6 +10884,7 @@
        * Executes formatDuration logic.
        */
       function formatDuration(sec) {
+        if (isNaN(sec)) return "00:00:00";
         sec = Math.max(0, Math.floor(sec));
         const h = Math.floor(sec / 3600)
           .toString()
@@ -10901,7 +10902,7 @@
        * Executes parseTime logic.
        */
       function parseTime(str) {
-        if (!str) return null;
+        if (!str || typeof str !== "string") return null;
         const p = str.trim().split(":");
         let h = 0,
           m = 0,
@@ -10909,13 +10910,14 @@
         if (p.length === 2) {
           h = parseInt(p[0], 10);
           m = parseInt(p[1], 10);
-          if (isNaN(h) || isNaN(m)) return null;
+          if (isNaN(h) || isNaN(m) || h < 0 || m < 0) return null;
           return h * 3600 + m * 60;
         } else if (p.length === 3) {
           h = parseInt(p[0], 10);
           m = parseInt(p[1], 10);
           s = parseInt(p[2], 10);
-          if (isNaN(h) || isNaN(m) || isNaN(s)) return null;
+          if (isNaN(h) || isNaN(m) || isNaN(s) || h < 0 || m < 0 || s < 0)
+            return null;
           return h * 3600 + m * 60 + s;
         }
         return null;
