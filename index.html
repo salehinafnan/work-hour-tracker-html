@@ -6647,6 +6647,10 @@
           state.sessionAnchorWall = nowWall;
           if (mode === "work" && !state.loginTimestamp) {
             state.loginTimestamp = nowWall;
+            if (state.trackingMode === "intelligent") {
+              state.lastHeartbeatWall = nowWall;
+              state.lastHeartbeatMonotonic = performance.now();
+            }
           }
         } else {
           state.sessionAnchorWall = null;
