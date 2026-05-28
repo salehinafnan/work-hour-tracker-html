@@ -869,8 +869,7 @@
 
       #progress-fill {
         height: 100%;
-        width: 100%;
-        transform-origin: left;
+        width: 0%;
         background: linear-gradient(
           90deg,
           rgba(241, 245, 249, 0.4) 0%,
@@ -878,7 +877,7 @@
         );
         border-radius: 2px;
         box-shadow: none;
-        transition: none;
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
       }
 
@@ -1617,6 +1616,31 @@
       /* =========================================================================
        10. LOGBOOK & VIRTUAL LIST ENGINE STYLE
        ========================================================================= */
+      .sticky-month-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: var(--element-hover);
+        border: 1px solid var(--border-light);
+        color: var(--accent-blue);
+        font-weight: 700;
+        font-size: var(--text-xs);
+        padding: 6px 14px;
+        border-radius: var(--radius-md);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+        margin-bottom: var(--space-2);
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        text-align: center;
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
+      }
+
       .log-row {
         display: grid;
         grid-template-columns: 1fr auto;
@@ -2233,17 +2257,15 @@
 
       .progress-segment-fill {
         height: 100%;
-        width: 100%;
-        transform: scaleX(0);
-        transform-origin: left;
+        width: 0%;
         background: linear-gradient(
           135deg,
           var(--accent-blue) 0%,
           #4f46e5 100%
         );
         box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-        transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        will-change: transform;
+        transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: width;
         /* Promotes segment fills to the GPU compositor layer */
       }
 
@@ -3496,6 +3518,7 @@
       .segment-completed {
         background: var(--accent-work) !important;
       }
+
       .collapsible-wrapper {
         display: grid;
         grid-template-rows: 1fr;
@@ -3504,11 +3527,13 @@
           opacity 0.3s ease-out,
           margin 0.3s ease-out;
       }
+
       .collapsible-wrapper.is-collapsed {
         grid-template-rows: 0fr;
         opacity: 0;
         pointer-events: none;
       }
+
       .collapsible-content {
         overflow: hidden;
       }
@@ -3533,8 +3558,8 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          <polyline points="1 4 1 10 7 10"></polyline>
+          <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
         </svg>
       </div>
       <span>Shift Logged Successfully</span>
@@ -3745,6 +3770,60 @@
           />
           <datalist id="note-suggestions"></datalist>
         </div>
+        <div
+          id="eod-auto-backup-warning"
+          style="
+            display: none;
+            background: rgba(118, 185, 248, 0.06);
+            border: 1px solid rgba(118, 185, 248, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-3);
+            margin-bottom: var(--space-4);
+            align-items: flex-start;
+            gap: 10px;
+          "
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--accent-blue)"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 2px;
+              text-align: left;
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-xs);
+                font-weight: 700;
+                color: var(--accent-blue);
+              "
+              >Auto-Save Enabled</span
+            >
+            <span
+              style="
+                font-size: 11px;
+                line-height: 1.4;
+                color: var(--text-muted);
+                opacity: 0.85;
+              "
+              >A local JSON backup will automatically download to your device
+              upon submission.</span
+            >
+          </div>
+        </div>
         <div class="action-row">
           <button class="btn-secondary" onclick="closeSubmitModal()">
             Cancel
@@ -3797,17 +3876,15 @@
           width="16"
           height="16"
           viewBox="0 0 24 24"
-          stroke="currentColor"
           fill="none"
-          stroke-width="2"
+          stroke="currentColor"
+          stroke-width="2.5"
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
-          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-          <line x1="6" y1="1" x2="6" y2="4"></line>
-          <line x1="10" y1="1" x2="10" y2="4"></line>
-          <line x1="14" y1="1" x2="14" y2="4"></line>
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
         </svg>
       </div>
       <span id="app-toast-content">Message</span>
@@ -3913,6 +3990,38 @@
               placeholder="00:00"
               onfocus="this.select()"
             />
+          </div>
+        </div>
+        <div class="form-group">
+          <label
+            class="form-label"
+            for="edit-goal-h"
+            style="color: var(--accent-blue)"
+            >Daily Goal for this shift</label
+          >
+          <div style="display: flex; gap: var(--space-2); align-items: center">
+            <input
+              type="number"
+              id="edit-goal-h"
+              class="input-standard"
+              min="0"
+              max="23"
+              style="width: 70px; text-align: center; padding: var(--space-2)"
+            />
+            <span style="font-size: var(--text-sm); color: var(--text-muted)"
+              >h</span
+            >
+            <input
+              type="number"
+              id="edit-goal-m"
+              class="input-standard"
+              min="0"
+              max="59"
+              style="width: 70px; text-align: center; padding: var(--space-2)"
+            />
+            <span style="font-size: var(--text-sm); color: var(--text-muted)"
+              >m</span
+            >
           </div>
         </div>
         <div class="form-group">
@@ -4241,11 +4350,19 @@
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="3"
+          stroke-width="2.5"
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <polyline points="20 6 9 17 4 12"></polyline>
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+          <path d="M4 22h16"></path>
+          <path
+            d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"
+          ></path>
+          <path
+            d="M12 2a5 5 0 0 1 5 5v3.5a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5z"
+          ></path>
         </svg>
       </div>
       <span>Daily Goal Reached!</span>
@@ -4838,6 +4955,15 @@
             "
           ></div>
 
+          <!-- Dynamic Sticky Month Indicator -->
+          <div
+            id="sticky-month-indicator"
+            class="sticky-month-header"
+            style="display: none"
+          >
+            <span id="sticky-month-text"></span>
+          </div>
+
           <!-- Virtual list target container -->
           <div id="log-container"></div>
         </div>
@@ -5385,6 +5511,45 @@
                         />
                       </div>
                     </div>
+
+                    <div class="settings-divider" style="margin: 8px 0"></div>
+
+                    <!-- Auto-backup settings group card -->
+                    <div
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        padding: 2px;
+                      "
+                    >
+                      <div class="idle-popup-row">
+                        <span
+                          class="idle-popup-label"
+                          style="font-size: 0.75rem; font-weight: 700"
+                          >Auto-save backup</span
+                        >
+                        <label class="switch">
+                          <input
+                            type="checkbox"
+                            id="auto-backup-toggle"
+                            onchange="onAutoBackupToggleChange()"
+                          />
+                          <span class="slider-toggle"></span>
+                        </label>
+                      </div>
+                      <div
+                        class="settings-description"
+                        style="
+                          margin-top: 2px;
+                          font-size: 0.65rem;
+                          color: var(--text-muted);
+                          font-weight: 500;
+                        "
+                      >
+                        Automatically downloads JSON at EOD.
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -5569,6 +5734,7 @@
         goalNotified: false,
         idleTrackingEnabled: true,
         idleThresholdMinutes: 60,
+        autoBackupEnabled: false, // New property for silent backup
         idleType: null,
         lastHeartbeatWall: null,
         lastHeartbeatMonotonic: null,
@@ -6220,7 +6386,10 @@
       const weeklyGroups = {}
       const dailyAnchors = {}
 
-      for (let i = logs.length - 1; i >= 0; i--) {
+      // Sort logs by loginEpochMs ascending (oldest shift first)
+      logs.sort((a, b) => (a.loginEpochMs || 0) - (b.loginEpochMs || 0))
+
+      for (let i = 0; i < logs.length; i++) {
         const log = logs[i]
         if (!log.epochMs || log.epochMs <= 0) continue
 
@@ -6237,6 +6406,7 @@
         weeklyGroups[key].push(log)
 
         const dateKey = log.date
+        // Since we process in oldest-first order, the first encountered target holds the oldest goal
         if (!dailyAnchors[dateKey] && log.dayGoal) {
           dailyAnchors[dateKey] = log.dayGoal
         }
@@ -6270,6 +6440,7 @@
             date: l.date,
             dayGoal: l.dayGoal,
             id: l.id,
+            loginEpochMs: l.loginEpochMs || l.epochMs,
           })),
         };
         analyticsWorker.postMessage(payload);
@@ -6760,7 +6931,7 @@
 
               if (activeDaysRemaining > 0) {
                 const paceSec = remainingSec / activeDaysRemaining;
-                const paceMinsTotal = Math.round(paceSec / 60);
+                const paceMinsTotal = Math.floor(paceSec / 60);
                 const paceH = Math.floor(paceMinsTotal / 60);
                 const paceM = paceMinsTotal % 60;
                 setText(weekMsg, `Pace Required: ${paceH}h ${paceM}m / Day`);
@@ -6805,7 +6976,7 @@
         const diffSec = todayW - anchorGoal;
         const isOver = diffSec >= 0;
         const absDiffSec = Math.abs(diffSec);
-        const diffMinsTotal = Math.round(absDiffSec / 60);
+        const diffMinsTotal = Math.floor(absDiffSec / 60);
         const diffH = Math.floor(diffMinsTotal / 60);
         const diffM = diffMinsTotal % 60;
         const varianceTime = `${diffH}h ${diffM}m`;
@@ -6883,7 +7054,7 @@
         // Scale Write Guard
         if (domWriteCache.progressFillScale !== sessionScale) {
           domWriteCache.progressFillScale = sessionScale;
-          setStyle(DOM.progressFill, "transform", `scaleX(${sessionScale})`);
+          setStyle(DOM.progressFill, "width", `${sessionPercent}%`);
           if (sessionScale < 0.03) {
             DOM.progressFill.classList.add("low-progress");
           } else {
@@ -6908,7 +7079,44 @@
         const dayIdx = nowPST.getUTCDay();
         const isoDay = dayIdx === 0 ? 7 : dayIdx;
 
-        if (isoDay <= 5) {
+        // Helper to check if the currently displayed week matches today's active calendar week
+        const isViewingCurrentWeek = () => {
+          if (!displayBaseDate) return true;
+          const dObj = new Date(
+            Date.UTC(
+              displayBaseDate.getUTCFullYear(),
+              displayBaseDate.getUTCMonth(),
+              displayBaseDate.getUTCDate(),
+              12,
+              0,
+              0,
+            ),
+          );
+          const day = dObj.getUTCDay();
+          const diffToMonday = day === 0 ? -6 : 1 - day;
+          const weekStartMs = dObj.getTime() + diffToMonday * 86400000;
+
+          const todayPST = getPSTDateObj();
+          const todayDObj = new Date(
+            Date.UTC(
+              todayPST.getUTCFullYear(),
+              todayPST.getUTCMonth(),
+              todayPST.getUTCDate(),
+              12,
+              0,
+              0,
+            ),
+          );
+          const todayDay = todayDObj.getUTCDay();
+          const todayDiffToMonday = todayDay === 0 ? -6 : 1 - todayDay;
+          const todayWeekStartMs =
+            todayDObj.getTime() + todayDiffToMonday * 86400000;
+
+          return weekStartMs === todayWeekStartMs;
+        };
+
+        // Only apply live scales to the active weekday segments when viewing the current week
+        if (isoDay <= 5 && isViewingCurrentWeek()) {
           const todaySegmentFill = DOM.progressSegmentFills[isoDay - 1];
           if (todaySegmentFill) {
             const segmentClass =
@@ -6918,7 +7126,7 @@
 
             if (domWriteCache.todaySegmentScale !== dailyScale) {
               domWriteCache.todaySegmentScale = dailyScale;
-              todaySegmentFill.style.transform = `scaleX(${dailyScale})`;
+              todaySegmentFill.style.width = `${dailyPercent}%`;
             }
             if (domWriteCache.todaySegmentBg !== segmentClass) {
               domWriteCache.todaySegmentBg = segmentClass;
@@ -7065,6 +7273,14 @@
        */
       function proceedToSubmitModal() {
         populateNoteSuggestions();
+        const autoBackupWarning = document.getElementById(
+          "eod-auto-backup-warning",
+        );
+        if (autoBackupWarning) {
+          autoBackupWarning.style.display = state.autoBackupEnabled
+            ? "flex"
+            : "none";
+        }
         DOM.submitModal.style.display = "flex";
         setTimeout(() => DOM.modalShiftNotes.focus(), 100);
       }
@@ -7162,6 +7378,11 @@
         DOM.submitModal.style.display = "none";
         DOM.modalShiftNotes.value = "";
         executeSubmit(null, notes);
+
+        // Auto-trigger JSON backup if enabled
+        if (state.autoBackupEnabled) {
+          exportJSON();
+        }
       }
 
       /**
@@ -7408,6 +7629,7 @@
       function resetSession() {
         const previousIdleEnabled = state.idleTrackingEnabled;
         const previousIdleThreshold = state.idleThresholdMinutes;
+        const previousAutoBackup = state.autoBackupEnabled;
 
         state = {
           workAccumulated: 0,
@@ -7427,6 +7649,8 @@
             previousIdleEnabled !== undefined ? previousIdleEnabled : true,
           idleThresholdMinutes:
             previousIdleThreshold !== undefined ? previousIdleThreshold : 60,
+          autoBackupEnabled:
+            previousAutoBackup !== undefined ? previousAutoBackup : false,
           lastHeartbeatWall: null,
           lastHeartbeatMonotonic: null,
           tabHiddenAt: null,
@@ -7451,7 +7675,6 @@
       function generateLogRow(log, index, isSelected = false) {
         const hasNote = !!log.notes;
         const noteIconClass = hasNote ? "icon-btn note-active" : "icon-btn";
-        const displayStatus = log.status === "OVER" ? "Over" : "Under";
         const noteBtnAttr = hasNote
           ? `data-action="view-note" data-id="${log.id}" aria-label="View Note"`
           : `aria-label="No Note" disabled style="opacity: 0.3; cursor: not-allowed;"`;
@@ -7459,6 +7682,15 @@
         const logDate = new Date(log.epochMs);
         const dayNum = logDate.getUTCDay();
         const isWeekend = dayNum === 0 || dayNum === 6;
+
+        const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const dayName = dayNames[dayNum];
+
+        const dateParts = log.date.split("/");
+        const displayMonthDay =
+          dateParts.length >= 2
+            ? `${dateParts[0]}/${dateParts[1]}`
+            : log.displayDate;
 
         const weekendBadge = isWeekend
           ? `<span class="badge badge-weekend">Weekend</span>`
@@ -7471,15 +7703,23 @@
         const friendlyDiff = formatFriendlyDuration(rawDeltaSec, "0m");
         const selectedClass = isSelected ? " kb-selected" : "";
 
+        const ouLetter = log.status === "OVER" ? "O" : "U";
+        const badgeClass = log.status === "OVER" ? "badge-over" : "badge-under";
+        const textClass = log.status === "OVER" ? "text-work" : "text-warning";
+
         return `
     <div class="log-row${selectedClass}">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center;">
-                <strong style="font-size: var(--text-sm); letter-spacing: -0.02em;">${log.displayDate}</strong>
+                <strong style="font-size: var(--text-sm); letter-spacing: -0.02em;">${displayMonthDay}</strong>
+                <span style="font-size: var(--text-sm); color: var(--text-muted); letter-spacing: -0.02em; font-weight: 500;"> (${dayName})</span>
                 <span class="font-mono" style="font-size: var(--text-xs); color: var(--text-muted); margin-left: var(--space-2);">${log.login} - ${log.logout}</span>
                 ${weekendBadge}
             </div>
-            <span class="tag ${log.status === "OVER" ? "tag-over" : "tag-under"}">${displayStatus}: ${friendlyDiff}</span>
+            <div style="display: flex; align-items: center; gap: 4px;">
+                <span class="badge ${badgeClass}">${ouLetter}</span>
+                <span class="${textClass}" style="font-weight: 600; font-size: var(--text-xs);">${friendlyDiff}</span>
+            </div>
         </div>
         
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-1);">
@@ -8088,7 +8328,15 @@
        * Renders virtual elements visible in active scroll windows.
        */
       function renderVirtualVisibleItems() {
-        if (virtualScrollLogs.length === 0) return;
+        if (virtualScrollLogs.length === 0) {
+          const stickyIndicator = document.getElementById(
+            "sticky-month-indicator",
+          );
+          if (stickyIndicator) {
+            stickyIndicator.style.display = "none";
+          }
+          return;
+        }
         const scrollContainer = DOM.tabLogbook;
         const scrollTop = scrollContainer.scrollTop;
         // Uses the layout-cached clientHeight value to prevent CPU-based style recalculations
@@ -8107,6 +8355,56 @@
           virtualScrollLogs.length - 1,
           Math.ceil((scrollTop + viewportHeight) / itemHeight) + overscan,
         );
+
+        // --- Option B: Dynamic Sticky Month Header Logic ---
+        const stickyIndicator = document.getElementById(
+          "sticky-month-indicator",
+        );
+        const stickyTextEl = document.getElementById("sticky-month-text");
+        if (scrollTop < 30) {
+          if (stickyIndicator) {
+            stickyIndicator.style.display = "none";
+          }
+        } else {
+          const topVisibleIndex = Math.floor(scrollTop / itemHeight);
+          if (virtualScrollLogs[topVisibleIndex]) {
+            const topLog = virtualScrollLogs[topVisibleIndex];
+            const monthNames = [
+              "January",
+              "February",
+              "March",
+              "April",
+              "May",
+              "June",
+              "July",
+              "August",
+              "September",
+              "October",
+              "November",
+              "December",
+            ];
+            const parts = topLog.date.split("/");
+            if (parts.length === 3) {
+              const monthIdx = parseInt(parts[0], 10) - 1;
+              const shortYear = parts[2];
+              const fullYear =
+                shortYear.length === 2 ? `20${shortYear}` : shortYear;
+              if (monthIdx >= 0 && monthIdx < 12) {
+                const monthText = `${monthNames[monthIdx]} ${fullYear}`;
+                if (stickyTextEl && stickyIndicator) {
+                  if (stickyTextEl.textContent !== monthText) {
+                    stickyTextEl.textContent = monthText;
+                  }
+                  stickyIndicator.style.display = "block";
+                }
+              }
+            }
+          } else {
+            if (stickyIndicator) {
+              stickyIndicator.style.display = "none";
+            }
+          }
+        }
 
         // Generate a single rendering key for the entire viewport content
         let renderKeyParts = [];
@@ -8240,6 +8538,8 @@
 
         const weeklyLogs = weeklyCache.get(weekStartMs) || [];
         const logsByDate = {};
+        const oldestLogByDate = {}; // Explicitly track the oldest shift goal of the day
+
         for (let i = 0; i < weeklyLogs.length; i++) {
           const l = weeklyLogs[i];
           if (!logsByDate[l.displayDate]) {
@@ -8255,8 +8555,21 @@
           }
           logsByDate[l.displayDate].w += l.workSec;
           logsByDate[l.displayDate].b += l.breakSec;
-          if (l.dayGoal && logsByDate[l.displayDate].goal === 0) {
-            logsByDate[l.displayDate].goal = l.dayGoal;
+
+          // Deterministically find the oldest shift of the day to set the daily master anchor
+          if (l.dayGoal) {
+            const currentOldest = oldestLogByDate[l.displayDate];
+            const incomingLogTime = l.loginEpochMs || l.epochMs;
+            if (
+              !currentOldest ||
+              incomingLogTime < currentOldest.loginEpochMs
+            ) {
+              oldestLogByDate[l.displayDate] = {
+                loginEpochMs: incomingLogTime,
+                goal: l.dayGoal,
+              };
+              logsByDate[l.displayDate].goal = l.dayGoal;
+            }
           }
 
           const loginMin = parseTimeToMinutes(l.login);
@@ -8496,7 +8809,7 @@
               const diffSec = dayW - anchorGoal;
               const isOver = diffSec >= 0;
               const absDiffSec = Math.abs(diffSec);
-              const diffMinsTotal = Math.round(absDiffSec / 60);
+              const diffMinsTotal = Math.floor(absDiffSec / 60);
               const diffH = Math.floor(diffMinsTotal / 60);
               const diffM = diffMinsTotal % 60;
               const varianceTime = `${diffH}h ${diffM}m`;
@@ -8563,7 +8876,7 @@
             seg.style.background = "";
             seg.style.borderColor = "";
             if (DOM.progressSegmentFills[index]) {
-              DOM.progressSegmentFills[index].style.transform = "scaleX(0)";
+              DOM.progressSegmentFills[index].style.width = "0%";
             }
           }
         });
@@ -8602,7 +8915,7 @@
               const anchorGoal = dailyAnchorMap.get(dateStr) || liveGoalSec;
               const fill = DOM.progressSegmentFills[i];
               const fillScale = Math.min(dayWorkSeconds / anchorGoal, 1);
-              fill.style.transform = `scaleX(${fillScale})`;
+              fill.style.width = `${fillScale * 100}%`;
               fill.className =
                 dayWorkSeconds >= anchorGoal && dayWorkSeconds > 0
                   ? "progress-segment-fill segment-completed"
@@ -8731,6 +9044,16 @@
         document.getElementById("edit-break").value = formatDuration(
           log.breakSec,
         ).slice(0, 5);
+
+        // Populate goal input fields with the log's existing daily goal
+        const currentGoalSec =
+          log.dayGoal ||
+          (typeof getGoalSeconds === "function" ? getGoalSeconds() : 8 * 3600);
+        const goalH = Math.floor(currentGoalSec / 3600);
+        const goalM = Math.floor((currentGoalSec % 3600) / 60);
+        document.getElementById("edit-goal-h").value = goalH;
+        document.getElementById("edit-goal-m").value = goalM;
+
         document.getElementById("edit-notes").value = log.notes || "";
         document.getElementById("edit-modal").style.display = "flex";
       }
@@ -8760,6 +9083,23 @@
         const newBreak = document.getElementById("edit-break").value.trim();
         const newNotes = document.getElementById("edit-notes").value.trim();
 
+        // Parse user-edited goal
+        const gh = Math.min(
+          24,
+          Math.max(
+            0,
+            parseInt(document.getElementById("edit-goal-h").value, 10) || 0,
+          ),
+        );
+        const gm = Math.min(
+          59,
+          Math.max(
+            0,
+            parseInt(document.getElementById("edit-goal-m").value, 10) || 0,
+          ),
+        );
+        const goal = gh * 3600 + gm * 60 || 1; // Minimum 1 second to avoid falsy zero
+
         let wSec = parseTime(newWork);
         let bSec = parseTime(newBreak);
 
@@ -8778,12 +9118,8 @@
           log.workSec = wSec;
           log.breakSec = bSec;
 
-          // Prioritizes the saved dayGoal value to avoid rewriting history during edits
-          const goal =
-            log.dayGoal ||
-            (typeof getGoalSeconds === "function"
-              ? getGoalSeconds()
-              : 8 * 3600);
+          // Save the user-specified goal for this shift log
+          log.dayGoal = goal;
           log.status = wSec - goal >= 0 ? "OVER" : "UNDER";
           log.diff = formatDuration(Math.abs(wSec - goal));
 
@@ -9051,12 +9387,31 @@
 
         const hasActiveSession =
           state.currentMode !== null || state.workAccumulated > 0;
-        if (hasActiveSession) {
+        const hasExistingLogs = cachedLogs && cachedLogs.length > 0;
+
+        if (hasActiveSession && hasExistingLogs) {
+          openConfirmModal(
+            "Import Backup & Merge Data",
+            "Your active session progress will be preserved. The incoming backup file will merge with your current logged shift history.",
+            executeImport,
+            false,
+            "Import",
+          );
+        } else if (hasActiveSession) {
           openConfirmModal(
             "Import Backup?",
             "Would you like to import this backup? Your active session progress will be preserved.",
             executeImport,
             false,
+            "Import",
+          );
+        } else if (hasExistingLogs) {
+          openConfirmModal(
+            "Merge Existing History?",
+            "You already have logged shifts. Importing a new backup will merge the incoming file with your current history.",
+            executeImport,
+            false,
+            "Merge",
           );
         } else {
           executeImport();
@@ -9694,6 +10049,12 @@
         saveState();
       };
 
+      window.onAutoBackupToggleChange = function () {
+        const checkbox = document.getElementById("auto-backup-toggle");
+        state.autoBackupEnabled = checkbox.checked;
+        saveState();
+      };
+
       /**
        * Executes syncSettingsUI logic to populate the modal with correct saved states.
        */
@@ -9732,6 +10093,12 @@
         if (idleCheckbox) idleCheckbox.checked = isIdleEnabled;
         if (slider) slider.value = mins;
         if (valDisplay) valDisplay.textContent = mins + "m";
+
+        // Sync auto-backup toggle
+        const autoBackupCheckbox =
+          document.getElementById("auto-backup-toggle");
+        if (autoBackupCheckbox)
+          autoBackupCheckbox.checked = !!state.autoBackupEnabled;
       }
 
       /**
@@ -10688,7 +11055,9 @@
         toast.innerHTML = `
             <div style="display: flex; align-items: center; gap: 12px;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-warning); flex-shrink: 0;">
-                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
               </svg>
               <span>${msg}</span>
               ${closeBtnHtml}
@@ -10736,7 +11105,13 @@
       /**
        * Executes openConfirmModal logic.
        */
-      function openConfirmModal(title, desc, callback, isDestructive = true) {
+      function openConfirmModal(
+        title,
+        desc,
+        callback,
+        isDestructive = true,
+        btnText = "",
+      ) {
         document.getElementById("confirm-title").textContent = title;
         document.getElementById("confirm-desc").textContent = desc;
         const btn = document.getElementById("confirm-action-btn");
@@ -10747,13 +11122,13 @@
           document.getElementById("confirm-title").className =
             "modal-header danger";
           btn.className = "btn-danger-outline";
-          btn.textContent = "Delete";
+          btn.textContent = btnText || "Delete";
           container.className = "modal-container modal-width-sm accent-danger";
         } else {
           document.getElementById("confirm-title").className =
             "modal-header warning";
           btn.className = "btn-warning-outline";
-          btn.textContent = "Confirm";
+          btn.textContent = btnText || "Confirm";
           container.className = "modal-container modal-width-sm accent-warning";
         }
         confirmCallback = callback;
@@ -10841,6 +11216,9 @@
         displayBaseDate = new Date(
           displayBaseDate.getTime() + delta * 7 * 86400000,
         );
+        // Reset segment caches to force absolute redraw on week navigation
+        domWriteCache.todaySegmentScale = -1;
+        domWriteCache.todaySegmentBg = "";
         insightsCacheKey = null;
         renderInsights();
       }
@@ -10850,6 +11228,9 @@
        */
       window.jumpToCurrentWeek = function () {
         displayBaseDate = getPSTDateObj(); // Recalibrate baseline to today's PST date
+        // Reset segment caches to force absolute redraw on week navigation
+        domWriteCache.todaySegmentScale = -1;
+        domWriteCache.todaySegmentBg = "";
         insightsCacheKey = null; // Invalidate active insights cache
         renderInsights(); // Trigger visual re-render
         showAppToast("Navigated to current week");
@@ -10885,7 +11266,9 @@
        */
       function formatDuration(sec) {
         if (isNaN(sec)) return "00:00:00";
-        sec = Math.max(0, Math.floor(sec));
+        // Add a microscopic 1-nanosecond buffer (1e-9) before flooring.
+        // This neutralizes IEEE 754 precision drift without causing clock jitter.
+        sec = Math.max(0, Math.floor(sec + 1e-9));
         const h = Math.floor(sec / 3600)
           .toString()
           .padStart(2, "0");
