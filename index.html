@@ -11189,7 +11189,10 @@
             // Preserves all other state properties like trackingMode intact.
             if (state.idleLock) {
               // idleStart was already updated to midnightMs earlier in the loop.
-              // Nothing else to do; the idle mode carries over flawlessly.
+              // We must also align the login timestamp to midnight so the new day's shift starts cleanly.
+              if (state.loginTimestamp) {
+                state.loginTimestamp = midnightMs;
+              }
             } else if (activeMode !== null) {
               state.currentMode = activeMode;
               state.loginTimestamp = midnightMs;
