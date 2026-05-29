@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="glass" style="font-size: clamp(14px, 1vw, 20px)">
+<html lang="en" data-theme="sf-dark" style="font-size: clamp(14px, 1vw, 20px)">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -9,13 +9,7 @@
     <meta name="color-scheme" content="dark" />
     <title>Work Hour Tracker</title>
 
-    <!-- Google Fonts Link (Plus Jakarta Sans + JetBrains Mono) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts removed: Relying strictly on high-performance native system fonts -->
 
     <!-- Inline Vector Icon (SVG Clock) -->
     <link
@@ -29,16 +23,18 @@
        ========================================================================= */
       :root {
         /* Shared Color Scheme Accents */
-        --accent-work: #43df7cfa;
-        --accent-break: #fc6e6eec;
-        --accent-blue: #76b9f8;
-        --accent-warning: #f3a31a;
+        --accent-work: #34c759;
+        --accent-break: #ff3b30;
+        --accent-blue: #007aff;
+        --accent-warning: #ff9500;
 
-        /* Typographic Tokens */
+        /* Typographic Tokens - Apple System Fonts */
         --font-sans:
-          "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Helvetica, Arial, sans-serif;
-        --font-mono: "JetBrains Mono", monospace;
+          -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --font-mono:
+          ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono", Consolas,
+          monospace;
 
         --text-xs: 0.75rem;
         --text-sm: 0.85rem;
@@ -54,24 +50,55 @@
         --space-5: 1.5rem;
         --space-6: 2rem;
 
-        /* Border Radius */
-        --radius-sm: 6px;
-        --radius-md: 8px;
-        --radius-lg: 12px;
-        --radius-xl: 16px;
+        /* Border Radius - Structured Squircle Proportions (SF Metric Standard) */
+        --radius-sm: 8px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+        --radius-xl: 14px;
 
-        --header-el-height: 45px;
-        --header-el-radius: var(--radius-lg);
+        --header-el-height: 42px;
+        --header-el-radius: var(--radius-md);
 
         /* Modal Redesign Dimension Tokens */
         --modal-width-sm: 360px;
         --modal-width-md: 460px;
+
+        /* Dynamic Typographic & Layout Fallbacks */
+        --number-font: var(--font-mono);
+        --text-font: var(--font-sans);
+        --timer-size: clamp(4.5rem, 11.5vw, 7.2rem);
+        --timer-weight: 600;
+        --timer-spacing: 0.1em;
+        --break-timer-size: clamp(3.6rem, 9vw, 5.8rem);
+
+        /* Dynamic Grid System & Segment Fallbacks */
+        --panel-columns: 1.1fr 1fr;
+        --panel-gap: 2.5rem;
+        --segment-height: 20px;
+        --segment-gap: 6px;
+        --segment-radius: 6px;
+
+        /* Dynamic Button & Tab Layout Fallbacks */
+        --actions-gap: 12px;
+        --button-height: 3.2rem;
+        --tab-nav-gap: 2px;
+        --tab-nav-padding: 2px;
+        --tab-nav-border: 1px solid var(--border-main);
+        --tab-nav-height: var(--header-el-height);
+        --tab-btn-radius: calc(var(--radius-md) - 2px);
+        --tab-btn-color: var(--text-muted);
+        --tab-btn-active-bg: var(--panel-bg);
+        --tab-btn-active-color: var(--text-main);
+        --tab-btn-active-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+        --tab-btn-active-border: none;
+        --tab-transition: color 0.15s ease, background-color 0.15s ease;
       }
 
       /* =========================================================================
-       2. PREMIUM NOIR THEME (MIDNIGHT) - OPTIMIZED FOR CPU-ONLY SOFTWARE RENDER
+       2. ONYX BLACK THEME (PITCH BLACK)
        ========================================================================= */
-      :root[data-theme="midnight"] {
+      :root[data-theme="onyx-black"] {
         --page-bg: #000000;
         --panel-bg: #0e0e11;
         --panel-shadow: none;
@@ -98,16 +125,41 @@
         --btn-log-border: var(--accent-blue);
         --dropdown-bg: #070708;
         --modal-bg: #070708;
-      }
+        --track-bg: rgba(255, 255, 255, 0.08);
+        --segmented-bg: rgba(255, 255, 255, 0.1);
+        --segmented-active-bg: #222222;
+        --segmented-active-shadow: none;
+        --segmented-border: #1f1f23;
 
-      :root[data-theme="midnight"] .console-panel {
-        border: 1px solid #3d87ff80;
+        /* Typography & Timer Layout Tokens */
+        --number-font: var(--font-sans);
+        --text-font: var(--font-sans);
+        --timer-size: clamp(4.5rem, 11.5vw, 7.2rem);
+        --timer-weight: 600;
+        --timer-spacing: 0.1em;
+        --break-timer-size: clamp(3.6rem, 9vw, 5.8rem);
+
+        /* Button & Navigation Sizing Layouts */
+        --actions-gap: 12px;
+        --button-height: 3.2rem;
+        --tab-nav-gap: 2px;
+        --tab-nav-padding: 2px;
+        --tab-nav-border: 1px solid var(--border-main);
+        --tab-nav-height: var(--header-el-height);
+        --tab-btn-radius: calc(var(--radius-md) - 2px);
+        --tab-btn-color: var(--text-muted);
+        --tab-btn-active-bg: var(--panel-bg);
+        --tab-btn-active-color: var(--text-main);
+        --tab-btn-active-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+        --tab-btn-active-border: none;
+        --tab-transition: color 0.15s ease, background-color 0.15s ease;
       }
 
       /* =========================================================================
-       3. MODERN GLASSMORPHISM THEME (GLASS) - OPTIMIZED FOR CPU-ONLY SOFTWARE RENDER
+       3. COBALT GLASSMORPHISM THEME (DARK TRANS-BLUE)
        ========================================================================= */
-      :root[data-theme="glass"] {
+      :root[data-theme="cobalt-glass"] {
         --page-bg: #050814;
         --panel-bg: #111a2e;
         --panel-shadow: none;
@@ -119,6 +171,10 @@
         --border-light: #3d4d75;
         --text-main: #f8fafc;
         --text-muted: #e2e8f0;
+        --accent-work: #43df7cfa;
+        --accent-break: #fc6e6eec;
+        --accent-blue: #76b9f8;
+        --accent-warning: #f3a31a;
         --btn-work-bg: #4ade80;
         --btn-work-border: #4ade80;
         --btn-work-text: #052e16;
@@ -130,10 +186,242 @@
         --btn-log-border: var(--accent-blue);
         --dropdown-bg: #0f172a;
         --modal-bg: #0f172a;
+        --track-bg: rgba(255, 255, 255, 0.08);
+        --segmented-bg: rgba(255, 255, 255, 0.1);
+        --segmented-active-bg: #0a1122;
+        --segmented-active-shadow: none;
+        --segmented-border: #253352;
+
+        /* Typography & Timer Layout Tokens */
+        --number-font: var(--font-sans);
+        --text-font: var(--font-sans);
+        --timer-size: clamp(4.5rem, 11.5vw, 7.2rem);
+        --timer-weight: 600;
+        --timer-spacing: 0.1em;
+        --break-timer-size: clamp(3.6rem, 9vw, 5.8rem);
+
+        /* Button & Navigation Sizing Layouts */
+        --actions-gap: 12px;
+        --button-height: 3.2rem;
+        --tab-nav-gap: 2px;
+        --tab-nav-padding: 2px;
+        --tab-nav-border: 1px solid var(--border-main);
+        --tab-nav-height: var(--header-el-height);
+        --tab-btn-radius: calc(var(--radius-md) - 2px);
+        --tab-btn-color: var(--text-muted);
+        --tab-btn-active-bg: var(--panel-bg);
+        --tab-btn-active-color: var(--text-main);
+        --tab-btn-active-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+        --tab-btn-active-border: none;
+        --tab-transition: color 0.15s ease, background-color 0.15s ease;
       }
 
-      :root[data-theme="glass"] .console-panel {
+      :root[data-theme="cobalt-glass"] .console-panel {
         border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+
+      :root[data-theme="onyx-black"] .progress-segment {
+        border-color: var(--border-light);
+      }
+
+      /* =========================================================================
+       3.1. SF NEUTRAL DARK THEME (SYSTEM CHARCOAL)
+       ========================================================================= */
+      :root[data-theme="sf-dark"] {
+        --page-bg: #000000;
+        --panel-bg: #1c1c1e;
+        --panel-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        --panel-blur: none;
+        --element-bg: #2c2c2e;
+        --element-hover: #3a3a3c;
+        --element-bg-light: #2c2c2e;
+        --border-main: #38383a;
+        --border-light: #48484a;
+        --text-main: #ffffff;
+        --text-muted: #8e8e93;
+        --accent-work: #30d158;
+        --accent-break: #ff453a;
+        --accent-blue: #0a84ff;
+        --accent-warning: #ff9f0a;
+        --btn-work-bg: rgba(48, 209, 88, 0.15);
+        --btn-work-border: #30d158;
+        --btn-work-text: #30d158;
+        --btn-break-bg: rgba(255, 69, 58, 0.15);
+        --btn-break-border: #ff453a;
+        --btn-break-text: #ff453a;
+        --btn-log-bg: rgba(10, 132, 255, 0.15);
+        --btn-log-text: #0a84ff;
+        --btn-log-border: #0a84ff;
+        --dropdown-bg: #1c1c1e;
+        --modal-bg: #1c1c1e;
+        --track-bg: rgba(255, 255, 255, 0.1);
+        --segmented-bg: rgba(120, 120, 128, 0.24);
+        --segmented-active-bg: #2c2c2e;
+        --segmented-active-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+        --segmented-border: rgba(255, 255, 255, 0.05);
+
+        /* Typography & Timer Layout Tokens */
+        --font-sans:
+          -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --font-mono:
+          ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono", Consolas,
+          monospace;
+        --number-font: var(--font-sans);
+        --text-font: var(--font-sans);
+        --timer-size: clamp(4.5rem, 11.5vw, 7.2rem);
+        --timer-weight: 600;
+        --timer-spacing: 0.1em;
+        --break-timer-size: clamp(3.6rem, 9vw, 5.8rem);
+
+        /* Layout Metric Overrides (File 2 matching dimensions) */
+        --radius-sm: 8px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+        --radius-xl: 14px;
+        --header-el-height: 42px;
+        --header-el-radius: var(--radius-md);
+        --panel-columns: 1.1fr 1fr;
+        --panel-gap: 2.5rem;
+        --segment-height: 20px;
+        --segment-gap: 6px;
+        --segment-radius: 6px;
+
+        /* Button & Navigation Sizing Layouts */
+        --actions-gap: 12px;
+        --button-height: 3.2rem;
+        --tab-nav-gap: 2px;
+        --tab-nav-padding: 2px;
+        --tab-nav-border: 1px solid var(--border-main);
+        --tab-nav-height: var(--header-el-height);
+        --tab-btn-radius: calc(var(--radius-md) - 2px);
+        --tab-btn-color: var(--text-muted);
+        --tab-btn-active-bg: var(--panel-bg);
+        --tab-btn-active-color: var(--text-main);
+        --tab-btn-active-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+        --tab-btn-active-border: none;
+        --tab-transition: color 0.15s ease, background-color 0.15s ease;
+      }
+
+      /* =========================================================================
+       3.2. SF NEUTRAL LIGHT THEME (SYSTEM LIGHT MODE)
+       ========================================================================= */
+      :root[data-theme="sf-light"] {
+        --page-bg: #f2f2f7;
+        --panel-bg: #ffffff;
+        --panel-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+        --panel-blur: none;
+        --element-bg: #e5e5ea;
+        --element-hover: #d1d1d6;
+        --element-bg-light: #ffffff;
+        --border-main: #c7c7cc;
+        --border-light: #aeaeb2;
+        --text-main: #000000;
+        --text-muted: #636366;
+        --accent-work: #34c759;
+        --accent-break: #ff3b30;
+        --accent-blue: #007aff;
+        --accent-warning: #ff9500;
+        --btn-work-bg: rgba(52, 199, 89, 0.15);
+        --btn-work-border: #34c759;
+        --btn-work-text: #34c759;
+        --btn-break-bg: rgba(255, 59, 48, 0.15);
+        --btn-break-border: #ff3b30;
+        --btn-break-text: #ff3b30;
+        --btn-log-bg: rgba(0, 122, 255, 0.15);
+        --btn-log-text: #007aff;
+        --btn-log-border: #007aff;
+        --dropdown-bg: #ffffff;
+        --modal-bg: #ffffff;
+        --track-bg: rgba(0, 0, 0, 0.08);
+        --segmented-bg: rgba(120, 120, 128, 0.12);
+        --segmented-active-bg: #ffffff;
+        --segmented-active-shadow: 0px 1px 3px rgba(0, 0, 0, 0.08);
+        --segmented-border: transparent;
+
+        /* Typography & Timer Layout Tokens */
+        --font-sans:
+          -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+          "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        --font-mono:
+          ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono", Consolas,
+          monospace;
+        --number-font: var(--font-sans);
+        --text-font: var(--font-sans);
+        --timer-size: clamp(4.5rem, 11.5vw, 7.2rem);
+        --timer-weight: 600;
+        --timer-spacing: 0.1em;
+        --break-timer-size: clamp(3.6rem, 9vw, 5.8rem);
+
+        /* Layout Metric Overrides (File 2 matching dimensions) */
+        --radius-sm: 8px;
+        --radius-md: 10px;
+        --radius-lg: 14px;
+        --radius-xl: 14px;
+        --header-el-height: 42px;
+        --header-el-radius: var(--radius-md);
+        --panel-columns: 1.1fr 1fr;
+        --panel-gap: 2.5rem;
+        --segment-height: 20px;
+        --segment-gap: 6px;
+        --segment-radius: 6px;
+
+        /* Button & Navigation Sizing Layouts */
+        --actions-gap: 12px;
+        --button-height: 3.2rem;
+        --tab-nav-gap: 2px;
+        --tab-nav-padding: 2px;
+        --tab-nav-border: 1px solid var(--border-main);
+        --tab-nav-height: var(--header-el-height);
+        --tab-btn-radius: calc(var(--radius-md) - 2px);
+        --tab-btn-color: var(--text-muted);
+        --tab-btn-active-bg: var(--panel-bg);
+        --tab-btn-active-color: var(--text-main);
+        --tab-btn-active-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+        --tab-btn-active-border: none;
+        --tab-transition: color 0.15s ease, background-color 0.15s ease;
+      }
+
+      /* =========================================================================
+       3.3. SF THEMES-SPECIFIC HARMONIZATION OVERRIDES (GEOMETRY & SPACING)
+       ========================================================================= */
+      [data-theme^="sf-"] .tz-presets,
+      [data-theme^="sf-"] .goal-presets,
+      [data-theme^="sf-"] .theme-presets {
+        background: var(--panel-bg);
+        border: 1px solid var(--border-main);
+        border-radius: var(--radius-lg);
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.15),
+          0 1px 0 rgba(255, 255, 255, 0.05);
+        gap: 6px;
+        padding: 6px;
+      }
+
+      [data-theme^="sf-"] .tz-presets {
+        transform: translateX(-50%) translateY(6px);
+      }
+
+      [data-theme^="sf-"] .tz-container:hover .tz-presets {
+        transform: translateX(-50%) translateY(6px);
+      }
+
+      [data-theme^="sf-"] .preset-pill,
+      [data-theme^="sf-"] .preset-action-btn,
+      [data-theme^="sf-"] .ios-pill,
+      [data-theme^="sf-"] .filter-checkbox-chip,
+      [data-theme^="sf-"] .clear-filter-btn {
+        border-radius: var(--radius-sm);
+      }
+
+      [data-theme^="sf-"] .segmented-control {
+        border-radius: var(--radius-md);
+        gap: 2px;
+        padding: 2px;
       }
 
       /* =========================================================================
@@ -405,41 +693,46 @@
       }
 
       /* REFACTORED STYLE:
-   Keeps numeric values in Monospace for alignment/stability, 
-   while returning labels, text, and dates to highly readable Sans-Serif. */
+       Clean division between ticking monospace elements and premium proportional dashboard stats. */
 
-      /* 1. Elements that must be Monospace (Dynamic numbers and tabular values) */
+      /* 1. Live, ticking elements that require absolute monospace stability (clocks and countdowns) */
       .timer-val,
       #primary-clock,
       #bst-clock,
+      .font-mono {
+        font-family: var(--font-mono);
+      }
+
+      /* 2. Dashboard metrics, progress ratios, and input numbers (premium proportional tabular digits) */
       .stat-val,
-      .font-mono,
       input[type="number"],
       #goal-time,
       #progress-text,
       #eta-text {
-        font-family: var(--font-mono);
+        font-family: var(--font-sans);
         font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum" 1;
       }
 
-      /* 2. Elements that should be Sans-Serif (Text, labels, and metadata) */
+      /* 3. Primary text elements, forms, and general metadata layout rules */
       .status-time,
       .tz-static-label,
       .goal-inputs,
       .goal-inputs input[type="text"],
       .breakdown-row,
-      .log-row,
-      #progress-text {
+      .log-row {
         font-family: var(--font-sans);
       }
 
-      /* 3. Specific nested overrides (Enabling Mono only for the numbers inside those text blocks) */
+      /* 4. Align numbers cleanly within structural list items and popup dialog frames */
       .log-top-left span,
       .stats-alignment-wrapper,
       #idle-last-active,
       #idle-current-time,
       #idle-duration-text {
-        font-family: var(--font-mono);
+        font-family: var(--font-sans);
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum" 1;
       }
 
       .filter-row:not(:last-child) {
@@ -456,13 +749,16 @@
         max-width: 90rem;
         height: 85vh;
         background: var(--panel-bg);
-        border: 2px solid var(--border-main);
-        border-radius: 1.5rem;
+        border: 1px solid var(--border-main);
+        border-radius: var(--radius-xl);
         box-shadow: var(--panel-shadow);
         display: grid;
-        grid-template-columns: 1.15fr 1fr;
-        gap: 2.2rem;
+        grid-template-columns: var(--panel-columns);
+        gap: var(--panel-gap);
         padding: 2.2rem;
+        transition:
+          background-color 0.3s ease,
+          border-color 0.3s ease;
       }
 
       .main-ui {
@@ -492,9 +788,12 @@
         background: var(--element-bg);
         border: 1px solid var(--border-main);
         height: var(--header-el-height);
-        padding: 0 0.9rem;
+        padding: 0 1.2rem;
         border-radius: var(--header-el-radius);
         box-shadow: none;
+        transition:
+          background-color 0.3s ease,
+          border-color 0.3s ease;
       }
 
       .theme-toggle-btn {
@@ -543,7 +842,7 @@
         color: var(--text-main);
         font-size: 1.15rem;
         font-variant-numeric: tabular-nums;
-        font-family: var(--font-mono);
+        font-family: var(--number-font);
         margin: 0;
       }
 
@@ -571,7 +870,7 @@
         align-items: center;
         gap: 6px;
         font-size: 0.65rem;
-        width: 65px;
+        min-width: 70px;
         flex-shrink: 0;
         text-align: center;
         white-space: nowrap;
@@ -597,12 +896,15 @@
         display: inline-flex;
         align-items: center;
         margin-right: 10px;
+        align-self: stretch;
+        height: auto;
       }
 
       .tz-trigger {
-        font-size: 0.8rem;
+        font-size: 1.15rem;
         font-weight: 700;
         color: var(--accent-blue);
+        font-family: var(--font-mono);
         display: inline-flex;
         align-items: center;
         gap: 4px;
@@ -611,6 +913,7 @@
         border-radius: 0.5rem;
         transition: none;
         user-select: none;
+        height: 100%;
       }
 
       .tz-trigger:hover {
@@ -629,9 +932,10 @@
       }
 
       .tz-static-label {
-        font-size: 0.8rem;
+        font-size: 1.15rem;
         font-weight: 700;
         color: var(--text-muted);
+        font-family: var(--font-mono);
         display: inline-flex;
         align-items: center;
         padding: 0.25rem 0;
@@ -708,8 +1012,8 @@
       }
 
       .goal-inputs span.label {
-        font-family: var(--font-sans);
-        font-size: 0.8rem;
+        font-family: var(--font-mono);
+        font-size: 1.15rem;
         font-weight: 700;
         color: var(--accent-blue);
         margin-right: 0.4rem;
@@ -748,7 +1052,7 @@
           background 0.2s,
           border-color 0.2s;
         cursor: pointer;
-        font-family: var(--font-mono);
+        font-family: var(--number-font);
       }
 
       .goal-inputs input[type="text"]:hover,
@@ -811,7 +1115,9 @@
 
       .timers-wrapper,
       .timers-wrapper * {
-        font-family: var(--font-mono) !important;
+        font-family: var(--number-font) !important;
+        font-variant-numeric: tabular-nums !important;
+        font-feature-settings: "tnum" 1 !important;
       }
 
       /* Group wrappers for the top and bottom sections */
@@ -829,9 +1135,9 @@
       }
 
       .progress-rail {
-        height: 4px;
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 2px;
+        height: 6px;
+        background: var(--track-bg);
+        border-radius: 3px;
         overflow: visible;
         margin: 0;
         /* Reset margins as the parent centerpiece handles it */
@@ -841,7 +1147,7 @@
 
       #break-timer {
         /* Adjusted size for better visual weight balance with the work timer */
-        font-size: clamp(2.6rem, 7vw, 4.4rem);
+        font-size: var(--break-timer-size);
         margin: 0;
       }
 
@@ -856,48 +1162,36 @@
 
       /* Spacing between label and timer inside groups */
       .timer-group .label-xs {
-        font-size: 0.85rem;
+        font-family: var(--font-sans) !important;
+        font-size: 1.05rem;
         margin-bottom: 4px;
+        color: var(--text-main);
+        transition: color 0.15s ease;
       }
 
       /* Inverted spacing for the break group */
       .timer-group.inverted .label-xs {
-        font-size: 0.85rem;
+        font-family: var(--font-sans) !important;
+        font-size: 1.05rem;
         margin-bottom: 0;
         margin-top: 4px;
+        color: var(--accent-break);
+      }
+
+      .timer-group.is-active {
+        border-left: 3px solid currentColor;
+        padding-left: 0.6rem;
+        border-radius: 4px;
       }
 
       #progress-fill {
         height: 100%;
         width: 0%;
-        background: linear-gradient(
-          90deg,
-          rgba(241, 245, 249, 0.4) 0%,
-          rgba(241, 245, 249, 0.9) 100%
-        );
-        border-radius: 2px;
+        background: var(--accent-blue);
+        border-radius: 3px;
         box-shadow: none;
         transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
-      }
-
-      #progress-fill::after {
-        content: "";
-        position: absolute;
-        right: 0px;
-        top: 0px;
-        width: 4px;
-        height: 100%;
-        background: #ffffff;
-        border-radius: 0;
-        opacity: 1;
-        box-shadow: none;
-        transition: opacity 0.15s ease;
-      }
-
-      /* Hides the end indicator if progress scale is close to zero */
-      #progress-fill.low-progress::after {
-        opacity: 0;
       }
 
       /* High-cost keyframe pulsing removed to conserve resources */
@@ -923,7 +1217,7 @@
         white-space: nowrap;
         transition: opacity 0.05s linear;
         z-index: 99999;
-        font-family: var(--font-mono);
+        font-family: var(--number-font);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         transform-origin: bottom center;
       }
@@ -1018,12 +1312,25 @@
         white-space: nowrap;
       }
 
+      .segmented-control {
+        background: var(--segmented-bg);
+        border: 1px solid var(--segmented-border);
+        border-radius: 8px;
+        padding: 4px;
+        gap: 4px;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
       /* iOS Style Active Slider */
       #mode-simple.active,
       #mode-intelligent.active {
-        background: rgba(96, 165, 250, 0.15);
+        background: var(--segmented-active-bg);
         color: var(--accent-blue);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        box-shadow: var(--segmented-active-shadow);
         border: none;
       }
 
@@ -1031,8 +1338,9 @@
        8. BUTTONS & ACTIONS
        ========================================================================= */
       .actions {
-        display: flex;
-        gap: 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--actions-gap);
         margin-top: 0;
         min-height: 55px;
       }
@@ -1043,48 +1351,44 @@
         align-items: center;
         justify-content: center;
         gap: 0.6rem;
-        height: 3.75rem;
+        height: var(--button-height);
         box-shadow: none;
-        font-size: 0.95rem;
-        letter-spacing: 0.02em;
-        border-radius: var(--radius-md);
+        font-size: 0.9rem;
+        letter-spacing: -0.01em;
+        border-radius: var(--radius-xl);
+        transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
       }
 
       button {
         border: none;
-        border-radius: var(--radius-md);
-        padding: 16px;
+        border-radius: var(--radius-lg);
+        padding: 12px 16px;
         cursor: pointer;
         font-family: inherit;
         font-weight: 600;
         font-size: 0.85rem;
         position: relative;
         overflow: hidden;
+        transition:
+          background-color 0.15s ease,
+          filter 0.15s ease,
+          transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
       }
 
       button::before {
-        /* Optimization: The 'shimmer' effect (moving a gradient across a container) is 
-     extremely CPU-heavy in software mode because it triggers a repaint on every frame. */
         display: none;
       }
 
       button:hover:not(:disabled) {
-        /* Optimization: Simple background shift instead of a complex sliding glow. */
-        filter: brightness(1.1);
-      }
-
-      button:hover:not(:disabled) {
-        transform: translateY(-2px);
+        filter: brightness(1.05);
       }
 
       button:active:not(:disabled) {
-        transform: translateY(0.5px) scale(0.97);
+        transform: scale(0.96);
       }
 
-      button:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-        filter: saturate(0.5);
+      #start-btn {
+        grid-column: 1 / -1;
       }
 
       .btn-work {
@@ -1108,7 +1412,6 @@
       }
 
       .btn-log {
-        grid-column: span 2;
         background: var(--btn-log-bg);
         color: var(--btn-log-text);
         border: 1px solid var(--btn-log-border);
@@ -1116,6 +1419,144 @@
 
       .btn-log:hover:not(:disabled) {
         filter: brightness(1.2);
+      }
+
+      /* Disable global scaling and destructive CSS brightness filters for main actions in all active themes */
+      :root[data-theme] .btn-work:hover:not(:disabled),
+      :root[data-theme] .btn-break:hover:not(:disabled),
+      :root[data-theme] .btn-log:hover:not(:disabled) {
+        filter: none;
+      }
+
+      :root[data-theme] .btn-work:active:not(:disabled),
+      :root[data-theme] .btn-break:active:not(:disabled),
+      :root[data-theme] .btn-log:active:not(:disabled) {
+        transform: none;
+        filter: none;
+      }
+
+      /* ── SF DARK THEME: Translucent Neon Glow Alpha Opacity Changes ── */
+      :root[data-theme="sf-dark"] .btn-work:hover:not(:disabled) {
+        background: rgba(48, 209, 88, 0.28);
+      }
+
+      :root[data-theme="sf-dark"] .btn-work:active:not(:disabled) {
+        background: rgba(48, 209, 88, 0.4);
+      }
+
+      :root[data-theme="sf-dark"] .btn-break:hover:not(:disabled) {
+        background: rgba(255, 69, 58, 0.28);
+      }
+
+      :root[data-theme="sf-dark"] .btn-break:active:not(:disabled) {
+        background: rgba(255, 69, 58, 0.4);
+      }
+
+      :root[data-theme="sf-dark"] .btn-log:hover:not(:disabled) {
+        background: rgba(10, 132, 255, 0.28);
+      }
+
+      :root[data-theme="sf-dark"] .btn-log:active:not(:disabled) {
+        background: rgba(10, 132, 255, 0.4);
+      }
+
+      /* ── SF LIGHT THEME: Translucent Contrast Preservation ── */
+      :root[data-theme="sf-light"] .btn-work:hover:not(:disabled) {
+        background: rgba(52, 199, 89, 0.28);
+      }
+
+      :root[data-theme="sf-light"] .btn-work:active:not(:disabled) {
+        background: rgba(52, 199, 89, 0.4);
+      }
+
+      :root[data-theme="sf-light"] .btn-break:hover:not(:disabled) {
+        background: rgba(255, 59, 48, 0.28);
+      }
+
+      :root[data-theme="sf-light"] .btn-break:active:not(:disabled) {
+        background: rgba(255, 59, 48, 0.4);
+      }
+
+      :root[data-theme="sf-light"] .btn-log:hover:not(:disabled) {
+        background: rgba(0, 122, 255, 0.28);
+      }
+
+      :root[data-theme="sf-light"] .btn-log:active:not(:disabled) {
+        background: rgba(0, 122, 255, 0.4);
+      }
+
+      /* ── ONYX BLACK THEME: Deep Pitch-Black Neon Color Mixes ── */
+      :root[data-theme="onyx-black"] .btn-work:hover:not(:disabled) {
+        background: color-mix(
+          in srgb,
+          var(--accent-work) 15%,
+          var(--btn-work-bg)
+        );
+      }
+
+      :root[data-theme="onyx-black"] .btn-work:active:not(:disabled) {
+        background: color-mix(
+          in srgb,
+          var(--accent-work) 30%,
+          var(--btn-work-bg)
+        );
+      }
+
+      :root[data-theme="onyx-black"] .btn-break:hover:not(:disabled) {
+        background: color-mix(
+          in srgb,
+          var(--accent-break) 15%,
+          var(--btn-break-bg)
+        );
+      }
+
+      :root[data-theme="onyx-black"] .btn-break:active:not(:disabled) {
+        background: color-mix(
+          in srgb,
+          var(--accent-break) 30%,
+          var(--btn-break-bg)
+        );
+      }
+
+      :root[data-theme="onyx-black"] .btn-log:hover:not(:disabled) {
+        background: color-mix(
+          in srgb,
+          var(--accent-blue) 15%,
+          var(--btn-log-bg)
+        );
+      }
+
+      :root[data-theme="onyx-black"] .btn-log:active:not(:disabled) {
+        background: color-mix(
+          in srgb,
+          var(--accent-blue) 30%,
+          var(--btn-log-bg)
+        );
+      }
+
+      /* ── COBALT GLASS THEME: High-Contrast Solid Tonal Darkening ── */
+      :root[data-theme="cobalt-glass"] .btn-work:hover:not(:disabled) {
+        background: color-mix(in srgb, #000 10%, var(--btn-work-bg));
+      }
+
+      :root[data-theme="cobalt-glass"] .btn-work:active:not(:disabled) {
+        background: color-mix(in srgb, #000 22%, var(--btn-work-bg));
+      }
+
+      :root[data-theme="cobalt-glass"] .btn-break:hover:not(:disabled) {
+        background: color-mix(in srgb, #000 10%, var(--btn-break-bg));
+      }
+
+      :root[data-theme="cobalt-glass"] .btn-break:active:not(:disabled) {
+        background: color-mix(in srgb, #000 22%, var(--btn-break-bg));
+      }
+
+      :root[data-theme="cobalt-glass"] .btn-log:hover:not(:disabled) {
+        background: color-mix(in srgb, #000 10%, var(--btn-log-bg));
+      }
+
+      :root[data-theme="cobalt-glass"] .btn-log:active:not(:disabled) {
+        background: color-mix(in srgb, #000 22%, var(--btn-log-bg));
       }
 
       /* =========================================================================
@@ -1133,59 +1574,58 @@
 
       .tab-nav {
         display: flex;
-        gap: 10px;
+        gap: var(--tab-nav-gap);
         margin-bottom: 20px;
         background: var(--element-bg);
-        padding: 5px;
+        padding: var(--tab-nav-padding);
         border-radius: var(--header-el-radius);
-        border: 1px solid var(--border-main);
+        border: var(--tab-nav-border);
         flex-shrink: 0;
-        margin-right: 10px;
-        height: var(--header-el-height);
+        height: var(--tab-nav-height);
         box-sizing: border-box;
         align-items: stretch;
       }
 
       .tab-btn {
         flex: 1;
-        border-radius: calc(var(--header-el-radius) - 4px);
+        border-radius: var(--tab-btn-radius);
         background: transparent;
-        color: color-mix(in srgb, var(--text-main) 45%, transparent);
-        font-size: 0.85rem;
-        font-weight: 700;
-        transition:
-          background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-          border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-          color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-          opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-          transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        color: var(--tab-btn-color);
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: var(--tab-transition);
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        border: 1px solid transparent;
+        border: none;
       }
 
       .tab-btn:hover {
-        color: var(--accent-blue);
+        color: var(--text-main);
       }
 
       .tab-btn.active {
-        background: var(--element-hover);
-        color: var(--accent-blue);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-        border-color: var(--border-light);
+        background: var(--tab-btn-active-bg);
+        color: var(--tab-btn-active-color);
+        box-shadow: var(--tab-btn-active-shadow);
+        border: var(--tab-btn-active-border);
       }
 
       .tab-btn:active {
-        transform: scale(0.96);
+        transform: scale(0.98);
       }
 
       .tab-content {
         flex: 1;
         overflow-y: auto;
         overflow-x: hidden;
-        padding-right: 10px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .tab-content::-webkit-scrollbar {
+        display: none;
       }
 
       .logbook-controls-header {
@@ -1648,7 +2088,7 @@
         row-gap: 0.15rem;
         column-gap: 0.75rem;
         padding: 0.4rem 0.8rem;
-        border-radius: 0.75rem;
+        border-radius: var(--radius-xl);
         background: var(--element-bg);
         border: 1px solid var(--border-main);
         contain: layout paint;
@@ -1841,6 +2281,7 @@
         width: 100%;
         gap: clamp(10px, 0.4vw, 25px);
         flex-wrap: nowrap;
+        position: relative;
       }
 
       .icon-stack {
@@ -1879,12 +2320,13 @@
         height: clamp(28px, 2.4vw, 38px);
         background: var(--element-bg);
         border: 1px solid var(--border-main);
-        border-radius: 8px;
+        border-radius: var(--radius-sm);
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         box-sizing: border-box;
+        transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
       }
 
       .sidebar-footer .sq-btn svg {
@@ -1911,8 +2353,9 @@
       .idle-popup {
         position: absolute;
         bottom: 110%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-0.625rem);
+        right: 0;
+        left: auto;
+        transform: translateY(-0.625rem);
         background: var(--dropdown-bg);
         border: 1px solid var(--border-light);
         border-radius: 0.75rem;
@@ -2056,7 +2499,7 @@
         width: 100%;
         height: 4px;
         border-radius: 2px;
-        background: rgba(255, 255, 255, 0.1);
+        background: var(--track-bg);
         outline: none;
         margin: 4px 0;
       }
@@ -2084,25 +2527,6 @@
       .idle-range-input:disabled::-webkit-slider-thumb {
         background: var(--text-muted);
         cursor: not-allowed;
-      }
-
-      /* Theme Adjustments */
-      :root[data-theme="midnight"] .sidebar-footer .sq-btn {
-        background: transparent;
-        border-color: transparent;
-      }
-
-      :root[data-theme="midnight"] .sidebar-footer .sq-btn:hover {
-        background: var(--element-hover);
-        border-color: var(--border-main);
-      }
-
-      :root[data-theme="glass"] .sidebar-footer .sq-btn:hover {
-        background: rgba(255, 255, 255, 0.08);
-        /* removed backdrop-filter for CPU perf */
-        box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.15),
-          0 4px 12px rgba(0, 0, 0, 0.15);
       }
 
       /* Micro-Animations based on button purpose */
@@ -2173,7 +2597,7 @@
       .stats-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 8px;
+        gap: 12px;
         margin-bottom: 12px;
         flex-shrink: 0;
       }
@@ -2181,9 +2605,12 @@
       .stat-card {
         background: var(--element-bg);
         border: 1px solid var(--border-main);
-        border-radius: 12px;
-        padding: 10px;
+        border-radius: var(--radius-xl);
+        padding: 16px;
         contain: layout paint;
+        transition:
+          background-color 0.3s ease,
+          border-color 0.3s ease;
       }
 
       .stat-val {
@@ -2209,9 +2636,29 @@
       }
 
       #week-month-label {
-        font-size: 0.85rem;
+        font-size: var(--text-sm);
+        font-weight: 700;
         color: var(--text-main);
-        font-weight: 600;
+        margin-bottom: 0;
+        white-space: nowrap;
+        margin-left: 2px;
+        margin-right: 2px;
+        cursor: pointer;
+        user-select: none;
+        text-decoration: none;
+        display: inline-block;
+        transition:
+          color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      #week-month-label:hover {
+        color: var(--accent-blue) !important;
+        transform: translateY(-1.5px);
+      }
+
+      #week-month-label:active {
+        transform: scale(0.95) translateY(0);
       }
 
       #weekly-breakdown {
@@ -2241,32 +2688,30 @@
 
       .segmented-progress-bar {
         display: flex;
-        gap: 4px;
+        gap: var(--segment-gap);
         width: 100%;
       }
 
       .progress-segment {
         flex: 1;
-        height: 16px;
+        height: var(--segment-height);
         background-color: var(--element-bg);
         border: 1px solid var(--border-main);
-        border-radius: 4px;
+        border-radius: var(--segment-radius);
         overflow: hidden;
         position: relative;
+        transition:
+          background-color 0.3s ease,
+          border-color 0.3s ease;
       }
 
       .progress-segment-fill {
         height: 100%;
         width: 0%;
-        background: linear-gradient(
-          135deg,
-          var(--accent-blue) 0%,
-          #4f46e5 100%
-        );
-        box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-        transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        background: var(--accent-blue);
+        box-shadow: none;
+        transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         will-change: width;
-        /* Promotes segment fills to the GPU compositor layer */
       }
 
       .progress-segment.is-today {
@@ -2289,12 +2734,12 @@
       .progress-segment.is-leave {
         background: repeating-linear-gradient(
           45deg,
-          rgba(255, 255, 255, 0.05),
-          rgba(255, 255, 255, 0.05) 6px,
-          rgba(255, 255, 255, 0.15) 6px,
-          rgba(255, 255, 255, 0.15) 12px
+          color-mix(in srgb, var(--text-main) 4%, transparent),
+          color-mix(in srgb, var(--text-main) 4%, transparent) 6px,
+          color-mix(in srgb, var(--text-main) 12%, transparent) 6px,
+          color-mix(in srgb, var(--text-main) 12%, transparent) 12px
         );
-        border: 1px dashed rgba(255, 255, 255, 0.25);
+        border: 1px dashed color-mix(in srgb, var(--text-main) 25%, transparent);
         opacity: 1;
       }
 
@@ -2346,10 +2791,10 @@
         border: 1px solid var(--border-main);
         border-radius: var(--radius-xl);
         padding: var(--space-5);
-        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
         position: relative;
         overflow: hidden;
-        animation: modalContainerScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1)
+        animation: modalContainerScaleIn 0.25s cubic-bezier(0.25, 1, 0.5, 1)
           forwards;
       }
 
@@ -2360,6 +2805,84 @@
 
       .modal-width-md {
         max-width: var(--modal-width-md) !important;
+      }
+
+      .modal-width-lg {
+        max-width: 640px !important;
+      }
+
+      /* Help Modal specific tab layouts */
+      .help-tab-nav {
+        display: flex;
+        gap: 8px;
+        margin-bottom: var(--space-4);
+        background: var(--element-bg);
+        padding: 4px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-main);
+      }
+
+      .help-tab-btn {
+        flex: 1;
+        padding: 8px;
+        border-radius: calc(var(--radius-md) - 2px);
+        background: transparent;
+        color: var(--text-muted);
+        font-size: var(--text-sm);
+        font-weight: 700;
+        cursor: pointer;
+        border: 1px solid transparent;
+        text-align: center;
+        transition: all 0.15s ease;
+      }
+
+      .help-tab-btn.active {
+        background: var(--element-hover);
+        color: var(--accent-blue);
+        border-color: var(--border-light);
+      }
+
+      .help-tab-content {
+        display: none;
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        line-height: 1.6;
+        max-height: 350px;
+        overflow-y: auto;
+        text-align: left;
+        padding-right: 4px;
+      }
+
+      .help-tab-content.active {
+        display: block;
+      }
+
+      .help-tab-content h4 {
+        margin-top: 0;
+        color: var(--text-main);
+        font-size: var(--text-base);
+        font-weight: 600;
+        margin-bottom: var(--space-3);
+      }
+
+      .help-tab-content ul {
+        margin: 0;
+        padding-left: var(--space-4);
+      }
+
+      .help-tab-content li {
+        margin-bottom: var(--space-2);
+      }
+
+      .help-tab-content p {
+        margin-top: 0;
+        margin-bottom: var(--space-3);
+      }
+
+      .help-tab-content hr {
+        border: 0;
+        border-top: 1px solid var(--border-main);
+        margin: var(--space-4) 0;
       }
 
       /* Semantic Accent Tops for Modals */
@@ -2475,7 +2998,7 @@
         color: var(--accent-blue);
         padding: 4px 12px;
         border-radius: var(--radius-md);
-        font-family: var(--font-mono);
+        font-family: var(--number-font);
         font-weight: 700;
         font-size: 0.7rem;
         letter-spacing: 0.02em;
@@ -2553,7 +3076,7 @@
       }
 
       #goal-toast .goal-tag {
-        font-family: var(--font-mono);
+        font-family: var(--number-font);
         font-size: 0.7rem;
         font-weight: 700;
         background: rgba(74, 222, 128, 0.1);
@@ -2600,26 +3123,32 @@
       .toast-close-btn {
         background: transparent;
         border: none;
-        color: var(--text-muted);
+        color: var(--text-main);
+        opacity: 0.75;
         cursor: pointer;
-        padding: 6px 10px;
-        margin-left: 8px;
-        border-radius: var(--radius-sm);
+        width: 24px;
+        height: 24px;
+        margin-left: 10px;
+        border-radius: 50%;
         display: flex;
         align-items: center;
+        justify-content: center;
+        padding: 0;
         transition:
           color 0.15s ease,
           background-color 0.15s ease,
+          opacity 0.15s ease,
           transform 0.1s ease;
       }
 
       .toast-close-btn:hover {
-        background: rgba(255, 255, 255, 0.08);
-        color: var(--text-main);
+        background: rgba(128, 128, 128, 0.15);
+        color: var(--accent-blue) !important;
+        opacity: 1;
       }
 
       .toast-close-btn:active {
-        transform: scale(0.92);
+        transform: scale(0.9);
       }
 
       /* ==========================================================================
@@ -2719,25 +3248,36 @@
           margin-right: 0;
         }
 
-        /* Goal presets: static below badge instead of absolute */
-        .goal-presets {
-          position: fixed;
-          top: auto;
-          bottom: 50%;
-          left: 50%;
-          right: auto;
-          transform: translateX(-50%) translateY(50%);
-          z-index: 200;
-        }
-
-        /* TZ presets: fixed center on tablet */
+        /* Goal presets and TZ presets: bottom sheet pattern */
+        .goal-presets,
         .tz-presets {
           position: fixed;
+          bottom: 0;
           top: auto;
-          bottom: 50%;
-          left: 50%;
-          transform: translateX(-50%) translateY(50%);
-          z-index: 200;
+          left: 0;
+          right: 0;
+          transform: none;
+          border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+          gap: 8px;
+          z-index: 300;
+          box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .goal-presets::before,
+        .tz-presets::before {
+          display: none;
+        }
+
+        .preset-pill {
+          padding: 10px 16px;
+          font-size: 0.85rem;
+          min-height: 44px;
+          display: flex;
+          align-items: center;
         }
       }
 
@@ -2821,8 +3361,8 @@
         }
 
         .timers-wrapper {
-          gap: 1rem;
-          margin: 0.5rem 0;
+          gap: 0.6rem;
+          margin: 0.25rem 0;
         }
 
         /* Progress text: stack vertically */
@@ -2836,7 +3376,16 @@
 
         /* === ACTION BUTTONS === */
         .actions {
-          flex-direction: column;
+          position: sticky;
+          bottom: 0;
+          bottom: env(safe-area-inset-bottom, 0px);
+          z-index: 100;
+          background: var(--panel-bg);
+          padding: 12px 0;
+          margin: 0 -14px;
+          padding-left: 14px;
+          padding-right: 14px;
+          border-top: 1px solid var(--border-main);
           gap: 10px;
           min-height: auto;
         }
@@ -2852,17 +3401,23 @@
         /* === SIDEBAR === */
         .tab-content {
           padding-right: 0;
+          overflow: visible;
         }
 
-        #tab-logbook {
-          max-height: 65vh;
-          overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
+        #tab-logbook,
+        #tab-insights {
+          max-height: none;
+          overflow-y: visible;
         }
 
         .logbook-controls-header {
           flex-wrap: wrap;
           gap: 8px;
+          align-items: flex-start;
+        }
+
+        #log-count-display {
+          flex: 1;
         }
 
         .log-row {
@@ -2915,6 +3470,16 @@
         .stats-alignment-wrapper {
           min-width: 0;
           justify-content: flex-start;
+        }
+
+        .work-col {
+          width: auto;
+          min-width: 5.5rem;
+        }
+
+        .break-col {
+          width: auto;
+          min-width: 4.5rem;
         }
 
         /* Weekly progress card */
@@ -3021,37 +3586,13 @@
           font-size: 16px;
           /* Prevents iOS zoom on focus */
         }
+      }
 
-        /* Goal presets and TZ presets: bottom sheet on mobile */
-        .goal-presets,
-        .tz-presets {
-          position: fixed;
-          bottom: 0;
-          top: auto;
-          left: 0;
-          right: 0;
-          transform: none;
-          border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: center;
-          padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
-          gap: 8px;
-          z-index: 300;
-          box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .goal-presets::before,
-        .tz-presets::before {
+      /* ── NARROW MOBILE  (≤ 480px) ─────────────────────────────────────────── */
+      @media (max-width: 480px) {
+        .tz-static-label,
+        #bst-clock {
           display: none;
-        }
-
-        .preset-pill {
-          padding: 10px 16px;
-          font-size: 0.85rem;
-          min-height: 44px;
-          display: flex;
-          align-items: center;
         }
       }
 
@@ -3170,6 +3711,12 @@
           filter: none;
         }
 
+        button:active:not(:disabled) {
+          transform: scale(0.94);
+          opacity: 0.8;
+          transition: none;
+        }
+
         .icon-btn:hover:not(:disabled) {
           transform: none;
         }
@@ -3209,6 +3756,7 @@
       /* ── SAFE AREA (NOTCHED DEVICES) ──────────────────────────────────────── */
       @supports (padding: env(safe-area-inset-bottom)) {
         body {
+          padding-top: max(6px, env(safe-area-inset-top));
           padding-left: env(safe-area-inset-left);
           padding-right: env(safe-area-inset-right);
           padding-bottom: env(safe-area-inset-bottom);
@@ -3295,14 +3843,15 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        font-size: clamp(3.2rem, 9vw, 5.5rem);
+        font-size: var(--timer-size);
         line-height: 1;
-        font-weight: 700;
-        letter-spacing: -0.02em;
+        font-weight: var(--timer-weight);
+        letter-spacing: var(--timer-spacing);
         margin-bottom: 0;
         transition: color 0.3s ease;
-        font-family: var(--font-mono);
+        font-family: var(--number-font);
         font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum" 1;
       }
 
       .stats-alignment-wrapper {
@@ -3369,7 +3918,7 @@
 
       .timer-inactive {
         color: var(--text-muted) !important;
-        opacity: 0.35 !important;
+        opacity: 0.6 !important;
         filter: grayscale(100%) !important;
       }
 
@@ -3392,9 +3941,8 @@
         border-radius: 4px;
         font-weight: 700;
         vertical-align: middle;
-        font-family: var(--font-mono) !important;
+        font-family: var(--number-font) !important;
         line-height: 1;
-        padding-top: 2px;
       }
 
       .badge-leave {
@@ -3536,6 +4084,55 @@
 
       .collapsible-content {
         overflow: hidden;
+      }
+
+      /* =========================================================================
+       DYNAMIC THEME PRESET POPOVER COMPONENT
+       ========================================================================= */
+      .theme-container {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .theme-presets {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        opacity: 0;
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 6px;
+        background: var(--element-hover);
+        border: 1px solid var(--border-light);
+        border-radius: var(--header-el-radius);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        transform: translateY(4px);
+        z-index: 100;
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .theme-presets::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 0;
+        right: 0;
+        height: 10px;
+      }
+
+      .theme-container:hover .theme-presets {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .theme-container:hover .goal-chevron {
+        transform: rotate(180deg);
+        color: var(--text-main);
       }
     </style>
   </head>
@@ -3824,6 +4421,60 @@
             >
           </div>
         </div>
+        <div
+          id="eod-auto-email-warning"
+          style="
+            display: none;
+            background: rgba(48, 209, 88, 0.06);
+            border: 1px solid rgba(48, 209, 88, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-3);
+            margin-bottom: var(--space-4);
+            align-items: flex-start;
+            gap: 10px;
+          "
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--accent-work)"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            style="width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 2px;
+              text-align: left;
+            "
+          >
+            <span
+              style="
+                font-size: var(--text-xs);
+                font-weight: 700;
+                color: var(--accent-work);
+              "
+              >Auto-Email Enabled</span
+            >
+            <span
+              style="
+                font-size: 11px;
+                line-height: 1.4;
+                color: var(--text-muted);
+                opacity: 0.85;
+              "
+              >Your formatted work log summary will automatically copy to your
+              clipboard and launch a Gmail compose window.</span
+            >
+          </div>
+        </div>
         <div class="action-row">
           <button class="btn-secondary" onclick="closeSubmitModal()">
             Cancel
@@ -3867,6 +4518,541 @@
 
     <!-- Sync Session Toast Notification -->
     <div id="sync-toast"></div>
+
+    <!-- Help & User Guide Modal -->
+    <div id="help-modal" class="modal-overlay" style="z-index: 3500">
+      <div class="modal-container modal-width-lg accent-info">
+        <h3
+          class="modal-header info"
+          style="justify-content: space-between; display: flex; width: 100%"
+        >
+          <span style="display: flex; align-items: center; gap: var(--space-2)">
+            <svg
+              viewBox="0 0 24 24"
+              class="ui-icon"
+              stroke="currentColor"
+              fill="none"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              ></path>
+            </svg>
+            User Guide & Help
+          </span>
+          <button
+            class="toast-close-btn"
+            onclick="closeHelpModal()"
+            style="margin-left: auto; padding: 0"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </h3>
+
+        <!-- Help Tabs -->
+        <div class="help-tab-nav">
+          <button
+            class="help-tab-btn active"
+            onclick="switchHelpTab('help-overview', this)"
+          >
+            Overview
+          </button>
+          <button
+            class="help-tab-btn"
+            onclick="switchHelpTab('help-tracking', this)"
+          >
+            Tracking
+          </button>
+          <button
+            class="help-tab-btn"
+            onclick="switchHelpTab('help-insights', this)"
+          >
+            Insights
+          </button>
+          <button
+            class="help-tab-btn"
+            onclick="switchHelpTab('help-logbook', this)"
+          >
+            Logbook
+          </button>
+          <button
+            class="help-tab-btn"
+            onclick="switchHelpTab('help-data', this)"
+          >
+            Data & Settings
+          </button>
+        </div>
+
+        <!-- Tab 1: Overview -->
+        <div id="help-overview" class="help-tab-content active">
+          <h4>What is Work Hour Tracker?</h4>
+          <p>
+            Work Hour Tracker is a self-contained browser app for logging and
+            analyzing your daily work sessions. All data is stored locally in
+            your browser — no account or internet connection required after the
+            page loads.
+          </p>
+          <hr />
+          <h4>Interface at a Glance</h4>
+          <ul>
+            <li>
+              <strong>Left Panel — Live Tracker:</strong> Your active session
+              controls, live timers, and daily progress bar.
+            </li>
+            <li>
+              <strong>Right Panel — Insights / Logbook:</strong> Switch between
+              your weekly analytics view and your full shift history using the
+              two tabs at the top of the panel.
+            </li>
+            <li>
+              <strong>Footer Toolbar:</strong> Access CSV export, clipboard
+              copy, JSON backup/restore, leave management, help, settings, and
+              the factory reset (Wipe).
+            </li>
+            <li>
+              <strong>Header Bar:</strong> Set your active timezone, configure
+              your daily goal, and switch the app theme.
+            </li>
+          </ul>
+          <hr />
+          <h4>Quick Start (3 Steps)</h4>
+          <ul>
+            <li>
+              <strong>Step 1 — Set your goal:</strong> Before starting, confirm
+              your <strong>Daily Goal</strong> in the header (default: 8h 0m).
+              Click the field to open goal presets, or type a custom value. The
+              goal for each day is permanently locked the moment you submit your
+              first shift, so set it correctly upfront.
+            </li>
+            <li>
+              <strong>Step 2 — Track your day:</strong> Click
+              <strong>Start Work</strong> when you begin. Use
+              <strong>Take Break</strong> when stepping away and
+              <strong>Resume Work</strong> to continue. The Production and Break
+              timers update in real time.
+            </li>
+            <li>
+              <strong>Step 3 — Submit your shift:</strong> Click
+              <strong>Submit EOD</strong> at the end of your day. A dialog will
+              prompt you to add shift notes before the entry is written to your
+              Logbook permanently.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tab 2: Tracking -->
+        <div id="help-tracking" class="help-tab-content">
+          <h4>Session Controls</h4>
+          <ul>
+            <li>
+              <strong>Start Work:</strong> Begins a new session and starts the
+              Production timer. Only available when no session is active.
+            </li>
+            <li>
+              <strong>Take Break:</strong> Pauses the Production timer and
+              starts the Break timer. Available while working.
+            </li>
+            <li>
+              <strong>Resume Work:</strong> Stops the Break timer and resumes
+              Production. Replaces the Take Break button while on break.
+            </li>
+            <li>
+              <strong>Submit EOD:</strong> Ends and saves the current session to
+              your Logbook. You will be prompted to enter shift notes. This
+              action is final — the shift is written to permanent storage.
+            </li>
+          </ul>
+          <hr />
+          <h4>Progress Bar & ETA</h4>
+          <ul>
+            <li>
+              The horizontal bar between the two timers shows your progress
+              toward today's daily goal.
+            </li>
+            <li>
+              <strong>Left label:</strong> Current completion percentage and
+              remaining time.
+            </li>
+            <li>
+              <strong>Right label:</strong> Estimated end-of-day time in BST
+              based on your current pace.
+            </li>
+            <li>The bar turns fully green once your goal is reached.</li>
+          </ul>
+          <hr />
+          <h4>Goal Anchor</h4>
+          <p>
+            When you submit your first shift on any given day, the daily goal
+            active at that moment is permanently saved ("anchored") to that
+            entry. This ensures that changing tomorrow's goal does not
+            retroactively alter your historical records.
+          </p>
+          <p>
+            <strong>Best practice:</strong> Always verify your Daily Goal in the
+            header before submitting your first shift of the day. If you need to
+            correct a previously anchored goal, go to the
+            <strong>Logbook</strong> tab, click the <strong>Edit</strong> icon
+            on that entry, and update the goal value directly.
+          </p>
+          <hr />
+          <h4>Intelligent Mode — Smart Tracking</h4>
+          <p>
+            When <strong>Intelligent</strong> mode is active (configured in
+            Settings), the app runs three protective behaviors automatically:
+          </p>
+          <ul>
+            <li>
+              <strong>Idle Lock:</strong> If your keyboard and mouse are
+              inactive beyond the configured threshold (default: 60 minutes),
+              the session pauses and a dialog appears when you return. You
+              choose whether the idle period counts as work, break, or is
+              discarded entirely.
+            </li>
+            <li>
+              <strong>Sleep / Tab Suspension Detection:</strong> If your
+              computer sleeps, the browser suspends the tab, or the system
+              freezes, the app detects the gap on wake and prompts you to decide
+              how to handle the missing time — the same as idle recovery.
+            </li>
+            <li>
+              <strong>Midnight Rollover:</strong> If a session is still active
+              at 12:00 AM, the app automatically submits the current shift for
+              the prior day and starts a clean session for the new date. No data
+              is lost.
+            </li>
+          </ul>
+          <p>
+            <strong>Simple mode</strong> disables all three behaviors above. The
+            timers run continuously with no interruptions, regardless of
+            inactivity or system sleep.
+          </p>
+          <hr />
+          <h4>Smart Time Inputs</h4>
+          <p>
+            Whenever you edit a time value (like in the Add Log or Edit Shift
+            menus), you can use shorthand formats to speed up entry. The app
+            will automatically format it to HH:MM when you press Enter or click
+            away.
+          </p>
+          <ul>
+            <li>
+              <strong>Numbers:</strong> Typing <code>8</code> converts to
+              <code>08:00</code>.
+            </li>
+            <li>
+              <strong>Decimals:</strong> Typing <code>8.5</code> converts to
+              <code>08:30</code>.
+            </li>
+            <li>
+              <strong>Minutes:</strong> Typing <code>45m</code> converts to
+              <code>00:45</code>.
+            </li>
+            <li>
+              <strong>Hours & Minutes:</strong> Typing
+              <code>8h 30m</code> converts to <code>08:30</code>.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tab 3: Insights -->
+        <div id="help-insights" class="help-tab-content">
+          <h4>Weekly Progress Overview</h4>
+          <p>
+            The <strong>Insights</strong> tab (right panel) shows your
+            aggregated weekly performance. Use the left/right arrows to navigate
+            between weeks. Double-click the week label to jump back to the
+            current week.
+          </p>
+          <ul>
+            <li>
+              <strong>Total Work / Total Break:</strong> Cumulative hours for
+              the displayed week.
+            </li>
+            <li>
+              <strong>Weekly completion %:</strong> Your progress toward the
+              40-hour weekly target, shown in blue.
+            </li>
+            <li>
+              <strong>Status message:</strong> A short contextual summary —
+              e.g., whether you are on track, ahead, or behind pace for the
+              week.
+            </li>
+          </ul>
+          <hr />
+          <h4>M–T–W–T–F Day Segments</h4>
+          <p>
+            The five horizontal bars represent Monday through Friday of the
+            selected week. Each bar fills proportionally based on hours logged
+            against that day's goal.
+          </p>
+          <ul>
+            <li>
+              A bar that is fully green means the daily goal was met or exceeded
+              for that day.
+            </li>
+            <li>
+              A bar with a <strong>striped pattern</strong> indicates a
+              scheduled leave day. Leave days are excluded from pace and goal
+              calculations.
+            </li>
+            <li>
+              The current day's bar updates live as your session progresses.
+            </li>
+          </ul>
+          <hr />
+          <h4>Shift Badges</h4>
+          <p>
+            Each log entry in the weekly breakdown carries colored badges
+            summarizing that shift:
+          </p>
+          <ul>
+            <li>
+              <span class="badge badge-w">W</span> <strong>Work Time</strong> —
+              Total productive hours logged.
+            </li>
+            <li>
+              <span class="badge badge-b">B</span> <strong>Break Time</strong> —
+              Total break duration.
+            </li>
+            <li>
+              <span class="badge badge-over">O</span>
+              <strong>Overtime</strong> — Shift met or exceeded its anchored
+              goal.
+            </li>
+            <li>
+              <span class="badge badge-under">U</span>
+              <strong>Under Goal</strong> — Shift did not reach its anchored
+              goal.
+            </li>
+            <li>
+              <span class="badge badge-f">F</span> <strong>Focus %</strong> —
+              Ratio of work time to total time (work + break). Higher is more
+              focused.
+            </li>
+          </ul>
+          <hr />
+          <h4>Pace Required</h4>
+          <p>
+            Displayed in the weekly breakdown, this figure tells you how many
+            hours per day you need to average across the remaining active
+            (non-leave) weekdays to reach your 40-hour weekly target. It
+            recalculates automatically as you log hours each day.
+          </p>
+        </div>
+
+        <!-- Tab 4: Logbook -->
+        <div id="help-logbook" class="help-tab-content">
+          <h4>Viewing & Navigating Entries</h4>
+          <p>
+            The <strong>Logbook</strong> tab (right panel) lists every submitted
+            shift entry in reverse chronological order. Each entry shows the
+            date, login/logout times, work and break duration, daily goal, focus
+            percentage, and any shift notes.
+          </p>
+          <hr />
+          <h4>Adding a Manual Entry</h4>
+          <p>
+            Click <strong>Add Log</strong> in the Logbook header to open the
+            manual entry form. Fill in the following fields:
+          </p>
+          <ul>
+            <li>
+              <strong>Date:</strong> Enter in MM/DD/YY format, or use the
+              natural language shortcuts <code>today</code> or
+              <code>yesterday</code>.
+            </li>
+            <li>
+              <strong>Login / Logout Times:</strong> The start and end times of
+              the shift.
+            </li>
+            <li>
+              <strong>Work Hours / Break Hours:</strong> Duration of productive
+              time and break time within the shift.
+            </li>
+            <li>
+              <strong>Daily Goal:</strong> The target hours for that specific
+              day.
+            </li>
+            <li>
+              <strong>Notes:</strong> Optional — tasks completed or any relevant
+              context.
+            </li>
+          </ul>
+          <hr />
+          <h4>Editing & Deleting Entries</h4>
+          <ul>
+            <li>
+              <strong>Edit (pencil icon):</strong> Opens the entry in an
+              editable form. You can update any field, including the anchored
+              goal, notes, hours, or date. Save to commit changes.
+            </li>
+            <li>
+              <strong>Delete (trash icon):</strong> Permanently removes the
+              entry. This action cannot be undone. A confirmation prompt will
+              appear before deletion.
+            </li>
+          </ul>
+          <hr />
+          <h4>Filters & Saved Views</h4>
+          <p>
+            Click <strong>Filters</strong> in the Logbook header to expand the
+            filter drawer. Available filter criteria include:
+          </p>
+          <ul>
+            <li>
+              <strong>Search:</strong> Full-text search across shift notes and
+              timestamps.
+            </li>
+            <li>
+              <strong>Date Range:</strong> Filter to a specific date window
+              using the date picker fields.
+            </li>
+            <li>
+              <strong>Work Hours:</strong> Show only shifts above or below a
+              specified hour threshold.
+            </li>
+            <li>
+              <strong>Overtime / Under Goal:</strong> Filter by whether shifts
+              met their daily goal.
+            </li>
+          </ul>
+          <p>
+            Once you have configured a filter combination you use regularly,
+            save it as a named <strong>Saved View</strong>. Saved views appear
+            in the dropdown at the top of the filter drawer and can be recalled
+            with a single click.
+          </p>
+          <hr />
+          <h4>Managing Leaves & Holidays</h4>
+          <p>
+            Click the <strong>Leaves</strong> icon in the footer toolbar to open
+            the leave manager. Add scheduled leave days (annual leave, sick
+            days, public holidays) by date. Leave days are rendered with a
+            striped pattern in the Insights day segments and are excluded from
+            pace and weekly goal calculations.
+          </p>
+        </div>
+
+        <!-- Tab 5: Data & Settings -->
+        <div id="help-data" class="help-tab-content">
+          <h4>Export & Sharing</h4>
+          <ul>
+            <li>
+              <strong>CSV (spreadsheet icon):</strong> Downloads a
+              <code>.csv</code> file of all visible log entries. Columns include
+              date, login/logout times, work hours (decimal), break hours, daily
+              goal, focus %, and notes. Suitable for submitting to HR or
+              importing into Excel / Google Sheets.
+            </li>
+            <li>
+              <strong>Copy (clipboard icon):</strong> Copies your log history to
+              the clipboard as a formatted plain-text email summary. Entries are
+              grouped by day, work/break totals are shown per day, and any shift
+              under 7 hours is flagged. Paste directly into a Gmail draft with
+              <kbd>Ctrl+V</kbd> / <kbd>Cmd+V</kbd>.
+            </li>
+          </ul>
+          <hr />
+          <h4>Backup & Restore</h4>
+          <ul>
+            <li>
+              <strong>Save / JSON backup (download icon):</strong> Downloads a
+              <code>.json</code> file containing your entire log database and
+              app state. Store this file somewhere safe. All data lives in your
+              browser's local storage — clearing browser data or switching
+              devices will erase it without a backup.
+            </li>
+            <li>
+              <strong>Load / JSON restore (upload icon):</strong> Imports a
+              previously saved <code>.json</code> backup file. Existing logs are
+              merged with the imported data; duplicate entries are de-duplicated
+              automatically.
+            </li>
+            <li>
+              <strong>Recommended cadence:</strong> Export a JSON backup at
+              least once per week.
+            </li>
+          </ul>
+          <hr />
+          <h4>Settings (⚙ icon)</h4>
+          <ul>
+            <li>
+              <strong>Simple / Intelligent mode:</strong> Switch between
+              tracking modes. Intelligent mode enables idle lock, sleep
+              detection, and midnight rollover. Simple mode runs timers
+              continuously without any interruption or auto-detection.
+            </li>
+            <li>
+              <strong>Enable Idle Lock:</strong> Toggle automatic idle detection
+              on or off (Intelligent mode only).
+            </li>
+            <li>
+              <strong>Idle Threshold:</strong> The slider sets how long you must
+              be inactive (5–120 minutes) before the idle lock triggers. Default
+              is 60 minutes.
+            </li>
+            <li>
+              <strong>Auto-save Backup:</strong> When enabled, the app
+              automatically downloads a JSON backup file at the end of each day
+              when you submit your EOD shift.
+            </li>
+            <li>
+              <strong>Auto-email Summary:</strong> When enabled, submitting EOD
+              automatically copies your log summary to the clipboard and opens a
+              new Gmail draft, ready to paste.
+            </li>
+          </ul>
+          <hr />
+          <h4>Theme & Timezone</h4>
+          <ul>
+            <li>
+              <strong>Theme:</strong> Click the theme toggle button in the
+              header to open the theme picker. Choose from
+              <strong>SF Dark</strong>, <strong>SF Light</strong>,
+              <strong>Onyx Black</strong>, or <strong>Cobalt Glass</strong>.
+              Your selection is saved automatically.
+            </li>
+            <li>
+              <strong>Timezone:</strong> Click the timezone label
+              (PST/MST/CST/EST) in the header status bar to switch the primary
+              clock timezone. The secondary clock always displays BST as a fixed
+              reference. Your selection persists across sessions.
+            </li>
+            <li>
+              <strong>Daily Goal Presets:</strong> Click the
+              <strong>Daily Goal</strong> field to open the preset picker. Use
+              <strong>−15m</strong> / <strong>+15m</strong> to fine-tune, or
+              double-click either preset pill to permanently reassign it to a
+              custom value.
+            </li>
+          </ul>
+          <hr />
+          <h4>Factory Reset</h4>
+          <p>
+            The <strong>Wipe</strong> button (red trash icon) permanently
+            deletes all logs, saved views, leave entries, and app settings. This
+            action is irreversible. Always export a JSON backup before using
+            this option.
+          </p>
+        </div>
+
+        <div class="action-row" style="margin-top: var(--space-4)">
+          <button class="btn-info-outline" onclick="closeHelpModal()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- Native App Toast Notification Overlay -->
     <div id="app-toast">
@@ -3930,6 +5116,7 @@
               id="edit-date"
               class="input-standard"
               onfocus="this.select()"
+              onkeydown="if (event.key === 'Enter') this.blur();"
             />
             <!-- Hidden native input triggered by button click -->
             <input
@@ -3977,6 +5164,7 @@
               class="input-standard"
               placeholder="08:00"
               onfocus="this.select()"
+              onkeydown="if (event.key === 'Enter') this.blur();"
             />
           </div>
           <div class="form-group">
@@ -3989,6 +5177,7 @@
               class="input-standard"
               placeholder="00:00"
               onfocus="this.select()"
+              onkeydown="if (event.key === 'Enter') this.blur();"
             />
           </div>
         </div>
@@ -3999,30 +5188,14 @@
             style="color: var(--accent-blue)"
             >Daily Goal for this shift</label
           >
-          <div style="display: flex; gap: var(--space-2); align-items: center">
-            <input
-              type="number"
-              id="edit-goal-h"
-              class="input-standard"
-              min="0"
-              max="23"
-              style="width: 70px; text-align: center; padding: var(--space-2)"
-            />
-            <span style="font-size: var(--text-sm); color: var(--text-muted)"
-              >h</span
-            >
-            <input
-              type="number"
-              id="edit-goal-m"
-              class="input-standard"
-              min="0"
-              max="59"
-              style="width: 70px; text-align: center; padding: var(--space-2)"
-            />
-            <span style="font-size: var(--text-sm); color: var(--text-muted)"
-              >m</span
-            >
-          </div>
+          <input
+            type="text"
+            id="edit-goal"
+            class="input-standard"
+            placeholder="08:00"
+            onfocus="this.select()"
+            onkeydown="if (event.key === 'Enter') this.blur();"
+          />
         </div>
         <div class="form-group">
           <label class="form-label" for="edit-notes">Notes (Optional)</label>
@@ -4119,30 +5292,14 @@
             style="color: var(--accent-blue)"
             >Daily Goal for this shift</label
           >
-          <div style="display: flex; gap: var(--space-2); align-items: center">
-            <input
-              type="number"
-              id="manual-goal-h"
-              class="input-standard"
-              min="0"
-              max="23"
-              style="width: 70px; text-align: center; padding: var(--space-2)"
-            />
-            <span style="font-size: var(--text-sm); color: var(--text-muted)"
-              >h</span
-            >
-            <input
-              type="number"
-              id="manual-goal-m"
-              class="input-standard"
-              min="0"
-              max="59"
-              style="width: 70px; text-align: center; padding: var(--space-2)"
-            />
-            <span style="font-size: var(--text-sm); color: var(--text-muted)"
-              >m</span
-            >
-          </div>
+          <input
+            type="text"
+            id="manual-goal"
+            class="input-standard"
+            placeholder="08:00"
+            onfocus="this.select()"
+            onkeydown="if (event.key === 'Enter') this.blur();"
+          />
         </div>
         <div class="form-group">
           <label class="form-label" for="manual-notes">Notes (Optional)</label>
@@ -4322,7 +5479,7 @@
           style="
             height: 150px;
             overflow-y: auto;
-            background: rgba(0, 0, 0, 0.15);
+            background: var(--element-bg);
             border: 1px solid var(--border-light);
             padding: var(--space-2);
             border-radius: var(--radius-md);
@@ -4524,16 +5681,139 @@
                 </button>
               </div>
             </div>
-            <button
-              class="theme-toggle-btn"
-              onclick="toggleTheme()"
-              aria-label="Toggle Theme"
-            >
-              <span
-                id="theme-toggle-icon"
-                style="display: flex; align-items: center"
-              ></span>
-            </button>
+            <div class="theme-container">
+              <button
+                class="theme-toggle-btn"
+                aria-label="Toggle Theme"
+                style="gap: 6px"
+              >
+                <span
+                  id="theme-toggle-icon"
+                  style="display: flex; align-items: center"
+                ></span>
+                <svg
+                  class="goal-chevron"
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 3.5L5 6.5L8 3.5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="theme-presets">
+                <button
+                  class="preset-pill"
+                  onclick="setThemeDirect('cobalt-glass')"
+                  style="display: inline-flex; align-items: center; gap: 8px"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="
+                      color: #38bdf8;
+                      filter: drop-shadow(0 0 2px rgba(56, 189, 248, 0.45));
+                    "
+                  >
+                    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                    <polyline points="2 17 12 22 22 17" />
+                    <polyline points="2 12 12 17 22 12" />
+                  </svg>
+                  Cobalt Glass
+                </button>
+                <button
+                  class="preset-pill"
+                  onclick="setThemeDirect('onyx-black')"
+                  style="display: inline-flex; align-items: center; gap: 8px"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="
+                      color: #8e8e93;
+                      filter: drop-shadow(0 0 2px rgba(142, 142, 147, 0.4));
+                    "
+                  >
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    <path d="M15 5h2M16 4v2" stroke-width="1.5" />
+                  </svg>
+                  Onyx Black
+                </button>
+                <button
+                  class="preset-pill"
+                  onclick="setThemeDirect('sf-light')"
+                  style="display: inline-flex; align-items: center; gap: 8px"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="
+                      color: #ff9500;
+                      filter: drop-shadow(0 0 2px rgba(255, 149, 0, 0.4));
+                    "
+                  >
+                    <circle cx="12" cy="12" r="4" />
+                    <path
+                      d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+                    />
+                  </svg>
+                  SF Light
+                </button>
+                <button
+                  class="preset-pill"
+                  onclick="setThemeDirect('sf-dark')"
+                  style="display: inline-flex; align-items: center; gap: 8px"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="
+                      color: #818cf8;
+                      filter: drop-shadow(0 0 2px rgba(129, 140, 248, 0.45));
+                    "
+                  >
+                    <path
+                      d="M12 2a10 10 0 1 0 10 10H12V2z"
+                      fill="currentColor"
+                      fill-opacity="0.12"
+                    />
+                    <circle cx="12" cy="12" r="10" />
+                  </svg>
+                  SF Dark
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -5205,20 +6485,6 @@
                 id="week-month-label"
                 ondblclick="jumpToCurrentWeek()"
                 title="Double-click to jump to current week"
-                style="
-                  font-size: var(--text-sm);
-                  font-weight: 700;
-                  color: var(--text-main);
-                  margin-bottom: 0;
-                  white-space: nowrap;
-                  margin-left: 2px;
-                  margin-right: 2px;
-                  cursor: pointer;
-                  user-select: none;
-                  transition:
-                    color 0.2s ease,
-                    opacity 0.2s ease;
-                "
               ></span>
 
               <!-- Next Week Button -->
@@ -5366,7 +6632,31 @@
               <span class="icon-tag">Leaves</span>
             </div>
 
-            <div class="icon-stack" style="position: relative">
+            <div class="icon-stack">
+              <button
+                aria-label="User Guide & Help"
+                class="icon-btn sq-btn"
+                id="help-btn"
+                onclick="openHelpModal()"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-width="2"
+                >
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path
+                    d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                  ></path>
+                  <circle cx="12" cy="10" r="1" fill="currentColor"></circle>
+                  <path d="M12 14v2" stroke-linecap="round"></path>
+                </svg>
+              </button>
+              <span class="icon-tag">Help</span>
+            </div>
+
+            <div class="icon-stack">
               <button
                 aria-label="Application Settings"
                 class="icon-btn sq-btn"
@@ -5395,17 +6685,7 @@
                 <div
                   style="display: flex; flex-direction: column; padding: 2px"
                 >
-                  <div
-                    class="idle-popup-row"
-                    style="
-                      background: rgba(0, 0, 0, 0.25);
-                      border: 1px solid rgba(255, 255, 255, 0.05);
-                      border-radius: 8px;
-                      padding: 4px;
-                      gap: 4px;
-                      position: relative;
-                    "
-                  >
+                  <div class="segmented-control">
                     <button
                       id="mode-simple"
                       class="ios-pill"
@@ -5548,6 +6828,45 @@
                         "
                       >
                         Automatically downloads JSON at EOD.
+                      </div>
+                    </div>
+
+                    <div class="settings-divider" style="margin: 8px 0"></div>
+
+                    <!-- Auto-email/copy settings group card -->
+                    <div
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        padding: 2px;
+                      "
+                    >
+                      <div class="idle-popup-row">
+                        <span
+                          class="idle-popup-label"
+                          style="font-size: 0.75rem; font-weight: 700"
+                          >Auto-email summary</span
+                        >
+                        <label class="switch">
+                          <input
+                            type="checkbox"
+                            id="auto-email-toggle"
+                            onchange="onAutoEmailToggleChange()"
+                          />
+                          <span class="slider-toggle"></span>
+                        </label>
+                      </div>
+                      <div
+                        class="settings-description"
+                        style="
+                          margin-top: 2px;
+                          font-size: 0.65rem;
+                          color: var(--text-muted);
+                          font-weight: 500;
+                        "
+                      >
+                        Copies logs & opens Gmail draft at EOD.
                       </div>
                     </div>
                   </div>
@@ -5713,9 +7032,10 @@
         plus: `<svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" width="18" height="18"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>`,
         note: `<svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`,
         trash: `<svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>`,
-        themeSun: `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>`,
-        themeMoon: `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>`,
-        themeMidnight: `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" fill-opacity="0.3" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path><path d="M19 3v4M17 5h4" stroke-width="1.5"></path></svg>`,
+        themeCobalt: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #38bdf8; filter: drop-shadow(0 0 2px rgba(56,189,248,0.45));"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>`,
+        themeOnyx: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #8e8e93; filter: drop-shadow(0 0 2px rgba(142,142,147,0.4));"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /><path d="M15 5h2M16 4v2" stroke-width="1.5" /></svg>`,
+        themeSfDark: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #818cf8; filter: drop-shadow(0 0 2px rgba(129,140,248,0.45));"><path d="M12 2a10 10 0 1 0 10 10H12V2z" fill="currentColor" fill-opacity="0.12" /><circle cx="12" cy="12" r="10" /></svg>`,
+        themeSfLight: `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #ff9500; filter: drop-shadow(0 0 2px rgba(255,149,0,0.4));"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" /></svg>`,
       };
 
       // Live session core tracking state structure
@@ -6121,65 +7441,130 @@
       }
 
       /*==========================================================================
-       * 6. BROADCAST CHANNEL (INSTANCE MULTI-TAB LOCK)
+       * 6. BROADCAST CHANNEL & ACTIVE LEASE PROTOCOL (MULTI-TAB LOCK)
        * =========================================================================*/
+      const LEASE_KEY = "production_active_lease_v2";
+      const STAGING_KEY = "production_staging_lease_v2";
       const tabSyncChannel = new BroadcastChannel("work_tracker_sync");
       const instanceId = Math.random().toString(36).substring(2, 15);
-      let lastBroadcastMessageTime = 0;
 
-      // Ping existing instances to verify tab status
-      tabSyncChannel.postMessage({ type: "ping", id: instanceId });
+      // Event-driven listening via native storage event (consumes 0% CPU while idle)
+      window.addEventListener("storage", (e) => {
+        if (e.key === LEASE_KEY) {
+          checkLeaseState();
+        }
+      });
 
       tabSyncChannel.onmessage = (e) => {
-        // Ignore messages originating from this exact tab
         if (e.data.id === instanceId) return;
 
-        // Yield silently to prevent endless broadcast storm loops
-        if (isTabConflict) return;
-
-        const now = Date.now();
-        // Drop excessively fast concurrent duplicate broadcast requests (rate-limit of 500ms)
-        if (now - lastBroadcastMessageTime < 500) {
-          return;
-        }
-        lastBroadcastMessageTime = now;
-
-        const conflictModal = document.getElementById("tab-conflict-modal");
-        if (e.data.type === "ping") {
-          // If this active instance is healthy (not currently locked out), claim ownership
-          if (!isTabConflict) {
-            tabSyncChannel.postMessage({ type: "pong", id: instanceId });
-          }
-        } else if (e.data.type === "pong") {
-          // Halt and lock down this tab if another instance exists or is forcing ownership
-          if (!isTabConflict) {
-            saveState(true);
-            if (cachedLogs && cachedLogs.length > 0) {
-              saveLogsToDB(cachedLogs).catch((err) => console.error(err));
-            }
-          }
+        if (e.data.type === "takeover") {
+          // We have been evicted by another tab. Transition to conflict mode.
           isTabConflict = true;
-          conflictModal.style.display = "flex";
-        } else if (e.data.type === "takeover") {
-          if (!isTabConflict) {
-            saveState(true);
-            const savePromise =
-              cachedLogs && cachedLogs.length > 0
-                ? saveLogsToDB(cachedLogs)
-                : Promise.resolve();
-            savePromise
-              .catch((err) => console.error(err))
-              .finally(() => {
-                tabSyncChannel.postMessage({
-                  type: "takeover_complete",
-                  id: instanceId,
-                });
-              });
-          }
-          isTabConflict = true;
-          conflictModal.style.display = "flex";
+          document.getElementById("tab-conflict-modal").style.display = "flex";
         }
       };
+
+      /**
+       * Checks the master lease in storage and evicts this tab if another instance owns it.
+       */
+      function checkLeaseState() {
+        try {
+          const leaseStr = localStorage.getItem(LEASE_KEY);
+          if (!leaseStr) return;
+          const lease = JSON.parse(leaseStr);
+          const now = Date.now();
+          if (lease.ownerId && lease.ownerId !== instanceId) {
+            // A lease exists with another owner. Is it active (unexpired)?
+            if (now - lease.lastHeartbeat < 3000) {
+              if (!isTabConflict) {
+                isTabConflict = true;
+                if (state.currentMode !== null) {
+                  // Silently halt active tracking without writing stale data to storage
+                  state.currentMode = null;
+                  state.sessionAnchorWall = null;
+                }
+                renderStaticUI();
+                document.getElementById("tab-conflict-modal").style.display =
+                  "flex";
+              }
+            }
+          } else if (lease.ownerId === instanceId) {
+            if (isTabConflict) {
+              isTabConflict = false;
+              document.getElementById("tab-conflict-modal").style.display =
+                "none";
+            }
+          }
+        } catch (e) {
+          console.warn("Failed to check lease state:", e);
+        }
+      }
+
+      /**
+       * Attempt to claim the master lease using staging and randomized backoff.
+       */
+      async function acquireLease() {
+        return new Promise((resolve) => {
+          try {
+            localStorage.setItem(STAGING_KEY, instanceId);
+            const backoff = 50 + Math.floor(Math.random() * 100);
+            setTimeout(() => {
+              try {
+                const stagingId = localStorage.getItem(STAGING_KEY);
+                if (stagingId === instanceId) {
+                  const lease = {
+                    ownerId: instanceId,
+                    lastHeartbeat: Date.now(),
+                    generationCounter: 1,
+                  };
+                  localStorage.setItem(LEASE_KEY, JSON.stringify(lease));
+                  isTabConflict = false;
+                  document.getElementById("tab-conflict-modal").style.display =
+                    "none";
+                  resolve(true);
+                } else {
+                  isTabConflict = true;
+                  document.getElementById("tab-conflict-modal").style.display =
+                    "flex";
+                  resolve(false);
+                }
+              } catch (e) {
+                resolve(false);
+              }
+            }, backoff);
+          } catch (e) {
+            resolve(false);
+          }
+        });
+      }
+
+      /**
+       * Renew our active lease.
+       */
+      function renewLease() {
+        if (isTabConflict) return;
+        try {
+          const leaseStr = localStorage.getItem(LEASE_KEY);
+          let gen = 1;
+          if (leaseStr) {
+            const currentLease = JSON.parse(leaseStr);
+            if (currentLease.ownerId && currentLease.ownerId !== instanceId) {
+              checkLeaseState();
+              return;
+            }
+            gen = (currentLease.generationCounter || 0) + 1;
+          }
+          const lease = {
+            ownerId: instanceId,
+            lastHeartbeat: Date.now(),
+            generationCounter: gen,
+          };
+          localStorage.setItem(LEASE_KEY, JSON.stringify(lease));
+        } catch (e) {
+          console.warn("Failed to renew lease:", e);
+        }
+      }
 
       /**
        * Reclaims master tracking ownership on the local tab and forces other instances to step down.
@@ -6188,41 +7573,47 @@
         isTabConflict = false;
         document.getElementById("tab-conflict-modal").style.display = "none";
 
-        // Engage the silent audio context during tab takeover activation
-
-        // Synchronize delta anchor when active tab takes priority
-        // Pull latest database and localStorage states to synchronize this session instantly
-
-        const handleAck = (e) => {
-          if (e.data.type === "takeover_complete") {
-            tabSyncChannel.removeEventListener("message", handleAck);
-            loadState();
-            loadLogsFromDB().then((logs) => {
-              cachedLogs = logs;
-              cachedTodayDate = null;
-              rebuildWeeklyCache();
-              renderStaticUI();
-              renderTimersOnly();
-              renderLogbook();
-              renderInsights();
-              showSyncToast("Tab takeover successful. Session synchronized");
-            });
-          }
+        const lease = {
+          ownerId: instanceId,
+          lastHeartbeat: Date.now(),
+          generationCounter: 1,
         };
-        tabSyncChannel.addEventListener("message", handleAck);
-        tabSyncChannel.postMessage({ type: "takeover", id: instanceId });
+        localStorage.setItem(LEASE_KEY, JSON.stringify(lease));
+
+        // Synchronize latest database and localStorage states instantly
+        loadState();
+        loadLogsFromDB().then((logs) => {
+          cachedLogs = logs;
+          cachedTodayDate = null;
+          rebuildWeeklyCache();
+          renderStaticUI();
+          renderTimersOnly();
+          renderLogbook();
+          renderInsights();
+          showSyncToast("Tab takeover successful. Session synchronized");
+          tabSyncChannel.postMessage({ type: "takeover", id: instanceId });
+        });
       }
 
-      /*==========================================================================
-       * 7. CUSTOM GLASS & NOIR SYSTEM UTILITY CONTROLLERS
-       * =========================================================================*/
-      let currentTheme =
-        safeGetLocalStorage(THEME_KEY) ||
-        (window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "midnight"
-          : "glass");
-      if (currentTheme === "linear") currentTheme = "glass";
+      // Custom unified 4-theme preference loader with legacy fallback mappings
+      let currentTheme = safeGetLocalStorage(THEME_KEY);
+      if (currentTheme === "glass") {
+        currentTheme = "sf-light";
+      } else if (currentTheme === "midnight") {
+        currentTheme = "sf-dark";
+      } else if (currentTheme === "linear" || currentTheme === "cyber-glass") {
+        currentTheme = "cobalt-glass";
+      } else if (currentTheme === "pure-noir") {
+        currentTheme = "onyx-black";
+      }
+
+      if (!currentTheme) {
+        currentTheme =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "sf-dark"
+            : "sf-light";
+      }
       document.documentElement.setAttribute("data-theme", currentTheme);
 
       // DOM Manipulation Fast Helpers
@@ -6301,31 +7692,69 @@
       /**
        * Renders matching toggles for current active design systems
        */
+      const themeCycle = ["cyber-glass", "pure-noir", "sf-dark", "sf-light"];
+
       function renderThemeToggle() {
         const iconSpan = document.getElementById("theme-toggle-icon");
         if (!iconSpan) return;
-        if (currentTheme === "midnight") {
-          iconSpan.innerHTML = SVGs.themeSun;
+        if (currentTheme === "cobalt-glass") {
+          iconSpan.innerHTML = SVGs.themeCobalt;
+        } else if (currentTheme === "onyx-black") {
+          iconSpan.innerHTML = SVGs.themeOnyx;
+        } else if (currentTheme === "sf-light") {
+          iconSpan.innerHTML = SVGs.themeSfLight;
         } else {
-          iconSpan.innerHTML = SVGs.themeMidnight;
+          iconSpan.innerHTML = SVGs.themeSfDark;
         }
+        updateThemePresetsHighlight();
       }
 
       /**
-       * Triggers theme updates with subtle rotation micro-animations
+       * Directly updates current system design layouts from target popovers
        */
-      function toggleTheme() {
+      window.setThemeDirect = function (themeName) {
         const icon = document.getElementById("theme-toggle-icon");
         if (icon) icon.classList.add("theme-switching");
 
         setTimeout(() => {
-          currentTheme = currentTheme === "midnight" ? "glass" : "midnight";
+          currentTheme = themeName;
           document.documentElement.setAttribute("data-theme", currentTheme);
           localStorage.setItem(THEME_KEY, currentTheme);
           renderStaticUI();
           renderThemeToggle();
           if (icon) icon.classList.remove("theme-switching");
-        }, 250);
+        }, 200);
+      };
+
+      /**
+       * Highlights the active theme pill inside the dropdown popover
+       */
+      function updateThemePresetsHighlight() {
+        const pills = document.querySelectorAll(".theme-presets .preset-pill");
+        pills.forEach((pill) => {
+          const onclickAttr = pill.getAttribute("onclick");
+          if (onclickAttr && onclickAttr.includes(currentTheme)) {
+            pill.classList.add("active");
+          } else {
+            pill.classList.remove("active");
+          }
+        });
+      }
+
+      /**
+       * Legacy toggle remains as a fallback cycle trigger for shortcuts
+       */
+      function toggleTheme() {
+        const themeCycle = [
+          "cobalt-glass",
+          "onyx-black",
+          "sf-light",
+          "sf-dark",
+        ];
+        let idx = themeCycle.indexOf(currentTheme);
+        if (idx === -1) idx = 0;
+        const nextTheme = themeCycle[(idx + 1) % themeCycle.length];
+        setThemeDirect(nextTheme);
       }
 
       /*==========================================================================
@@ -6715,23 +8144,33 @@
           "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         );
 
+        // Retrieve corresponding label elements
+        const workLabel = DOM.workTimer.previousElementSibling;
+        const breakLabel = DOM.breakTimer.previousElementSibling;
+
         if (state.currentMode === "work") {
           DOM.workTimer.className = "timer-val timer-work-active";
+          if (workLabel) setStyle(workLabel, "color", "var(--accent-work)");
         } else {
           if (workSec === 0) {
             DOM.workTimer.className = "timer-val timer-inactive";
+            if (workLabel) setStyle(workLabel, "color", "var(--text-main)");
           } else {
             DOM.workTimer.className = "timer-val timer-active";
+            if (workLabel) setStyle(workLabel, "color", "var(--text-main)");
           }
         }
 
         if (state.currentMode === "break") {
           DOM.breakTimer.className = "timer-val timer-break-active";
+          if (breakLabel) setStyle(breakLabel, "color", "var(--accent-break)");
         } else {
           if (breakSec === 0) {
             DOM.breakTimer.className = "timer-val timer-inactive";
+            if (breakLabel) setStyle(breakLabel, "color", "var(--text-main)");
           } else {
             DOM.breakTimer.className = "timer-val timer-active";
+            if (breakLabel) setStyle(breakLabel, "color", "var(--text-main)");
           }
         }
       }
@@ -7285,6 +8724,14 @@
             ? "flex"
             : "none";
         }
+        const autoEmailWarning = document.getElementById(
+          "eod-auto-email-warning",
+        );
+        if (autoEmailWarning) {
+          autoEmailWarning.style.display = state.autoEmailEnabled
+            ? "flex"
+            : "none";
+        }
         DOM.submitModal.style.display = "flex";
         setTimeout(() => DOM.modalShiftNotes.focus(), 100);
       }
@@ -7387,6 +8834,96 @@
         if (state.autoBackupEnabled) {
           exportJSON();
         }
+
+        // Auto-trigger Gmail composer if enabled
+        if (state.autoEmailEnabled) {
+          triggerEodGmailLogCopy();
+        }
+      }
+
+      /**
+       * Compiles all logs, copies the formatted text summary to the clipboard,
+       * and opens a Gmail compose tab (or default mail client) to paste them.
+       */
+      function triggerEodGmailLogCopy() {
+        const allLogs = getLogs();
+        const filteredLogs = getFilteredLogs();
+
+        if (!filteredLogs.length) return;
+
+        const grp = {};
+        filteredLogs.forEach((l) => {
+          if (!grp[l.date]) grp[l.date] = { shifts: [], w: 0, b: 0 };
+          grp[l.date].shifts.push(l);
+          grp[l.date].w += l.workSec;
+          grp[l.date].b += l.breakSec;
+        });
+
+        const txt = Object.keys(grp)
+          .map((d) => {
+            let out = `📅 ${d}\n`;
+            grp[d].shifts.forEach((s, i) => {
+              out += `  • Shift ${i + 1}: ${s.login} - ${s.logout} (W: ${formatDuration(s.workSec)} | B: ${formatDuration(s.breakSec)})${s.notes ? " | Note: " + s.notes : ""}\n`;
+            });
+            const warning = grp[d].w < 7 * 3600 ? " ⚠️ (Under 7h)" : "";
+            out += `  ---\n  ✅ Total Work: ${formatDuration(grp[d].w)}${warning}\n  ☕ Total Break: ${formatDuration(grp[d].b)}\n  🏢 Total Logged: ${formatDuration(grp[d].w + grp[d].b)}`;
+            return out;
+          })
+          .join("\n\n");
+
+        navigator.clipboard
+          .writeText(txt)
+          .then(() => {
+            showAppToast("EOD complete: Log summary copied to clipboard!");
+
+            // Dynamically compute the current shift's Day and Date for the subject line
+            const dateStr = state.activeDate || getPSTDate();
+            const [m, d, y] = dateStr.split("/");
+            const fullYear = y.length === 2 ? `20${y}` : y;
+            const dateObj = new Date(
+              Date.UTC(
+                parseInt(fullYear, 10),
+                parseInt(m, 10) - 1,
+                parseInt(d, 10),
+                12,
+                0,
+                0,
+              ),
+            );
+            const dayNames = [
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+            ];
+            const dayName = dayNames[dateObj.getUTCDay()];
+            const emailSubject = `Work Hour Tracker Summary - ${dayName} - ${dateStr}`;
+
+            const emailBody = "";
+
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(
+              emailSubject,
+            )}&body=${encodeURIComponent(emailBody)}`;
+            const mailtoUrl = `mailto:?subject=${encodeURIComponent(
+              emailSubject,
+            )}&body=${encodeURIComponent(emailBody)}`;
+
+            // Reverts back to standard '_blank' behavior for absolute browser compatibility
+            const newTab = window.open(gmailUrl, "_blank");
+            if (
+              !newTab ||
+              newTab.closed ||
+              typeof newTab.closed === "undefined"
+            ) {
+              window.location.href = mailtoUrl;
+            }
+          })
+          .catch((err) => {
+            console.warn("Clipboard access denied on EOD submit:", err);
+          });
       }
 
       /**
@@ -7634,6 +9171,7 @@
         const previousIdleEnabled = state.idleTrackingEnabled;
         const previousIdleThreshold = state.idleThresholdMinutes;
         const previousAutoBackup = state.autoBackupEnabled;
+        const previousAutoEmail = state.autoEmailEnabled;
 
         state = {
           workAccumulated: 0,
@@ -7655,6 +9193,8 @@
             previousIdleThreshold !== undefined ? previousIdleThreshold : 60,
           autoBackupEnabled:
             previousAutoBackup !== undefined ? previousAutoBackup : false,
+          autoEmailEnabled:
+            previousAutoEmail !== undefined ? previousAutoEmail : false,
           lastHeartbeatWall: null,
           lastHeartbeatMonotonic: null,
           tabHiddenAt: null,
@@ -9055,8 +10595,8 @@
           (typeof getGoalSeconds === "function" ? getGoalSeconds() : 8 * 3600);
         const goalH = Math.floor(currentGoalSec / 3600);
         const goalM = Math.floor((currentGoalSec % 3600) / 60);
-        document.getElementById("edit-goal-h").value = goalH;
-        document.getElementById("edit-goal-m").value = goalM;
+        document.getElementById("edit-goal").value =
+          `${String(goalH).padStart(2, "0")}:${String(goalM).padStart(2, "0")}`;
 
         document.getElementById("edit-notes").value = log.notes || "";
         document.getElementById("edit-modal").style.display = "flex";
@@ -9087,21 +10627,10 @@
         const newBreak = document.getElementById("edit-break").value.trim();
         const newNotes = document.getElementById("edit-notes").value.trim();
 
-        // Parse user-edited goal
-        const gh = Math.min(
-          24,
-          Math.max(
-            0,
-            parseInt(document.getElementById("edit-goal-h").value, 10) || 0,
-          ),
-        );
-        const gm = Math.min(
-          59,
-          Math.max(
-            0,
-            parseInt(document.getElementById("edit-goal-m").value, 10) || 0,
-          ),
-        );
+        const rawGoal = document.getElementById("edit-goal").value.trim();
+        const parsedGoal = parseGoalTimeStr(rawGoal);
+        const gh = parsedGoal.hh;
+        const gm = parsedGoal.mm;
         const goal = gh * 3600 + gm * 60 || 1; // Minimum 1 second to avoid falsy zero
 
         let wSec = parseTime(newWork);
@@ -9272,6 +10801,10 @@
                     data.state.idleThresholdMinutes !== undefined
                       ? data.state.idleThresholdMinutes
                       : state.idleThresholdMinutes;
+                  state.autoEmailEnabled =
+                    data.state.autoEmailEnabled !== undefined
+                      ? data.state.autoEmailEnabled
+                      : state.autoEmailEnabled;
                 } else {
                   state = data.state;
                 }
@@ -9715,6 +11248,9 @@
         const nowMs = Date.now();
         const now = new Date(nowMs);
 
+        // Renew our master lease lock
+        renewLease();
+
         // Execute rollover checks for multi-day gaps (sleep/hibernate/page load recovery)
         checkMidnightReset(now);
 
@@ -10103,7 +11639,18 @@
           document.getElementById("auto-backup-toggle");
         if (autoBackupCheckbox)
           autoBackupCheckbox.checked = !!state.autoBackupEnabled;
+
+        // Sync auto-email toggle
+        const autoEmailCheckbox = document.getElementById("auto-email-toggle");
+        if (autoEmailCheckbox)
+          autoEmailCheckbox.checked = !!state.autoEmailEnabled;
       }
+
+      window.onAutoEmailToggleChange = function () {
+        const checkbox = document.getElementById("auto-email-toggle");
+        state.autoEmailEnabled = checkbox.checked;
+        saveState();
+      };
 
       /**
        * Updates UI and state mode switches with an immediate engine reset.
@@ -10146,8 +11693,8 @@
         document.getElementById("manual-break").value = "00:00";
         document.getElementById("manual-notes").value = "";
 
-        document.getElementById("manual-goal-h").value = DOM.goalHours.value;
-        document.getElementById("manual-goal-m").value = DOM.goalMins.value;
+        document.getElementById("manual-goal").value =
+          `${String(DOM.goalHours.value).padStart(2, "0")}:${String(DOM.goalMins.value).padStart(2, "0")}`;
 
         document.getElementById("manual-modal").style.display = "flex";
       }
@@ -10179,20 +11726,10 @@
         const breakStr = document.getElementById("manual-break").value.trim();
         const notes = document.getElementById("manual-notes").value.trim();
 
-        const gh = Math.min(
-          24,
-          Math.max(
-            0,
-            parseInt(document.getElementById("manual-goal-h").value, 10) || 0,
-          ),
-        );
-        const gm = Math.min(
-          59,
-          Math.max(
-            0,
-            parseInt(document.getElementById("manual-goal-m").value, 10) || 0,
-          ),
-        );
+        const rawGoal = document.getElementById("manual-goal").value.trim();
+        const parsedGoal = parseGoalTimeStr(rawGoal);
+        const gh = parsedGoal.hh;
+        const gm = parsedGoal.mm;
         const goal = gh * 3600 + gm * 60 || 1; // Minimum 1 second to avoid falsy zero
 
         let wSec = parseTime(workStr);
@@ -10267,6 +11804,9 @@
 
         const manualMod = document.getElementById("manual-modal");
         if (event.target == manualMod) closeManualModal();
+
+        const helpMod = document.getElementById("help-modal");
+        if (event.target == helpMod) closeHelpModal();
       };
 
       DOM.startBtn.addEventListener("click", () => {
@@ -10824,12 +12364,17 @@
         input.value = `${String(parsed.hh).padStart(2, "0")}:${String(parsed.mm).padStart(2, "0")}`;
       }
 
-      ["manual-work", "manual-break", "edit-work", "edit-break"].forEach(
-        (id) => {
-          const el = document.getElementById(id);
-          if (el) el.addEventListener("blur", handleTimeInputBlur);
-        },
-      );
+      [
+        "manual-work",
+        "manual-break",
+        "edit-work",
+        "edit-break",
+        "manual-goal",
+        "edit-goal",
+      ].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener("blur", handleTimeInputBlur);
+      });
 
       /**
        * Executes handleDateInputBlur logic.
@@ -11042,6 +12587,26 @@
           toast.style.bottom = "-100px";
           appToastId = (appToastId + 1) % Number.MAX_SAFE_INTEGER;
           clearTimeout(appToastTimeout);
+        }
+      };
+
+      window.openHelpModal = function () {
+        document.getElementById("help-modal").style.display = "flex";
+      };
+
+      window.closeHelpModal = function () {
+        document.getElementById("help-modal").style.display = "none";
+      };
+
+      window.switchHelpTab = function (tabId, btn) {
+        const contents = document.querySelectorAll(".help-tab-content");
+        contents.forEach((el) => el.classList.remove("active"));
+        const buttons = document.querySelectorAll(".help-tab-btn");
+        buttons.forEach((el) => el.classList.remove("active"));
+
+        document.getElementById(tabId).classList.add("active");
+        if (btn) {
+          btn.classList.add("active");
         }
       };
 
@@ -11354,6 +12919,8 @@
        */
       let saveStateTimeout = null;
       function saveState(forceSync = false) {
+        if (isTabConflict) return; // Prevent uninitialized or evicted tabs from writing stale state!
+
         if (state.currentMode !== null && !state.idleLock) {
           state.lastHeartbeatWall = Date.now();
           state.lastHeartbeatMonotonic = performance.now();
@@ -11406,13 +12973,14 @@
           // Backward compatibility migration:
           if (
             state.workAccumulatedMs !== undefined &&
-            state.workAccumulated === 0
+            (state.workAccumulated === 0 || state.workAccumulated === undefined)
           ) {
             state.workAccumulated = Math.floor(state.workAccumulatedMs / 1000);
           }
           if (
             state.breakAccumulatedMs !== undefined &&
-            state.breakAccumulated === 0
+            (state.breakAccumulated === 0 ||
+              state.breakAccumulated === undefined)
           ) {
             state.breakAccumulated = Math.floor(
               state.breakAccumulatedMs / 1000,
@@ -11420,13 +12988,15 @@
           }
           if (
             state.sessionAnchorTime !== undefined &&
-            state.sessionAnchorWall === null
+            (state.sessionAnchorWall === null ||
+              state.sessionAnchorWall === undefined)
           ) {
             state.sessionAnchorWall = state.sessionAnchorTime;
           }
           if (
             state.lastHeartbeat !== undefined &&
-            state.lastHeartbeatWall === null
+            (state.lastHeartbeatWall === null ||
+              state.lastHeartbeatWall === undefined)
           ) {
             state.lastHeartbeatWall = state.lastHeartbeat;
           }
@@ -11526,9 +13096,12 @@
         displayBaseDate = getPSTDateObj();
         loadState();
 
+        // Deterministically acquire our active lease before starting checks
+        await acquireLease();
+
         // Persistent Heartbeat Check (Phase 1)
         if (
-          state.idleTrackingEnabled !== false &&
+          state.trackingMode === "intelligent" &&
           state.lastHeartbeatWall &&
           state.currentMode !== null &&
           !state.idleLock
@@ -11588,6 +13161,9 @@
             }
           }
 
+          const themeContainer = document.querySelector(".theme-container");
+          const themePresets = document.querySelector(".theme-presets");
+
           function closeAllDropdowns() {
             if (goalPresets) {
               goalPresets.style.opacity = "0";
@@ -11596,6 +13172,10 @@
             if (tzPresets) {
               tzPresets.style.opacity = "0";
               tzPresets.style.pointerEvents = "none";
+            }
+            if (themePresets) {
+              themePresets.style.opacity = "0";
+              themePresets.style.pointerEvents = "none";
             }
             hideScrim();
           }
@@ -11616,12 +13196,21 @@
             });
           }
 
+          if (themeContainer && themePresets) {
+            themeContainer.addEventListener("click", function (e) {
+              if (e.target.closest(".theme-presets")) return;
+              e.stopPropagation();
+              toggleDropdown(themePresets);
+            });
+          }
+
           // Tapping the scrim or anywhere outside closes the bottom sheet
           scrim.addEventListener("click", closeAllDropdowns);
           document.addEventListener("click", function (e) {
             if (
               !e.target.closest(".goal-container") &&
-              !e.target.closest(".tz-container")
+              !e.target.closest(".tz-container") &&
+              !e.target.closest(".theme-container")
             ) {
               closeAllDropdowns();
             }
